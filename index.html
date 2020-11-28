@@ -124,7 +124,7 @@
 		var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
             maxZoom: 10,
             minZoom:5,
-            indexMaxZoom: 10,
+            indexMaxZoom: 5,
             indexMaxPoints: 1,
             buffer: 0,
             tolerance: 90,
@@ -134,15 +134,15 @@
             getFeatureId: function(f) {
 				return f.properties.CVEGEO;
 			}
-        }).addTo(map);
-        //     teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-        //     interactive: true,
-		// 	rendererFactory: L.svg.tile,
-        //     vectorTileLayerStyles: vectorTileStylingB,
-        //     getFeatureId: function(f) {
-		// 		return f.properties.CVEGEO;
-		// 	}
-        // });
+        }).addTo(map),
+            teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
+            interactive: true,
+			rendererFactory: L.svg.tile,
+            vectorTileLayerStyles: vectorTileStylingB,
+            getFeatureId: function(f) {
+				return f.properties.CVEGEO;
+			}
+        });
 
         //<!------ Cuadro de informacion personalizada ------>
         var info = L.control({position: 'bottomleft'});
@@ -190,7 +190,7 @@
             })
         };
         hoveruber(teselauno, getColorA, '2019_pv_te_maizgrano_Rendimiento');
-        // hoveruber(teselados, getColorB, 'CVEGEO');
+        hoveruber(teselados, getColorB, 'CVEGEO');
 
         //<!------ Pop-up ------>
         function popop(capalayer, varnombre){
@@ -217,7 +217,7 @@
             })    
         };
         popop(teselauno, '2019_pv_te_maizgrano_Rendimiento');
-        // popop(teselados, 'CVEGEO');
+        popop(teselados, 'CVEGEO');
 
         //<!------ Leyenda ------>
         var legendA = L.control({position: 'bottomright'}),
@@ -248,7 +248,7 @@
         //<!------ Menu de capas ------>
         var baseMaps = {
             "2019": teselauno,
-            // "CVEGEO": teselados
+            "CVEGEO": teselados
         };
         L.control.layers(baseMaps).addTo(map);
         info.addTo(map);
