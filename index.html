@@ -30,8 +30,8 @@
             center: [23.946, -101.975],
             zoomControl:true,
             zoom:6,
-            maxZoom:6,
-            minZoom:6
+            maxZoom:8,
+            minZoom:5
         })
         atribuciones = 'Climathics | \
                     <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> \
@@ -61,7 +61,7 @@
             tileSize: 512,
             zoomControl:true,
             maxZoom:8,
-            minZoom:6,
+            minZoom:5,
             zoomOffset: -1
          })
          .addTo(map);
@@ -122,10 +122,9 @@
 
         //***** Vector tiles
 		var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            maxZoom: 8,
-            minZoom: 6,
+            minZoom: 5,
             // buffer: 32,
-            tolerance: 1000,
+            tolerance: 15,
             interactive: true,
 			rendererFactory: L.svg.tile,
             vectorTileLayerStyles: vectorTileStylingA,
@@ -134,10 +133,9 @@
 			}
         }).addTo(map),
             teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            maxZoom: 8,
-            minZoom: 6,
+            minZoom: 5,
             // buffer: 32,
-            tolerance: 1000,
+            tolerance: 15,
             interactive: true,
 			rendererFactory: L.svg.tile,
             vectorTileLayerStyles: vectorTileStylingB,
