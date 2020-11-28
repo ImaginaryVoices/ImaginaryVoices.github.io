@@ -29,9 +29,9 @@
         var map = L.map('map', {
             center: [23.946, -101.975],
             zoomControl:true,
-            zoom: 5,
-            maxZoom:5,
-            minZoom:5
+            zoom:6,
+            maxZoom:8,
+            minZoom:6
         })
         atribuciones = 'Climathics | \
                     <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> \
@@ -60,8 +60,8 @@
             pane: 'labelsi',
             tileSize: 512,
             zoomControl:true,
-            maxZoom:7,
-            minZoom:5,
+            maxZoom:8,
+            minZoom:6,
             zoomOffset: -1
          })
          .addTo(map);
@@ -122,10 +122,10 @@
 
         //***** Vector tiles
 		var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            maxZoom: 7,
-            // minZoom:5,
+            maxZoom: 8,
+            minZoom: 6,
             // buffer: 32,
-            tolerance: 100,
+            tolerance: 1000,
             interactive: true,
 			rendererFactory: L.svg.tile,
             vectorTileLayerStyles: vectorTileStylingA,
@@ -134,10 +134,10 @@
 			}
         }).addTo(map),
             teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            maxZoom: 7,
-            // minZoom:5,
+            maxZoom: 8,
+            minZoom: 6,
             // buffer: 32,
-            tolerance: 100,
+            tolerance: 1000,
             interactive: true,
 			rendererFactory: L.svg.tile,
             vectorTileLayerStyles: vectorTileStylingB,
