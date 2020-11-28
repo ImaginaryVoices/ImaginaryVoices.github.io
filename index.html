@@ -29,8 +29,8 @@
         var map = L.map('map', {
             center: [23.946, -101.975],
             zoomControl:true,
-            zoom: 6,
-            maxZoom:10,
+            zoom: 5,
+            maxZoom:5,
             minZoom:5
         })
         atribuciones = 'Climathics | \
@@ -46,7 +46,7 @@
         //<!------ Mapbox Vector Tiles (fondo) ------>
          var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2g1bWNlbDgwaTl3MnJydWk5Z3Nqa3d3In0.2mxDiKtLOypmkZ6kZykrJw';
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-            id: 'climathics/ckhxrkqyy0z2q19ql4fiwmbz6',
+            id: 'climathics/ckhbdu5h6063419o5rmbb27ae', //climathics/ckhipfem70mwy19noba54m2by
             tileSize: 512,
             zoomOffset: -1
          })
@@ -60,7 +60,7 @@
             pane: 'labelsi',
             tileSize: 512,
             zoomControl:true,
-            maxZoom:10,
+            maxZoom:7,
             minZoom:5,
             zoomOffset: -1
          })
@@ -121,158 +121,154 @@
         };
 
         //***** Vector tiles
-		// var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-        //     maxZoom: 10,
-        //     minZoom:5,
-        //     indexMaxZoom: 5,
-        //     indexMaxPoints: 1,
-        //     buffer: 0,
-        //     tolerance: 90,
-        //     interactive: true,
-		// 	rendererFactory: L.svg.tile,
-        //     vectorTileLayerStyles: vectorTileStylingA,
-        //     getFeatureId: function(f) {
-		// 		return f.properties.CVEGEO;
-		// 	}
-        // }),
-        //     teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-        //     maxZoom: 10,
-        //     minZoom:5,
-        //     indexMaxZoom: 5,
-        //     indexMaxPoints: 1,
-        //     buffer: 0,
-        //     tolerance: 90,
-        //     interactive: true,
-		// 	rendererFactory: L.svg.tile,
-        //     vectorTileLayerStyles: vectorTileStylingB,
-        //     getFeatureId: function(f) {
-		// 		return f.properties.CVEGEO;
-		// 	}
-        // });
+		var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
+            maxZoom: 7,
+            // minZoom:5,
+            // buffer: 32,
+            tolerance: 100,
+            interactive: true,
+			rendererFactory: L.svg.tile,
+            vectorTileLayerStyles: vectorTileStylingA,
+            getFeatureId: function(f) {
+				return f.properties.CVEGEO;
+			}
+        }).addTo(map),
+            teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
+            maxZoom: 7,
+            // minZoom:5,
+            // buffer: 32,
+            tolerance: 100,
+            interactive: true,
+			rendererFactory: L.svg.tile,
+            vectorTileLayerStyles: vectorTileStylingB,
+            getFeatureId: function(f) {
+				return f.properties.CVEGEO;
+			}
+        });
 
-        // //<!------ Cuadro de informacion personalizada ------>
-        // var info = L.control({position: 'bottomleft'});
-        // info.onAdd = function (map) {
-        //     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-        //     this.update();
-        //     return this._div;
-        // };
-        // info.update = function (props, varnombre) {
-        //     this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
-        //         '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
-        //         : 'Selecciona un municipio');
-        // };
+        //<!------ Cuadro de informacion personalizada ------>
+        var info = L.control({position: 'bottomleft'});
+        info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+            this.update();
+            return this._div;
+        };
+        info.update = function (props, varnombre) {
+            this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
+                '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
+                : 'Selecciona un municipio');
+        };
 
 
-        // //<!------ Mouse hover function ------>
-        // var highlight;
-		// var clearHighlight = function(capalayer) {
-		// 	if (highlight) {
-		// 		capalayer.resetFeatureStyle(highlight);
-		// 	}
-		// 	highlight = null;
-        // };
-        // function hoveruber(capalayer, funco, varnombre){
-        //     capalayer.on('mouseover', function(e) {
-        //         var properties = e.layer.properties;
-        //         clearHighlight(capalayer);
-        //         highlight = properties.CVEGEO;
-        //         var style = {
-        //             fillColor: funco(properties[varnombre]),
-        //             fillOpacity: 1,
-        //             stroke: true,
-        //             fill: true,
-        //             color: 'gray',
-        //             opacity: 1,
-        //             weight: 2
-        //         };
-        //         capalayer.setFeatureStyle(properties.CVEGEO, style);
-        //         info.update(properties, varnombre);
-        //     })
-        //     capalayer.on('mouseout', function(e) {
-        //         var properties = e.layer.properties;
-        //         clearHighlight(capalayer);
-        //         info.update();
-        //     })
-        // };
-        // hoveruber(teselauno, getColorA, '2019_pv_te_maizgrano_Rendimiento');
-        // hoveruber(teselados, getColorB, 'CVEGEO');
+        //<!------ Mouse hover function ------>
+        var highlight;
+		var clearHighlight = function(capalayer) {
+			if (highlight) {
+				capalayer.resetFeatureStyle(highlight);
+			}
+			highlight = null;
+        };
+        function hoveruber(capalayer, funco, varnombre){
+            capalayer.on('mouseover', function(e) {
+                var properties = e.layer.properties;
+                clearHighlight(capalayer);
+                highlight = properties.CVEGEO;
+                var style = {
+                    fillColor: funco(properties[varnombre]),
+                    fillOpacity: 1,
+                    stroke: true,
+                    fill: true,
+                    color: 'gray',
+                    opacity: 1,
+                    weight: 2
+                };
+                capalayer.setFeatureStyle(properties.CVEGEO, style);
+                info.update(properties, varnombre);
+            })
+            capalayer.on('mouseout', function(e) {
+                var properties = e.layer.properties;
+                clearHighlight(capalayer);
+                info.update();
+            })
+        };
+        hoveruber(teselauno, getColorA, '2019_pv_te_maizgrano_Rendimiento');
+        hoveruber(teselados, getColorB, 'CVEGEO');
 
-        // //<!------ Pop-up ------>
-        // function popop(capalayer, varnombre){
-        //     capalayer.on('click', function(e) {
-        //         var properties = e.layer.properties;
-        //         var popupContenti = '<table>\
-        //                 <tr>\
-        //                     <th scope="row">Estado</th>\
-        //                     <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
-        //                 </tr>\
-        //                 <tr>\
-        //                     <th scope="row">Municipio</th>\
-        //                     <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
-        //                 </tr>\
-        //                 <tr>\
-        //                     <th scope="row">Rendimiento</th>\
-        //                     <td>' + (properties[varnombre] !== null ? properties[varnombre] : '') + '</td>\
-        //                 </tr>\
-        //             </table>';
-        //         L.popup()
-        //             .setContent(popupContenti)
-        //             .setLatLng(e.latlng)
-        //             .openOn(map);
-        //     })    
-        // };
-        // popop(teselauno, '2019_pv_te_maizgrano_Rendimiento');
-        // popop(teselados, 'CVEGEO');
+        //<!------ Pop-up ------>
+        function popop(capalayer, varnombre){
+            capalayer.on('click', function(e) {
+                var properties = e.layer.properties;
+                var popupContenti = '<table>\
+                        <tr>\
+                            <th scope="row">Estado</th>\
+                            <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
+                        </tr>\
+                        <tr>\
+                            <th scope="row">Municipio</th>\
+                            <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
+                        </tr>\
+                        <tr>\
+                            <th scope="row">Rendimiento</th>\
+                            <td>' + (properties[varnombre] !== null ? properties[varnombre] : '') + '</td>\
+                        </tr>\
+                    </table>';
+                L.popup()
+                    .setContent(popupContenti)
+                    .setLatLng(e.latlng)
+                    .openOn(map);
+            })    
+        };
+        popop(teselauno, '2019_pv_te_maizgrano_Rendimiento');
+        popop(teselados, 'CVEGEO');
 
-        // //<!------ Leyenda ------>
-        // var legendA = L.control({position: 'bottomright'}),
-        //     legendB = L.control({position: 'bottomright'});
-        // legendA.onAdd = function (map) {
-        //     var div = L.DomUtil.create('div', 'info legend'),
-        //         grades = [0.0, 0.8, 1.4, 2.2, 3.0, 4.0, 5.2, 6.8],
-        //         labels = ['0.0', '0.8', '1.4', '2.2', '3.0', '4.0', '5.2', '6.8'];
-        //     for (var i = 0; i < grades.length; i++) {
-        //         div.innerHTML +=
-        //             '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
-        //             labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
-        //     }
-        //     return div;
-        // };
-        // legendB.onAdd = function (map) {
-        //     var div = L.DomUtil.create('div', 'info legend'),
-        //         grades = [0, 4000, 8000, 12000, 16000, 20000, 24000, 30000],
-        //         labels = ['0', '4,000', '8,000', '12,000', '16,000', '20,000', '24,000', '30,000'];
-        //     for (var i = 0; i < grades.length; i++) {
-        //         div.innerHTML +=
-        //             '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
-        //             labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
-        //     }
-        //     return div;
-        // };
+        //<!------ Leyenda ------>
+        var legendA = L.control({position: 'bottomright'}),
+            legendB = L.control({position: 'bottomright'});
+        legendA.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0.0, 0.8, 1.4, 2.2, 3.0, 4.0, 5.2, 6.8],
+                labels = ['0.0', '0.8', '1.4', '2.2', '3.0', '4.0', '5.2', '6.8'];
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
+                    labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
+            }
+            return div;
+        };
+        legendB.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 4000, 8000, 12000, 16000, 20000, 24000, 30000],
+                labels = ['0', '4,000', '8,000', '12,000', '16,000', '20,000', '24,000', '30,000'];
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
+                    labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
+            }
+            return div;
+        };
 
-        // //<!------ Menu de capas ------>
-        // var baseMaps = {
-        //     "2019": teselauno,
-        //     "CVEGEO": teselados
-        // };
-        // L.control.layers(baseMaps).addTo(map);
-        // info.addTo(map);
-        // legendA.addTo(map);
-        // currentInfo = info;
-        // currentLegend = legendA;
-        // map.on('baselayerchange', function (eventLayer) {
-        //     if (eventLayer.name === '2019') {
-        //         map.removeControl(currentLegend);
-        //         currentLegend = legendA;
-        //         legendA.addTo(map);
-        //     }
-        //     else if  (eventLayer.name === 'CVEGEO') {
-        //         map.removeControl(currentLegend);
-        //         currentLegend = legendB;
-        //         legendB.addTo(map);
-        //     }
-        // })
+        //<!------ Menu de capas ------>
+        var baseMaps = {
+            "2019": teselauno,
+            "CVEGEO": teselados
+        };
+        L.control.layers(baseMaps).addTo(map);
+        info.addTo(map);
+        legendA.addTo(map);
+        currentInfo = info;
+        currentLegend = legendA;
+        map.on('baselayerchange', function (eventLayer) {
+            if (eventLayer.name === '2019') {
+                map.removeControl(currentLegend);
+                currentLegend = legendA;
+                legendA.addTo(map);
+            }
+            else if  (eventLayer.name === 'CVEGEO') {
+                map.removeControl(currentLegend);
+                currentLegend = legendB;
+                legendB.addTo(map);
+            }
+        })
 
         </script>
     </body>
