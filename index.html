@@ -136,6 +136,12 @@
 			}
         }).addTo(map),
             teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
+            maxZoom: 10,
+            minZoom:5,
+            indexMaxZoom: 5,
+            indexMaxPoints: 1,
+            buffer: 0,
+            tolerance: 90,
             interactive: true,
 			rendererFactory: L.svg.tile,
             vectorTileLayerStyles: vectorTileStylingB,
