@@ -22,7 +22,7 @@
         <script src="js/leaflet.js"></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
         <script src="js/leaflet-hash.js"></script> <!--https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js-->
         <script src="js/leaflet-VectorGrid.js"></script> <!--https://unpkg.com/leaflet.vectorgrid@1.2.0-->
-        <script src="data/Datos_2019.js"></script>
+        <script src="https://imaginaryvoices.github.io/data/Datos_2019.js"></script> <!--https://imaginaryvoices.github.io/data/Datos_2019.js-->
         <script>
 
         //<!------ Crear Mapa ------>
@@ -30,8 +30,8 @@
             center: [23.946, -101.975],
             zoomControl:true,
             zoom:6,
-            maxZoom:9,
-            minZoom:9
+            maxZoom:10,
+            minZoom:5
         })
         atribuciones = 'Climathics | \
                     <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> \
@@ -60,7 +60,7 @@
             pane: 'labelsi',
             tileSize: 512,
             zoomControl:true,
-            maxZoom:9,
+            maxZoom:10,
             minZoom:5,
             zoomOffset: -1
          })
