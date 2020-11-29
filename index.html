@@ -6,7 +6,8 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css"> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.css   https://drive.google.com/uc?export=view&id=1AFYiimjwPZG6SqjyW21RxBUBipE9f8At -->
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -19,254 +20,241 @@
     </head>
     <body>
         <div id="map"></div>
-        <script src="js/leaflet.js"></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
-        <script src="js/leaflet-hash.js"></script> <!--https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js-->
-        <script src="js/leaflet-VectorGrid.js"></script> <!--https://unpkg.com/leaflet.vectorgrid@1.2.0-->
-        <script src="https://imaginaryvoices.github.io/data/Datos_2019.js"></script> <!--https://imaginaryvoices.github.io/data/Datos_2019.js-->
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="data/2019_pv_te_maizgrano_mini_0.js"></script>
         <script>
 
-        //<!------ Crear Mapa ------>
-        var map = L.map('map', {
-            center: [23.946, -101.975],
-            zoomControl:true,
-            zoom:6,
-            maxZoom:10,
-            minZoom:5
-        })
-        atribuciones = 'Climathics | \
-                    <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> \
-                    &middot; &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> \
-                    &middot; &copy; <a href="https://www.mapbox.com/">Mapbox</a> \
-                    &middot; <a href="https://qgis.org">QGIS</a>'
-        var hash = new L.Hash(map);     //URL dinamica
-        map.attributionControl.setPrefix(atribuciones);
-        map.fitBounds([[14.5388286402, -117.12776], [32.72083, -86.811982388]]);
-        map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
+        <!------ Hover Effect ------>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ff0040',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ff0040',
+                fillOpacity: 0.7
+              });
+            }
+        }
+        function pop_2019_pv_te_maizgrano_mini_0(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Estado</th>\
+                        <td>' + (feature.properties['NOM_ENT'] !== null ? autolinker.link(feature.properties['NOM_ENT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Municipio</th>\
+                        <td>' + (feature.properties['NOM_MUN'] !== null ? autolinker.link(feature.properties['NOM_MUN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Rendimiento</th>\
+                        <td>' + (feature.properties['2019_pv_te_maizgrano_Rendimiento'] !== null ? autolinker.link(feature.properties['2019_pv_te_maizgrano_Rendimiento'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
 
-        //<!------ Mapbox Vector Tiles (fondo) ------>
+        //<!------ Mapa------>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:10, minZoom:5
+        })
+        atribuciones = '<a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> &middot; <a href="https://www.mapbox.com/">Mapbox</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://qgis.org">QGIS</a>'
+
+        //<!------ Mapbox Vector Tiles (fondo)------>
          var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2g1bWNlbDgwaTl3MnJydWk5Z3Nqa3d3In0.2mxDiKtLOypmkZ6kZykrJw';
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-            id: 'climathics/ckhbdu5h6063419o5rmbb27ae', //climathics/ckhipfem70mwy19noba54m2by
-            tileSize: 512,
-            zoomOffset: -1
-         })
-         .addTo(map);
-         //***** Tesela con los nombres (enfrente)
-         map.createPane('labelsi');
-         map.getPane('labelsi').style.zIndex = 650;
-         map.getPane('labelsi').style.pointerEvents = 'none';
-         var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-            id: 'climathics/ckhipfem70mwy19noba54m2by',
-            pane: 'labelsi',
-            tileSize: 512,
-            zoomControl:true,
-            maxZoom:10,
-            minZoom:5,
-            zoomOffset: -1
-         })
-         .addTo(map);
+             id: 'climathics/ckhbdu5h6063419o5rmbb27ae',
+             attribution: atribuciones,
+             tileSize: 512,
+             zoomOffset: -1
+         }).addTo(map);
 
-        //<!------ CARTO maps (otra opcion de fondo) ------>
-		// var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-		// 	opacity: 1
-		// }).addTo(map);
-
-        //<!------ GEoJSON a Vector Tiles con estilo ------>
-        //***** Mapas de colores y rangos
-        var getColorA = function(rrr) {
-            return  rrr >= 6.8 ? 'rgba(68,1,84,1.0)':
-				    rrr >= 5.2 ? 'rgba(69,50,127,1.0)':
-					rrr >= 4.0 ? 'rgba(54,92,141,1.0)':
-					rrr >= 3.0 ? 'rgba(39,127,142,1.0)':
-                    rrr >= 2.2 ? 'rgba(31,162,136,1.0)':
-                    rrr >= 1.4 ? 'rgba(74,194,109,1.0)':
-                    rrr >= 0.8 ? 'rgba(158,218,57,1.0)':
-                                 'rgba(213,231,37,1.0)';
-        };
-        var getColorB = function(rrr) {
-            return  rrr >= 30000 ? '#006837':
-				    rrr >= 24000 ? '#188645':
-					rrr >= 20000 ? '#31a354':
-					rrr >= 16000 ? '#54b566':
-                    rrr >= 12000 ? '#78c679':
-                    rrr >= 80000 ? '#9dd689':
-                    rrr >= 40000 ? '#c2e699':
-                                 '#e1f3b3';
-        };
-
-        //***** Estilo de Capas
-        const estilillo = {
-            fill: true,
-			fillOpacity: 0.6,
-            stroke: true,
-            color: 'gray',
-            opacity: 0.6,
-			weight: 1
-        };
-        var vectorTileStylingA = {
-            sliced: function(properties, zoom) {
-				return {
-                    ...estilillo,
-                    fillColor: getColorA(properties['2019_pv_te_maizgrano_Rendimiento']),
-                }
-			}
+        var hash = new L.Hash(map);
+        <!-- map.attributionControl.setPrefix('<a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> &middot; <a href="https://www.mapbox.com/">Mapbox</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://qgis.org">QGIS</a>'); -->
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+            map.setMaxBounds(map.getBounds());
         }
-            vectorTileStylingB = {
-            sliced: function(properties, zoom) {
-				return {
-                    ...estilillo,
-                    fillColor: getColorB(properties['CVEGEO']),
-                }
-			}
-        };
 
-        //***** Vector tiles
-		var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            minZoom: 5,
-            // buffer: 32,
-            tolerance: 12,
+        <!------ Estilo y niveles de colores ------>
+        function style_2019_pv_te_maizgrano_mini_0_0(feature) {
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 0.000000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 0.000000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(35,0,60,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 0.000000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 0.780000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(68,1,84,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 0.780000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 1.440000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(69,50,127,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 1.440000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 2.220000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(54,92,141,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 2.220000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 3.030000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(39,127,142,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 3.030000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 4.000000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(31,162,136,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 4.000000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 5.200000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(74,194,109,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 5.200000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 6.840000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(158,218,57,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['2019_pv_te_maizgrano_Rendimiento'] >= 6.840000 && feature.properties['2019_pv_te_maizgrano_Rendimiento'] <= 10.700000 ) {
+                return {
+                pane: 'pane_2019_pv_te_maizgrano_mini_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 0.7,
+                fillColor: 'rgba(253,231,37,1.0)',
+                interactive: true,
+            }
+            }
+        }
+
+        map.createPane('pane_2019_pv_te_maizgrano_mini_0');
+        map.getPane('pane_2019_pv_te_maizgrano_mini_0').style.zIndex = 400;
+        map.getPane('pane_2019_pv_te_maizgrano_mini_0').style['mix-blend-mode'] = 'normal';
+        var layer_2019_pv_te_maizgrano_mini_0 = new L.geoJson(json_2019_pv_te_maizgrano_mini_0, {
+            attribution: '',
             interactive: true,
-			rendererFactory: L.svg.tile,
-            vectorTileLayerStyles: vectorTileStylingA,
-            getFeatureId: function(f) {
-				return f.properties.CVEGEO;
-			}
-        }).addTo(map),
-            teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            minZoom: 5,
-            // buffer: 32,
-            tolerance: 12,
-            interactive: true,
-			rendererFactory: L.svg.tile,
-            vectorTileLayerStyles: vectorTileStylingB,
-            getFeatureId: function(f) {
-				return f.properties.CVEGEO;
-			}
+            dataVar: 'json_2019_pv_te_maizgrano_mini_0',
+            layerName: 'layer_2019_pv_te_maizgrano_mini_0',
+            pane: 'pane_2019_pv_te_maizgrano_mini_0',
+            onEachFeature: pop_2019_pv_te_maizgrano_mini_0,
+            style: style_2019_pv_te_maizgrano_mini_0_0,
         });
 
-        //<!------ Cuadro de informacion personalizada ------>
-        var info = L.control({position: 'bottomleft'});
-        info.onAdd = function (map) {
-            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-            this.update();
-            return this._div;
-        };
-        info.update = function (props, varnombre) {
-            this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
-                '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
-                : 'Selecciona un municipio');
-        };
-
-
-        //<!------ Mouse hover function ------>
-        var highlight;
-		var clearHighlight = function(capalayer) {
-			if (highlight) {
-				capalayer.resetFeatureStyle(highlight);
-			}
-			highlight = null;
-        };
-        function hoveruber(capalayer, funco, varnombre){
-            capalayer.on('mouseover', function(e) {
-                var properties = e.layer.properties;
-                clearHighlight(capalayer);
-                highlight = properties.CVEGEO;
-                var style = {
-                    fillColor: funco(properties[varnombre]),
-                    fillOpacity: 1,
-                    stroke: true,
-                    fill: true,
-                    color: 'gray',
-                    opacity: 1,
-                    weight: 2
-                };
-                capalayer.setFeatureStyle(properties.CVEGEO, style);
-                info.update(properties, varnombre);
-            })
-            capalayer.on('mouseout', function(e) {
-                var properties = e.layer.properties;
-                clearHighlight(capalayer);
-                info.update();
-            })
-        };
-        hoveruber(teselauno, getColorA, '2019_pv_te_maizgrano_Rendimiento');
-        hoveruber(teselados, getColorB, 'CVEGEO');
-
-        //<!------ Pop-up ------>
-        function popop(capalayer, varnombre){
-            capalayer.on('click', function(e) {
-                var properties = e.layer.properties;
-                var popupContenti = '<table>\
-                        <tr>\
-                            <th scope="row">Estado</th>\
-                            <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
-                        </tr>\
-                        <tr>\
-                            <th scope="row">Municipio</th>\
-                            <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
-                        </tr>\
-                        <tr>\
-                            <th scope="row">Rendimiento</th>\
-                            <td>' + (properties[varnombre] !== null ? properties[varnombre] : '') + '</td>\
-                        </tr>\
-                    </table>';
-                L.popup()
-                    .setContent(popupContenti)
-                    .setLatLng(e.latlng)
-                    .openOn(map);
-            })    
-        };
-        popop(teselauno, '2019_pv_te_maizgrano_Rendimiento');
-        popop(teselados, 'CVEGEO');
-
-        //<!------ Leyenda ------>
-        var legendA = L.control({position: 'bottomright'}),
-            legendB = L.control({position: 'bottomright'});
-        legendA.onAdd = function (map) {
-            var div = L.DomUtil.create('div', 'info legend'),
-                grades = [0.0, 0.8, 1.4, 2.2, 3.0, 4.0, 5.2, 6.8],
-                labels = ['0.0', '0.8', '1.4', '2.2', '3.0', '4.0', '5.2', '6.8'];
-            for (var i = 0; i < grades.length; i++) {
-                div.innerHTML +=
-                    '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
-                    labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
-            }
-            return div;
-        };
-        legendB.onAdd = function (map) {
-            var div = L.DomUtil.create('div', 'info legend'),
-                grades = [0, 4000, 8000, 12000, 16000, 20000, 24000, 30000],
-                labels = ['0', '4,000', '8,000', '12,000', '16,000', '20,000', '24,000', '30,000'];
-            for (var i = 0; i < grades.length; i++) {
-                div.innerHTML +=
-                    '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
-                    labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
-            }
-            return div;
-        };
-
-        //<!------ Menu de capas ------>
-        var baseMaps = {
-            "2019": teselauno,
-            "CVEGEO": teselados
-        };
-        L.control.layers(baseMaps).addTo(map);
-        info.addTo(map);
-        legendA.addTo(map);
-        currentInfo = info;
-        currentLegend = legendA;
-        map.on('baselayerchange', function (eventLayer) {
-            if (eventLayer.name === '2019') {
-                map.removeControl(currentLegend);
-                currentLegend = legendA;
-                legendA.addTo(map);
-            }
-            else if  (eventLayer.name === 'CVEGEO') {
-                map.removeControl(currentLegend);
-                currentLegend = legendB;
-                legendB.addTo(map);
-            }
-        })
+        bounds_group.addLayer(layer_2019_pv_te_maizgrano_mini_0);
+        map.addLayer(layer_2019_pv_te_maizgrano_mini_0);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'2019_pv_te_maizgrano<br /><table><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_000.png" /></td><td>0.0</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_0081.png" /></td><td>0 - 0.8</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_08142.png" /></td><td>0.8 - 1.4</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_14223.png" /></td><td>1.4 - 2.2</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_2234.png" /></td><td>2.2 - 3</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_345.png" /></td><td>3 - 4</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_4526.png" /></td><td>4 - 5.2</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_52687.png" /></td><td>5.2 - 6.8</td></tr><tr><td style="text-align: center;"><img src="legend/2019_pv_te_maizgrano_mini_0_681078.png" /></td><td>6.8 - 10.7</td></tr></table>': layer_2019_pv_te_maizgrano_mini_0,}).addTo(map);
+        setBounds();
 
         </script>
     </body>
