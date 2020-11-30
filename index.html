@@ -202,10 +202,8 @@
             road_label: [],
             housenum_label: []
         };
-        var mapboxURL = 'https://{s}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
-		var mapboxPbfLayer = L.vectorGrid.protobuf(mapboxURL, {
-            id: 'climathics/ckhipfem70mwy19noba54m2by',
-            rendererFactory: L.canvas.tile,
+        var mapboxURL = 'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
+		var mapboxPbfLayer = L.vectorGrid.protobuf('https://imaginaryvoices.github.io/data/Datos_2019.mbtiles', {
 			vectorTileLayerStyles: vectorTileStyling
         });
 
@@ -263,104 +261,104 @@
 			}
         };
 
-        //***** Vector tiles
-		var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            minZoom: 5,
-            // buffer: 32,
-            tolerance: 12,
-            interactive: true,
-			rendererFactory: L.svg.tile,
-            vectorTileLayerStyles: vectorTileStylingA,
-            getFeatureId: function(f) {
-				return f.properties.CVEGEO;
-			}
-        }).addTo(map),
-            teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
-            minZoom: 5,
-            // buffer: 32,
-            tolerance: 12,
-            interactive: true,
-			rendererFactory: L.svg.tile,
-            vectorTileLayerStyles: vectorTileStylingB,
-            getFeatureId: function(f) {
-				return f.properties.CVEGEO;
-			}
-        });
+        // //***** Vector tiles
+		// var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
+        //     minZoom: 5,
+        //     // buffer: 32,
+        //     tolerance: 12,
+        //     interactive: true,
+		// 	rendererFactory: L.svg.tile,
+        //     vectorTileLayerStyles: vectorTileStylingA,
+        //     getFeatureId: function(f) {
+		// 		return f.properties.CVEGEO;
+		// 	}
+        // }).addTo(map),
+        //     teselados = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
+        //     minZoom: 5,
+        //     // buffer: 32,
+        //     tolerance: 12,
+        //     interactive: true,
+		// 	rendererFactory: L.svg.tile,
+        //     vectorTileLayerStyles: vectorTileStylingB,
+        //     getFeatureId: function(f) {
+		// 		return f.properties.CVEGEO;
+		// 	}
+        // });
 
-        //<!------ Cuadro de informacion personalizada ------>
-        var info = L.control({position: 'bottomleft'});
-        info.onAdd = function (map) {
-            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-            this.update();
-            return this._div;
-        };
-        info.update = function (props, varnombre) {
-            this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
-                '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
-                : 'Selecciona un municipio');
-        };
+        // //<!------ Cuadro de informacion personalizada ------>
+        // var info = L.control({position: 'bottomleft'});
+        // info.onAdd = function (map) {
+        //     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        //     this.update();
+        //     return this._div;
+        // };
+        // info.update = function (props, varnombre) {
+        //     this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
+        //         '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
+        //         : 'Selecciona un municipio');
+        // };
 
 
-        //<!------ Mouse hover function ------>
-        var highlight;
-		var clearHighlight = function(capalayer) {
-			if (highlight) {
-				capalayer.resetFeatureStyle(highlight);
-			}
-			highlight = null;
-        };
-        function hoveruber(capalayer, funco, varnombre){
-            capalayer.on('mouseover', function(e) {
-                var properties = e.layer.properties;
-                clearHighlight(capalayer);
-                highlight = properties.CVEGEO;
-                var style = {
-                    fillColor: funco(properties[varnombre]),
-                    fillOpacity: 1,
-                    stroke: true,
-                    fill: true,
-                    color: 'gray',
-                    opacity: 1,
-                    weight: 2
-                };
-                capalayer.setFeatureStyle(properties.CVEGEO, style);
-                info.update(properties, varnombre);
-            })
-            capalayer.on('mouseout', function(e) {
-                var properties = e.layer.properties;
-                clearHighlight(capalayer);
-                info.update();
-            })
-        };
-        hoveruber(teselauno, getColorA, '2019_pv_te_maizgrano_Rendimiento');
-        hoveruber(teselados, getColorB, 'CVEGEO');
+        // //<!------ Mouse hover function ------>
+        // var highlight;
+		// var clearHighlight = function(capalayer) {
+		// 	if (highlight) {
+		// 		capalayer.resetFeatureStyle(highlight);
+		// 	}
+		// 	highlight = null;
+        // };
+        // function hoveruber(capalayer, funco, varnombre){
+        //     capalayer.on('mouseover', function(e) {
+        //         var properties = e.layer.properties;
+        //         clearHighlight(capalayer);
+        //         highlight = properties.CVEGEO;
+        //         var style = {
+        //             fillColor: funco(properties[varnombre]),
+        //             fillOpacity: 1,
+        //             stroke: true,
+        //             fill: true,
+        //             color: 'gray',
+        //             opacity: 1,
+        //             weight: 2
+        //         };
+        //         capalayer.setFeatureStyle(properties.CVEGEO, style);
+        //         info.update(properties, varnombre);
+        //     })
+        //     capalayer.on('mouseout', function(e) {
+        //         var properties = e.layer.properties;
+        //         clearHighlight(capalayer);
+        //         info.update();
+        //     })
+        // };
+        // hoveruber(teselauno, getColorA, '2019_pv_te_maizgrano_Rendimiento');
+        // hoveruber(teselados, getColorB, 'CVEGEO');
 
-        //<!------ Pop-up ------>
-        function popop(capalayer, varnombre){
-            capalayer.on('click', function(e) {
-                var properties = e.layer.properties;
-                var popupContenti = '<table>\
-                        <tr>\
-                            <th scope="row">Estado</th>\
-                            <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
-                        </tr>\
-                        <tr>\
-                            <th scope="row">Municipio</th>\
-                            <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
-                        </tr>\
-                        <tr>\
-                            <th scope="row">Rendimiento</th>\
-                            <td>' + (properties[varnombre] !== null ? properties[varnombre] : '') + '</td>\
-                        </tr>\
-                    </table>';
-                L.popup()
-                    .setContent(popupContenti)
-                    .setLatLng(e.latlng)
-                    .openOn(map);
-            })    
-        };
-        popop(teselauno, '2019_pv_te_maizgrano_Rendimiento');
-        popop(teselados, 'CVEGEO');
+        // //<!------ Pop-up ------>
+        // function popop(capalayer, varnombre){
+        //     capalayer.on('click', function(e) {
+        //         var properties = e.layer.properties;
+        //         var popupContenti = '<table>\
+        //                 <tr>\
+        //                     <th scope="row">Estado</th>\
+        //                     <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
+        //                 </tr>\
+        //                 <tr>\
+        //                     <th scope="row">Municipio</th>\
+        //                     <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
+        //                 </tr>\
+        //                 <tr>\
+        //                     <th scope="row">Rendimiento</th>\
+        //                     <td>' + (properties[varnombre] !== null ? properties[varnombre] : '') + '</td>\
+        //                 </tr>\
+        //             </table>';
+        //         L.popup()
+        //             .setContent(popupContenti)
+        //             .setLatLng(e.latlng)
+        //             .openOn(map);
+        //     })    
+        // };
+        // popop(teselauno, '2019_pv_te_maizgrano_Rendimiento');
+        // popop(teselados, 'CVEGEO');
 
         //<!------ Leyenda ------>
         var legendA = L.control({position: 'bottomright'}),
