@@ -22,7 +22,7 @@
         <script src="js/leaflet.js"></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
         <script src="js/leaflet-hash.js"></script> <!--https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js-->
         <script src="js/leaflet-VectorGrid.js"></script> <!--https://unpkg.com/leaflet.vectorgrid@1.2.0-->
-        <script src="https://imaginaryvoices.github.io/data/Datos_2019.js"></script> <!--https://imaginaryvoices.github.io/data/Datos_2019.js-->
+        <script src="data/Datos_2019.js"></script> <!--https://imaginaryvoices.github.io/data/Datos_2019.js-->
         <script>
 
         //<!------ Crear Mapa ------>
@@ -46,7 +46,7 @@
         //<!------ Mapbox Vector Tiles (fondo) ------>
          var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2g1bWNlbDgwaTl3MnJydWk5Z3Nqa3d3In0.2mxDiKtLOypmkZ6kZykrJw';
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-            id: 'climathics/ckhbdu5h6063419o5rmbb27ae', //climathics/ckhipfem70mwy19noba54m2by
+            id: 'climathics/ckhbdu5h6063419o5rmbb27ae', //'climathics/ckhipfem70mwy19noba54m2by',
             tileSize: 512,
             zoomOffset: -1
          })
@@ -65,6 +65,149 @@
             zoomOffset: -1
          })
          .addTo(map);
+
+        //***** Protobuf
+         var vectorTileStyling = {
+            water: {
+                fill: true,
+                weight: 1,
+                fillColor: '#06cccc',
+                color: '#06cccc',
+                fillOpacity: 0.2,
+                opacity: 0.4,
+            },
+            admin: {
+                weight: 1,
+                fillColor: 'pink',
+                color: 'pink',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            waterway: {
+                weight: 1,
+                fillColor: '#2375e0',
+                color: '#2375e0',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            landcover: {
+                fill: true,
+                weight: 1,
+                fillColor: '#53e033',
+                color: '#53e033',
+                fillOpacity: 0.2,
+                opacity: 0.4,
+            },
+            landuse: {
+                fill: true,
+                weight: 1,
+                fillColor: '#e5b404',
+                color: '#e5b404',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            park: {
+                fill: true,
+                weight: 1,
+                fillColor: '#84ea5b',
+                color: '#84ea5b',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            boundary: {
+                weight: 1,
+                fillColor: '#c545d3',
+                color: '#c545d3',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            aeroway: {
+                weight: 1,
+                fillColor: '#51aeb5',
+                color: '#51aeb5',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            road: {
+                weight: 1,
+                fillColor: '#f2b648',
+                color: '#f2b648',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            tunnel: {
+                weight: 0.5,
+                fillColor: '#f2b648',
+                color: '#f2b648',
+                fillOpacity: 0.2,
+                opacity: 0.4,
+            },
+            bridge: {
+                weight: 0.5,
+                fillColor: '#f2b648',
+                color: '#f2b648',
+                fillOpacity: 0.2,
+                opacity: 0.4,
+            },
+            building: {
+                fill: true,
+                weight: 1,
+                fillColor: '#2b2b2b',
+                color: '#2b2b2b',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            water_name: {
+                weight: 1,
+                fillColor: '#022c5b',
+                color: '#022c5b',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            transportation_name: {
+                weight: 1,
+                fillColor: '#bc6b38',
+                color: '#bc6b38',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            place: {
+                weight: 1,
+                fillColor: '#f20e93',
+                color: '#f20e93',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            housenumber: {
+                weight: 1,
+                fillColor: '#ef4c8b',
+                color: '#ef4c8b',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            poi: {
+                weight: 1,
+                fillColor: '#3bb50a',
+                color: '#3bb50a',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+            // Do not symbolize some stuff for mapbox
+            country_label: [],
+            marine_label: [],
+            state_label: [],
+            place_label: [],
+            waterway_label: [],
+            poi_label: [],
+            road_label: [],
+            housenum_label: []
+        };
+        var mapboxURL = 'https://{s}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
+		var mapboxPbfLayer = L.vectorGrid.protobuf(mapboxURL, {
+            id: 'climathics/ckhipfem70mwy19noba54m2by',
+            rendererFactory: L.canvas.tile,
+			vectorTileLayerStyles: vectorTileStyling
+        });
 
         //<!------ CARTO maps (otra opcion de fondo) ------>
 		// var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
@@ -247,8 +390,9 @@
 
         //<!------ Menu de capas ------>
         var baseMaps = {
-            "2019": teselauno,
-            "CVEGEO": teselados
+            // "2019": teselauno,
+            // "CVEGEO": teselados,
+            "MapBox Vector Tiles": mapboxPbfLayer
         };
         L.control.layers(baseMaps).addTo(map);
         info.addTo(map);
