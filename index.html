@@ -66,22 +66,6 @@
          })
          .addTo(map);
 
-        //***** Protobuf
-        var vectorTileStyling = {
-            fill: true,
-			fillOpacity: 0.6,
-            stroke: true,
-            color: 'gray',
-            opacity: 0.6,
-			weight: 1
-        };
-        // var mapboxURL = 'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
-		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
-            // id: 'climathics.6o9jluzd',
-            minZoom: 5,
-			vectorTileLayerStyles: vectorTileStyling
-        });
-
         //<!------ CARTO maps (otra opcion de fondo) ------>
 		// var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
 		// 	opacity: 1
@@ -161,17 +145,17 @@
         // });
 
         // //<!------ Cuadro de informacion personalizada ------>
-        // var info = L.control({position: 'bottomleft'});
-        // info.onAdd = function (map) {
-        //     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-        //     this.update();
-        //     return this._div;
-        // };
-        // info.update = function (props, varnombre) {
-        //     this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
-        //         '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
-        //         : 'Selecciona un municipio');
-        // };
+        var info = L.control({position: 'bottomleft'});
+        info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+            this.update();
+            return this._div;
+        };
+        info.update = function (props, varnombre) {
+            this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
+                '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
+                : 'Selecciona un municipio');
+        };
 
 
         // //<!------ Mouse hover function ------>
@@ -260,6 +244,21 @@
             }
             return div;
         };
+
+        //<!------ Protobuf ------>
+        var vectorTileStyling = {
+            fill: true,
+			fillOpacity: 0.6,
+            stroke: true,
+            color: 'gray',
+            opacity: 0.6,
+			weight: 1
+        };
+        // var mapboxURL = 'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
+		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
+            // id: 'climathics.6o9jluzd',
+			vectorTileLayerStyles: vectorTileStyling
+        });
 
         //<!------ Menu de capas ------>
         var baseMaps = {
