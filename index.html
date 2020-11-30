@@ -75,9 +75,10 @@
             opacity: 0.6,
 			weight: 1
         };
-        var mapboxURL = 'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
+        // var mapboxURL = 'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
 		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
-            id: 'climathics.6o9jluzd',
+            // id: 'climathics.6o9jluzd',
+            minZoom: 5,
 			vectorTileLayerStyles: vectorTileStyling
         });
 
@@ -174,63 +175,63 @@
 
 
         // //<!------ Mouse hover function ------>
-        // var highlight;
-		// var clearHighlight = function(capalayer) {
-		// 	if (highlight) {
-		// 		capalayer.resetFeatureStyle(highlight);
-		// 	}
-		// 	highlight = null;
-        // };
-        // function hoveruber(capalayer, funco, varnombre){
-        //     capalayer.on('mouseover', function(e) {
-        //         var properties = e.layer.properties;
-        //         clearHighlight(capalayer);
-        //         highlight = properties.CVEGEO;
-        //         var style = {
-        //             fillColor: funco(properties[varnombre]),
-        //             fillOpacity: 1,
-        //             stroke: true,
-        //             fill: true,
-        //             color: 'gray',
-        //             opacity: 1,
-        //             weight: 2
-        //         };
-        //         capalayer.setFeatureStyle(properties.CVEGEO, style);
-        //         info.update(properties, varnombre);
-        //     })
-        //     capalayer.on('mouseout', function(e) {
-        //         var properties = e.layer.properties;
-        //         clearHighlight(capalayer);
-        //         info.update();
-        //     })
-        // };
+        var highlight;
+		var clearHighlight = function(capalayer) {
+			if (highlight) {
+				capalayer.resetFeatureStyle(highlight);
+			}
+			highlight = null;
+        };
+        function hoveruber(capalayer, funco, varnombre){
+            capalayer.on('mouseover', function(e) {
+                var properties = e.layer.properties;
+                clearHighlight(capalayer);
+                highlight = properties.CVEGEO;
+                var style = {
+                    fillColor: funco(properties[varnombre]),
+                    fillOpacity: 1,
+                    stroke: true,
+                    fill: true,
+                    color: 'gray',
+                    opacity: 1,
+                    weight: 2
+                };
+                capalayer.setFeatureStyle(properties.CVEGEO, style);
+                info.update(properties, varnombre);
+            })
+            capalayer.on('mouseout', function(e) {
+                var properties = e.layer.properties;
+                clearHighlight(capalayer);
+                info.update();
+            })
+        };
         // hoveruber(teselauno, getColorA, '2019_pv_te_maizgrano_Rendimiento');
         // hoveruber(teselados, getColorB, 'CVEGEO');
 
         // //<!------ Pop-up ------>
-        // function popop(capalayer, varnombre){
-        //     capalayer.on('click', function(e) {
-        //         var properties = e.layer.properties;
-        //         var popupContenti = '<table>\
-        //                 <tr>\
-        //                     <th scope="row">Estado</th>\
-        //                     <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
-        //                 </tr>\
-        //                 <tr>\
-        //                     <th scope="row">Municipio</th>\
-        //                     <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
-        //                 </tr>\
-        //                 <tr>\
-        //                     <th scope="row">Rendimiento</th>\
-        //                     <td>' + (properties[varnombre] !== null ? properties[varnombre] : '') + '</td>\
-        //                 </tr>\
-        //             </table>';
-        //         L.popup()
-        //             .setContent(popupContenti)
-        //             .setLatLng(e.latlng)
-        //             .openOn(map);
-        //     })    
-        // };
+        function popop(capalayer, varnombre){
+            capalayer.on('click', function(e) {
+                var properties = e.layer.properties;
+                var popupContenti = '<table>\
+                        <tr>\
+                            <th scope="row">Estado</th>\
+                            <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
+                        </tr>\
+                        <tr>\
+                            <th scope="row">Municipio</th>\
+                            <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
+                        </tr>\
+                        <tr>\
+                            <th scope="row">Rendimiento</th>\
+                            <td>' + (properties[varnombre] !== null ? properties[varnombre] : '') + '</td>\
+                        </tr>\
+                    </table>';
+                L.popup()
+                    .setContent(popupContenti)
+                    .setLatLng(e.latlng)
+                    .openOn(map);
+            })    
+        };
         // popop(teselauno, '2019_pv_te_maizgrano_Rendimiento');
         // popop(teselados, 'CVEGEO');
 
