@@ -22,6 +22,8 @@
         <script src="js/leaflet.js"></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
         <script src="js/leaflet-hash.js"></script> <!--https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js-->
         <script src="js/leaflet-VectorGrid.js"></script> <!--https://unpkg.com/leaflet.vectorgrid@1.2.0-->
+        <script src="https://unpkg.com/sql.js@0.3.2/js/sql.js"></script>
+        <script src="https://unpkg.com/Leaflet.TileLayer.MBTiles@1.0.0/Leaflet.TileLayer.MBTiles.js"></script>
         <script src="data/Datos_2019.js"></script> <!--https://imaginaryvoices.github.io/data/Datos_2019.js-->
         <script>
 
@@ -203,9 +205,12 @@
             housenum_label: []
         };
         var mapboxURL = 'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
-		var mapboxPbfLayer = L.vectorGrid.protobuf('https://imaginaryvoices.github.io/data/Datos_2019.mbtiles', {
+		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019a/{z}/{x}/{y}.pbf', {
+            id: 'climathics.6o9jluzd',
 			vectorTileLayerStyles: vectorTileStyling
         });
+
+        //var mb = L.tileLayer.mbTiles('data/Datos_2019a/{z}/{x}/{y}.vector.pbf').addTo(map);
 
         //<!------ CARTO maps (otra opcion de fondo) ------>
 		// var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
