@@ -247,12 +247,14 @@
 
         //<!------ Protobuf ------>
         var vectorTileStyling = {
-            fill: true,
-			fillOpacity: 0.6,
-            stroke: true,
-            color: 'gray',
-            opacity: 0.6,
-			weight: 1
+            CVEGEO: {
+                fill: true,
+                fillOpacity: 0.6,
+                stroke: true,
+                color: 'gray',
+                opacity: 0.6,
+                weight: 1
+            }
         };
         // var mapboxURL = 'https://api.mapbox.com/v4/{id}/{z}/{x}/{y}.vector.pbf?access_token=' + mapboxAccessToken ;
 		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
