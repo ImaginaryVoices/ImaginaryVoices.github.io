@@ -260,7 +260,7 @@
 		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
             // id: 'climathics.6o9jluzd',
 			vectorTileLayerStyles: vectorTileStyling,
-            rendererFactory: L.canvas.tile,
+            rendererFactory: L.svg.tile,
             interactive: true,
             minZoom: 5,
             getFeatureId: function(f) {
