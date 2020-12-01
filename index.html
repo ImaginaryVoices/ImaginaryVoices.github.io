@@ -15,7 +15,7 @@
             margin: 0;
         }
         </style>
-        <title>Mapa interactivo</title>
+        <title>3</title>
     </head>
     <body>
         <div id="map"></div>
@@ -260,21 +260,20 @@
                 }
             }
         };
-		var PbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
+		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingC,
             interactive: true,
             getFeatureId: function(f) {
 		        return f.properties.CVEGEO;
 		    }
         });
-        //hoveruber(PbfLayer, getColorA, '2019_pv_te_maizgrano_Rendimiento');
-        popop(PbfLayer, '2019_pv_te_maizgrano_Rendimiento');
+        popop(mapboxPbfLayer, '2019_pv_te_maizgrano_Rendimiento');
 
         //<!------ Menu de capas ------>
         var baseMaps = {
             // "2019": teselauno,
             // "CVEGEO": teselados,
-            "Rendimiento 2019": PbfLayer
+            "MapBox Vector Tiles": mapboxPbfLayer
         };
         L.control.layers(baseMaps).addTo(map);
         info.addTo(map);
