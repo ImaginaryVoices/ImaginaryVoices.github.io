@@ -246,22 +246,29 @@
         };
 
         //<!------ Protobuf ------>
-        var vectorTileStylingA = {
+        var vectorTileStylingC = {
             Datos_2019: {
-                sliced: function(attribute, zoom) {
-                    return {
                         fill: true,
                         fillOpacity: 0.6,
                         stroke: true,
                         color: 'gray',
                         opacity: 0.6,
                         weight: 1
-                    }
-			    }
+            },
+            admin: function(properties, zoom) {
+                var level = properties.admin_level;
+                var weight = 1;
+                if (level == 2) {weight = 4;}
+                return {
+                    weight: weight,
+                    color: '#cf52d3',
+                    dashArray: '2, 6',
+                    fillOpacity: 0
+                }
             }
         };
 		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
-			vectorTileLayerStyles: vectorTileStylingA,
+			vectorTileLayerStyles: vectorTileStylingC,
             interactive: true,
             minZoom: 5,
             getFeatureId: function(f) {
