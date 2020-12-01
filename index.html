@@ -15,7 +15,7 @@
             margin: 0;
         }
         </style>
-        <title>3</title>
+        <title>Mapa interactivo</title>
     </head>
     <body>
         <div id="map"></div>
@@ -248,8 +248,6 @@
         //<!------ Protobuf ------>
         var vectorTileStylingC = {
             Datos_2019: function(properties, zoom) {
-                var level = properties.admin_level;
-                var weight = 1;
             if (level == 2) {weight = 6;}
                 return {
                     fill: true,
@@ -258,24 +256,25 @@
                     stroke: true,
                     color: 'gray',
                     opacity: 0.6,
-                    weight: weight
+                    weight: 1
                 }
             }
         };
-		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
+		var PbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingC,
             interactive: true,
             getFeatureId: function(f) {
 		        return f.properties.CVEGEO;
 		    }
         });
-        popop(mapboxPbfLayer, 'CVEGEO');
+        hoveruber(PbfLayer, getColorA, '2019_pv_te_maizgrano_Rendimiento');
+        popop(PbfLayer, '2019_pv_te_maizgrano_Rendimiento');
 
         //<!------ Menu de capas ------>
         var baseMaps = {
             // "2019": teselauno,
             // "CVEGEO": teselados,
-            "MapBox Vector Tiles": mapboxPbfLayer
+            "Rendimiento 2019": PbfLayer
         };
         L.control.layers(baseMaps).addTo(map);
         info.addTo(map);
