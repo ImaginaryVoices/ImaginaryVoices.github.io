@@ -103,22 +103,22 @@
             opacity: 0.6,
 			weight: 1
         };
-        var vectorTileStylingA = {
-            sliced: function(properties, zoom) {
-				return {
-                    ...estilillo,
-                    fillColor: getColorA(properties['2019_pv_te_maizgrano_Rendimiento']),
-                }
-			}
-        }
-            vectorTileStylingB = {
-            sliced: function(properties, zoom) {
-				return {
-                    ...estilillo,
-                    fillColor: getColorB(properties['CVEGEO']),
-                }
-			}
-        };
+        // var vectorTileStylingA = {
+        //     sliced: function(properties, zoom) {
+		// 		return {
+        //             ...estilillo,
+        //             fillColor: getColorA(properties['2019_pv_te_maizgrano_Rendimiento']),
+        //         }
+		// 	}
+        // }
+        //     vectorTileStylingB = {
+        //     sliced: function(properties, zoom) {
+		// 		return {
+        //             ...estilillo,
+        //             fillColor: getColorB(properties['CVEGEO']),
+        //         }
+		// 	}
+        // };
 
         // //***** Vector tiles
 		// var teselauno = L.vectorGrid.slicer( json_2019_pv_te_maizgrano, {
@@ -246,7 +246,7 @@
         };
 
         //<!------ Protobuf ------>
-        var vectorTileStyling = {
+        const vectorTileStyling = {
             Datos_2019: {
                 fill: true,
                 fillOpacity: 0.6,
@@ -255,6 +255,14 @@
                 opacity: 0.6,
                 weight: 1
             }
+        };
+        var vectorTileStylingA = {
+            sliced: function(properties, zoom) {
+				return {
+                    ...vectorTileStyling,
+                    fillColor: getColorA(properties['2019_pv_te_maizgrano_Rendimiento']),
+                }
+			}
         };
 		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingA,
