@@ -15,7 +15,7 @@
             margin: 0;
         }
         </style>
-        <title></title>
+        <title>Maiz</title>
     </head>
     <body>
         <div id="map"></div>
@@ -246,22 +246,19 @@
         };
 
         //<!------ Protobuf ------>
-        const vectorTileStyling = {
-            Datos_2019: {
-                fill: true,
-                fillOpacity: 0.6,
-                stroke: true,
-                color: 'gray',
-                opacity: 0.6,
-                weight: 1
-            }
-        };
         var vectorTileStylingA = {
-            sliced: function(properties, zoom) {
-				return {
-                    ...vectorTileStyling,
-                }
-			}
+            Datos_2019: {
+                sliced: function(properties, zoom) {
+                    return {
+                        fill: true,
+                        fillOpacity: 0.6,
+                        stroke: true,
+                        color: 'gray',
+                        opacity: 0.6,
+                        weight: 1
+                    }
+			    }
+            }
         };
 		var mapboxPbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingA,
