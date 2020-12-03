@@ -249,18 +249,11 @@
                 Datos_2019: function(properties, zoom) {
                     return {
                         ...estilillo,
-                        fillColor: funco(properties[varnombre]),
+                        fillColor: funco(properties[varnombre])
                     }
                 }
             }
-        };
-        var vectorTileStylingF = {
-            Datos_2019: function(properties, zoom, funco, varnombre) {
-                return {
-                    ...estilillo,
-                    fillColor: getColorA(properties['2019_pv_te_maizgrano_Rendimiento']),
-                }
-            }
+            return estail;
         };
         var vectorTileStylingC = {
             Datos_2019: function(properties, zoom) {
