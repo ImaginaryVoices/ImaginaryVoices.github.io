@@ -43,7 +43,8 @@
         map.fitBounds([[14.5388286402, -117.12776], [32.72083, -86.811982388]]);
         map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
 
-        //<!------ Mapbox Vector Tiles (fondo) ------>
+        //<!------ Mapbox Vector Tiles ------>
+        //***** Fondo
          var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2k1Z3BnY2wzd3QwMnJybTY1bjJvY2s3In0.s6hymqVgILyMRjbGnZKWQA';
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
             id: 'climathics/ckhbdu5h6063419o5rmbb27ae', //'climathics/ckhipfem70mwy19noba54m2by',
@@ -51,11 +52,11 @@
             zoomOffset: -1
          })
          .addTo(map);
-         //***** Tesela con los nombres (enfrente)
-         map.createPane('labelsi');
-         map.getPane('labelsi').style.zIndex = 650;
-         map.getPane('labelsi').style.pointerEvents = 'none';
-         var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+        //*****  Enfrente (Tesela con los nombres)
+        map.createPane('labelsi');
+        map.getPane('labelsi').style.zIndex = 650;
+        map.getPane('labelsi').style.pointerEvents = 'none';
+        var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
             id: 'climathics/ckhipfem70mwy19noba54m2by',
             pane: 'labelsi',
             tileSize: 512,
@@ -63,8 +64,8 @@
             maxZoom:10,
             minZoom:5,
             zoomOffset: -1
-         })
-         .addTo(map);
+        })
+        .addTo(map);
 
         //<!------ CARTO maps (otra opcion de fondo) ------>
 		// var positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
@@ -246,34 +247,50 @@
         };
 
         //<!------ Protobuf ------>
+        //***** Estilos
         var vectorTileStylingC = {
             Datos_2019: function(properties, zoom) {
                 return {
-                    fill: true,
-                    fillOpacity: 0.6,
+                    ...estilillo,
                     fillColor: getColorA(properties['2019_pv_te_maizgrano_Rendimiento']),
-                    stroke: true,
-                    color: 'gray',
-                    opacity: 0.6,
-                    weight: 1
                 }
             }
         };
-		var PbfLayer = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
+        var vectorTileStylingD = {
+            Datos_2019: function(properties, zoom) {
+                return {
+                    ...estilillo,
+                    fillColor: getColorB(properties['CVEGEO']),
+                }
+            }
+        };
+        //***** Capa 1
+		var pbfUn = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingC,
             interactive: true,
             getFeatureId: function(f) {
 		        return f.properties.CVEGEO;
 		    }
         });
-        hoveruber(PbfLayer, getColorA, '2019_pv_te_maizgrano_Rendimiento');
-        popop(PbfLayer, '2019_pv_te_maizgrano_Rendimiento');
+        hoveruber(pbfUn, getColorA, '2019_pv_te_maizgrano_Rendimiento');
+        popop(pbfUn, '2019_pv_te_maizgrano_Rendimiento');
+        //***** Capa 2
+		var pbfDeux = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
+			vectorTileLayerStyles: vectorTileStylingD,
+            interactive: true,
+            getFeatureId: function(f) {
+		        return f.properties.CVEGEO;
+		    }
+        });
+        hoveruber(pbfDeux, getColorB, 'CVEGEO');
+        popop(pbfDeux, 'CVEGEO');
 
         //<!------ Menu de capas ------>
         var baseMaps = {
             // "2019": teselauno,
             // "CVEGEO": teselados,
-            "Rendimiento 2019": PbfLayer
+            "Rendimiento 2019": pbfUn,
+            "CVEGEO": pbfDeux
         };
         L.control.layers(baseMaps).addTo(map);
         info.addTo(map);
