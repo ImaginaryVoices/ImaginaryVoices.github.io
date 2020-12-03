@@ -15,7 +15,7 @@
             margin: 0;
         }
         </style>
-        <title>Mapa interactivo</title>
+        <title>2Mapa interactivo</title>
     </head>
     <body>
         <div id="map"></div>
@@ -244,14 +244,22 @@
 
         //<!------ Protobuf Tiles (.pbf) ------>
         //***** Estilos
-        function vectorTileStylingF(funco, varnombre){
+        function vectorTileStylingG(funco, varnombre){
             var estail = {
-            Datos_2019: function(properties, zoom) {
-                return {
-                    ...estilillo,
-                    fillColor: funco(properties[varnombre]),
+                Datos_2019: function(properties, zoom) {
+                    return {
+                        ...estilillo,
+                        fillColor: funco(properties[varnombre]),
+                    }
                 }
             }
+        };
+        var vectorTileStylingF = {
+            Datos_2019: function(properties, zoom, funco, varnombre) {
+                return {
+                    ...estilillo,
+                    fillColor: getColorA(properties['2019_pv_te_maizgrano_Rendimiento']),
+                }
             }
         };
         var vectorTileStylingC = {
