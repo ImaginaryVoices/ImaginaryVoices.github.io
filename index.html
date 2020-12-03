@@ -245,11 +245,13 @@
         //<!------ Protobuf Tiles (.pbf) ------>
         //***** Estilos
         function vectorTileStylingF(funco, varnombre){
+            var estail = {
             Datos_2019: function(properties, zoom) {
                 return {
                     ...estilillo,
                     fillColor: funco(properties[varnombre]),
                 }
+            }
             }
         };
         var vectorTileStylingC = {
@@ -270,7 +272,7 @@
         };
         //***** Capa 1
 		var pbfUn = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
-			vectorTileLayerStyles: vectorTileStylingC,
+			vectorTileLayerStyles: vectorTileStylingF(getColorA,'2019_pv_te_maizgrano_Rendimiento'),
             interactive: true,
             getFeatureId: function(f) {
 		        return f.properties.CVEGEO;
