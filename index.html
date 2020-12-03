@@ -107,17 +107,17 @@
 			weight: 1
         };
         // //***** Cuadro de informacion personalizada
-        var info = L.control({position: 'bottomright'});
-        info.onAdd = function (map) {
-            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-            this.update();
-            return this._div;
-        };
-        info.update = function (props, varnombre) {
-            this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
-                '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
-                : 'Selecciona un municipio');
-        };
+        // var info = L.control({position: 'bottomleft'});
+        // info.onAdd = function (map) {
+        //     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        //     this.update();
+        //     return this._div;
+        // };
+        // info.update = function (props, varnombre) {
+        //     this._div.innerHTML = '<h4>Rendimiento</h4>' +  (props ?
+        //         '<b>' + props['NOM_MUN'] + '</b><br />' + props[varnombre] + ' t / ha'
+        //         : 'Selecciona un municipio');
+        // };
         // //***** Mouse hover function
         var highlight;
 		var clearHighlight = function(capalayer) {
