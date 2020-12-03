@@ -16,7 +16,7 @@
             margin: 0;
         }
         </style>
-        <title>33Mapa interactivo</title>
+        <title>Mapa interactivo</title>
     </head>
     <body>
         <div id="map"></div>
@@ -107,7 +107,7 @@
 			weight: 1
         };
         // //***** Cuadro de informacion personalizada
-        var info = L.control({position: 'bottomleft'});
+        var info = L.control({position: 'bottomright'});
         info.onAdd = function (map) {
             this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
             this.update();
