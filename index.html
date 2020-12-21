@@ -275,7 +275,7 @@
         //     }
         // };
         //***** Capa 1
-		var pbfUn = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
+		var pbfUn = L.vectorGrid.protobuf('https://climathics.com/mapa_test/data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingF(getColorA,'2019_pv_te_maizgrano_Rendimiento'),
             interactive: true,
             getFeatureId: function(f) {
@@ -286,7 +286,7 @@
         hoveruber(pbfUn, getColorA, '2019_pv_te_maizgrano_Rendimiento');
         popop(pbfUn, '2019_pv_te_maizgrano_Rendimiento');
         //***** Capa 2
-		var pbfDeux = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
+		var pbfDeux = L.vectorGrid.protobuf('https://climathics.com/mapa_test/data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingF(getColorB,'CVEGEO'),
             interactive: true,
             getFeatureId: function(f) {
