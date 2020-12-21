@@ -36,7 +36,7 @@
             minZoom:5,
             fullscreenControl: true
         })
-        atribuciones = 'Climathics | \
+        atribuciones = <a href="https://climathics.com">Climathics</a> | \
                     <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> \
                     &middot; &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> \
                     &middot; &copy; <a href="https://www.mapbox.com/">Mapbox</a> \
@@ -275,7 +275,7 @@
         //     }
         // };
         //***** Capa 1
-		var pbfUn = L.vectorGrid.protobuf('https://climathics.com/mapa_test/data/Datos_2019/{z}/{x}/{y}.pbf', {
+		var pbfUn = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingF(getColorA,'2019_pv_te_maizgrano_Rendimiento'),
             interactive: true,
             getFeatureId: function(f) {
@@ -286,7 +286,7 @@
         hoveruber(pbfUn, getColorA, '2019_pv_te_maizgrano_Rendimiento');
         popop(pbfUn, '2019_pv_te_maizgrano_Rendimiento');
         //***** Capa 2
-		var pbfDeux = L.vectorGrid.protobuf('https://climathics.com/mapa_test/data/Datos_2019/{z}/{x}/{y}.pbf', {
+		var pbfDeux = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 			vectorTileLayerStyles: vectorTileStylingF(getColorB,'CVEGEO'),
             interactive: true,
             getFeatureId: function(f) {
