@@ -235,6 +235,30 @@
             // popop(pbfDeux, 'CVEGEO');
 
 
+            //<!------ Menu de capas ------>
+            var baseMaps = {
+                "Precipitación": pbfUn,
+                //"CVEGEO": pbfDeux
+            };
+            L.control.layers(baseMaps).addTo(map);
+            info.addTo(map);
+            legendA.addTo(map);
+            currentInfo   = info;
+            currentLegend = legendA;
+            map.on('baselayerchange', function (eventLayer) {
+                if (eventLayer.name === 'Precipitación') {
+                    map.removeControl(currentLegend);
+                    currentLegend = legendA;
+                    legendA.addTo(map);
+                }
+                // else if  (eventLayer.name === 'CVEGEO') {
+                //     map.removeControl(currentLegend);
+                //     currentLegend = legendB;
+                //     legendB.addTo(map);
+                // }
+            })
+            
+
             //<!------ Logo Banner ------>
             var credctrl = L.controlCredits({
                 image: "css/images/climathics_banner_nano.png",
