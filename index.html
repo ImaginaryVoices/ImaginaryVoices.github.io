@@ -241,8 +241,8 @@
                     return f.properties.CVEGEO;
                 }
             });
-            hoveruber(pbfTrois, getColorA, 'pr_est_2021_ppt_jun-ago');
-            popop(pbfTrois, 'pr_est_2021_ppt_jun-ago');
+            hoveruber(pbfTrois, getColorA, 'pr_est_2021_ppt_jul-ago');
+            popop(pbfTrois, 'pr_est_2021_ppt_jul-ago');
             //***** Capa 4
             var pbfQuatre = L.vectorGrid.protobuf('data/pr_est_2021_ppt/{z}/{x}/{y}.pbf', {
             	vectorTileLayerStyles: vectorTileStylingF(getColorA,'pr_est_2021_ppt_sep-oct'),
@@ -259,7 +259,7 @@
             var baseMaps = {
                 'Precipitación Jun-Oct': pbfUn,
                 'Precipitación Jun': pbfDeux,
-                'Precipitación Jun-Ago': pbfTrois,
+                'Precipitación Jul-Ago': pbfTrois,
                 'Precipitación Sep-Oct': pbfQuatre
             };
             L.control.layers(baseMaps).addTo(map);
