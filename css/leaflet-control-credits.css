@@ -1,0 +1,21 @@
+.leaflet-credits-control {
+    margin-right:0 !important;
+    margin-bottom:0 !important;
+
+    height:39px;        /* defined in the JavaScript code */
+    padding-right:39px; /* defined in the JavaScript code */
+
+    background-image:none; /* defined in the JavaScript code */
+    background-repeat:no-repeat;
+    background-position:100% 0;
+
+    background-color:white;
+    opacity:1.0;
+    border-radius:5px;
+    border:2px solid rgba(0,0,0,0.3);
+
+    cursor:pointer;
+    
+    position: absolute;
+    top: 0px; left: 50px;
+}
