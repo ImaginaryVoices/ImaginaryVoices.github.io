@@ -203,7 +203,7 @@
             //***** Estilos
             function vectorTileStylingF(funco, varnombre){
                 var estail = {
-                    PR_pron: function(properties, zoom) {
+                    pr_est_2021_ppt: function(properties, zoom) {
                         return {
                             ...estilillo,
                             fillColor: funco(properties[varnombre])
@@ -213,32 +213,32 @@
                 return estail;
             };
             //***** Capa 1
-            var pbfUn = L.vectorGrid.protobuf('data/PR_pron/{z}/{x}/{y}.pbf', {
-                vectorTileLayerStyles: vectorTileStylingF(getColorA,'PR_pron_Val'),
+            var pbfUn = L.vectorGrid.protobuf('data/pr_est_2021_ppt/{z}/{x}/{y}.pbf', {
+                vectorTileLayerStyles: vectorTileStylingF(getColorA,'pr_est_2021_ppt_jun-oct'),
                 interactive: true,
                 getFeatureId: function(f) {
                     return f.properties.CVEGEO;
                 }
             })
             .addTo(map);
-            hoveruber(pbfUn, getColorA, 'PR_pron_Val');
-            popop(pbfUn, 'PR_pron_Val');
+            hoveruber(pbfUn, getColorA, 'pr_est_2021_ppt_jun-oct');
+            popop(pbfUn, 'pr_est_2021_ppt_jun-oct');
             //***** Capa 2
-            // var pbfDeux = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
-            // 	vectorTileLayerStyles: vectorTileStylingF(getColorB,'CVEGEO'),
-            //     interactive: true,
-            //     getFeatureId: function(f) {
-            //         return f.properties.CVEGEO;
-            //     }
-            // });
-            // hoveruber(pbfDeux, getColorB, 'CVEGEO');
-            // popop(pbfDeux, 'CVEGEO');
+            var pbfDeux = L.vectorGrid.protobuf('data/pr_est_2021_ppt/{z}/{x}/{y}.pbf', {
+            	vectorTileLayerStyles: vectorTileStylingF(getColorA,'pr_est_2021_ppt_jun'),
+                interactive: true,
+                getFeatureId: function(f) {
+                    return f.properties.CVEGEO;
+                }
+            });
+            hoveruber(pbfDeux, getColorA, 'pr_est_2021_ppt_jun');
+            popop(pbfDeux, 'pr_est_2021_ppt_jun');
 
 
             //<!------ Menu de capas ------>
             var baseMaps = {
-                "Precipitación": pbfUn,
-                //"CVEGEO": pbfDeux
+                "Precipitación Jun-Oct": pbfUn,
+                "Precipitación Jun": pbfDeux
             };
             L.control.layers(baseMaps).addTo(map);
             info.addTo(map);
@@ -246,16 +246,16 @@
             currentInfo   = info;
             currentLegend = legendA;
             map.on('baselayerchange', function (eventLayer) {
-                if (eventLayer.name === 'Precipitación') {
+                if (eventLayer.name === 'Precipitación Jun-Oct') {
                     map.removeControl(currentLegend);
                     currentLegend = legendA;
                     legendA.addTo(map);
                 }
-                // else if  (eventLayer.name === 'CVEGEO') {
-                //     map.removeControl(currentLegend);
-                //     currentLegend = legendB;
-                //     legendB.addTo(map);
-                // }
+                else if  (eventLayer.name === 'Precipitación Jun') {
+                    map.removeControl(currentLegend);
+                    currentLegend = legendB;
+                    legendB.addTo(map);
+                }
             })
             
 
