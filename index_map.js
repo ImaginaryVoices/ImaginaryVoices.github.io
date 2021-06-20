@@ -185,16 +185,16 @@ function vectorTileStylingF(funco, varnombre){
     return estail;
 };
 //***** Capa 1
-// var pbfUn = L.vectorGrid.protobuf('data/PR_pron/{z}/{x}/{y}.pbf', {
-//     vectorTileLayerStyles: vectorTileStylingF(getColorA,'PR_pron_Val'),
-//     interactive: true,
-//     getFeatureId: function(f) {
-//         return f.properties.CVEGEO;
-//     }
-// })
-// .addTo(map);
-// hoveruber(pbfUn, getColorA, 'PR_pron_Val');
-// popop(pbfUn, 'PR_pron_Val');
+var pbfUn = L.vectorGrid.protobuf('data/PR_pron/{z}/{x}/{y}.pbf', {
+    vectorTileLayerStyles: vectorTileStylingF(getColorA,'PR_pron_Val'),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+})
+.addTo(map);
+hoveruber(pbfUn, getColorA, 'PR_pron_Val');
+popop(pbfUn, 'PR_pron_Val');
 //***** Capa 2
 // var pbfDeux = L.vectorGrid.protobuf('data/Datos_2019/{z}/{x}/{y}.pbf', {
 // 	vectorTileLayerStyles: vectorTileStylingF(getColorB,'CVEGEO'),
@@ -208,10 +208,10 @@ function vectorTileStylingF(funco, varnombre){
 
 
 //<!------ Menu de capas ------>
-// var baseMaps = {
-//     "Precipitación": pbfUn,
-//     //"CVEGEO": pbfDeux
-// };
+var baseMaps = {
+    "Precipitación": pbfUn,
+    //"CVEGEO": pbfDeux
+};
 L.control.layers(baseMaps).addTo(map);
 info.addTo(map);
 legendA.addTo(map);
