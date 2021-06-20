@@ -186,17 +186,17 @@
                 }
                 return div;
             };
-            legendB.onAdd = function (map) {
-                var div = L.DomUtil.create('div', 'info legend'),
-                    grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
-                    labels = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55];
-                for (var i = 0; i < grades.length; i++) {
-                    div.innerHTML +=
-                        '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
-                        labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
-                }
-                return div;
-            };
+            // legendB.onAdd = function (map) {
+            //     var div = L.DomUtil.create('div', 'info legend'),
+            //         grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
+            //         labels = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55];
+            //     for (var i = 0; i < grades.length; i++) {
+            //         div.innerHTML +=
+            //             '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
+            //             labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
+            //     }
+            //     return div;
+            // };
 
 
             //<!------ Protobuf Tiles (.pbf) ------>
@@ -253,7 +253,7 @@
                 }
                 else if  (eventLayer.name === 'Precipitación Jun') {
                     map.removeControl(currentLegend);
-                    currentLegend = legendB;
+                    currentLegend = legendA;
                     legendB.addTo(map);
                 }
             })
