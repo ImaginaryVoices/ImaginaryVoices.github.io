@@ -245,18 +245,18 @@
             legendA.addTo(map);
             currentInfo   = info;
             currentLegend = legendA;
-            map.on('baselayerchange', function (eventLayer) {
-                if (eventLayer.name === 'Precipitación Jun-Oct') {
-                    map.removeControl(currentLegend);
-                    currentLegend = legendA;
-                    legendA.addTo(map);
-                }
-                else if  (eventLayer.name === 'Precipitación Jun') {
-                    map.removeControl(currentLegend);
-                    currentLegend = legendA;
-                    legendA.addTo(map);
-                }
-            })
+            // map.on('baselayerchange', function (eventLayer) {
+            //     if (eventLayer.name === 'Precipitación Jun-Oct') {
+            //         map.removeControl(currentLegend);
+            //         currentLegend = legendA;
+            //         legendA.addTo(map);
+            //     }
+            //     else if  (eventLayer.name === 'Precipitación Jun') {
+            //         map.removeControl(currentLegend);
+            //         currentLegend = legendA;
+            //         legendA.addTo(map);
+            //     }
+            // })
             
 
             //<!------ Logo Banner ------>
