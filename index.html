@@ -237,8 +237,8 @@
 
             //<!------ Menu de capas ------>
             var baseMaps = {
-                "Precipitación Jun-Oct": pbfUn,
-                "Precipitación Jun": pbfDeux
+                'Precipitación Jun-Oct': pbfUn,
+                'Precipitación Jun': pbfDeux
             };
             L.control.layers(baseMaps).addTo(map);
             info.addTo(map);
@@ -254,7 +254,7 @@
                 else if  (eventLayer.name === 'Precipitación Jun') {
                     map.removeControl(currentLegend);
                     currentLegend = legendA;
-                    legendB.addTo(map);
+                    legendA.addTo(map);
                 }
             })
             
