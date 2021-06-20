@@ -26,9 +26,52 @@
         <script src='js/leaflet-VectorGrid.js'></script> <!--https://unpkg.com/leaflet.vectorgrid@1.2.0-->
         <script src='js/leaflet.fullscreen.min.js'></script> <!-- https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js -->
         <script src="js/leaflet-control-credits-src.js"></script>
-        <script src="data/PR_pron.js"></script>
-        <!--Aquí va lo bueno-->
-        <script src='index_map.js'></script>
+        <script>
+
+var map = L.map('map', {
+    center: [23.946, -101.975],
+    zoomControl:true,
+    zoom:6,
+    maxZoom:10,
+    minZoom:5,
+    fullscreenControl: true
+})
+atribuciones = '<a href="https://climathics.com">Climathics</a> | \
+            <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> \
+            &middot; &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> \
+            &middot; &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+var hash = new L.Hash(map);     //URL dinamica
+map.attributionControl.setPrefix(atribuciones);
+map.fitBounds([[14.5388286402, -117.12776], [32.72083, -86.811982388]]);
+map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
+
+
+//<!------ Mapbox Vector Tiles ------>
+//***** Fondo
+var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2ppc25rdm0xb3F5MzBwOGR2Z2YyMGZ3In0._2aZcvbiTMAnz3XNAfRJAw';
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+    id: 'climathics/ckhbdu5h6063419o5rmbb27ae',
+    tileSize: 512,
+    zoomOffset: -1
+})
+.addTo(map);
+//*****  Enfrente (Tesela con los nombres)
+map.createPane('labelsi');
+map.getPane('labelsi').style.zIndex = 650;
+map.getPane('labelsi').style.pointerEvents = 'none';
+var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+    id: 'climathics/ckhipfem70mwy19noba54m2by',
+    pane: 'labelsi',
+    tileSize: 512,
+    zoomControl:true,
+    maxZoom:10,
+    minZoom:5,
+    zoomOffset: -1
+})
+.addTo(map);
+
+        </script>
+
 
     </body>
 </html>
