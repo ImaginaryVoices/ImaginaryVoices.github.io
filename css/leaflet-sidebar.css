@@ -6,11 +6,11 @@
   overflow: hidden;
   z-index: 2000; }
   .sidebar.collapsed {
-    width: 40px; }
+    width: 32px; }
   @media (min-width: 768px) {
     .sidebar {
-      top: 60px;
-      bottom: 60px;
+      top: 100px;
+      bottom: 100px;
       transition: width 500ms; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .sidebar {
