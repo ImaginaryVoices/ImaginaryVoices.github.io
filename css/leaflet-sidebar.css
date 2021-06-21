@@ -6,10 +6,10 @@
   overflow: hidden;
   z-index: 2000; }
   .sidebar.collapsed {
-    width: 28px; }
+    width: 30px; }
   @media (min-width: 768px) {
     .sidebar {
-      top: 300px;
+      top: 200px;
       bottom: 200px;
       transition: width 500ms; } }
   @media (min-width: 768px) and (max-width: 991px) {
@@ -61,7 +61,7 @@
         background-color: #eee; }
       .sidebar-tabs > li.active, .sidebar-tabs > ul > li.active {
         color: #fff;
-        background-color: #0074d9; }
+        background-color: #27A1C3; }
       .sidebar-tabs > li.disabled, .sidebar-tabs > ul > li.disabled {
         color: rgba(51, 51, 51, 0.4); }
         .sidebar-tabs > li.disabled:hover, .sidebar-tabs > ul > li.disabled:hover {
@@ -120,7 +120,7 @@
   line-height: 40px;
   font-size: 14.4pt;
   color: #fff;
-  background-color: #0074d9; }
+  background-color: #27A1C3; }
   .sidebar-right .sidebar-header {
     padding-left: 40px; }
 
