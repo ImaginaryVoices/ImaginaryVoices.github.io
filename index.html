@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang='en'>
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name='viewport' content='initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width'>
-        <meta name='mobile-web-app-capable' content="yes">
-        <meta name='apple-mobile-web-app-capable' content="yes">
+        <meta name='mobile-web-app-capable' content='yes'>
+        <meta name='apple-mobile-web-app-capable' content='yes'>
         <link rel='stylesheet' href='css/leaflet.css'> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.css -->
         <link rel='stylesheet' href='css/leaflet.fullscreen.css'  />
-        <link rel="stylesheet" href="css/leaflet-control-credits.css" />
+        <link rel='stylesheet' href='css/leaflet-control-credits.css' />
+        <link rel='stylesheet' href='css/leaflet-sidebar.css' />
         <style>
         html, body, #map {
             width: 100%;
@@ -20,13 +21,57 @@
         <title>Pronóstico estacional 2021-Verano</title>
     </head>
     <body>
-        <div id="map"></div>
+        <div id='map'  class='sidebar-map'></div>
+        <div id="sidebar" class="sidebar collapsed">
+            <!-- Nav tabs -->
+            <div class="sidebar-tabs">
+                <ul role="tablist">
+                    <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                    <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+                    <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
+                </ul>
+    
+                <ul role="tablist">
+                    <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+                </ul>
+            </div>
+            <!-- Tab panes -->
+            <div class="sidebar-content">
+                <div class="sidebar-pane" id="home">
+                    <h1 class="sidebar-header">
+                        sidebar-v2
+                        <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                    </h1>
+                    <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
+                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                </div>
+    
+                <div class="sidebar-pane" id="profile">
+                    <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                </div>
+    
+                <div class="sidebar-pane" id="messages">
+                    <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                </div>
+    
+                <div class="sidebar-pane" id="settings">
+                    <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                </div>
+            </div>
+        </div>
         <script src='js/leaflet.js'></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
         <script src='js/leaflet-hash.js'></script> <!--https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js-->
         <script src='js/leaflet-VectorGrid.js'></script> <!--https://unpkg.com/leaflet.vectorgrid@1.2.0-->
         <script src='js/leaflet.fullscreen.min.js'></script> <!-- https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js -->
         <script src="js/leaflet-control-credits-src.js"></script>
+        <script src="js/leaflet-sidebar.js"></script>
         <script>
+
+
             var map = L.map('map', {
                 center: [23.946, -101.975],
                 zoomControl:true,
@@ -43,7 +88,7 @@
             map.attributionControl.setPrefix(atribuciones);
             map.fitBounds([[14.5388286402, -117.12776], [32.72083, -86.811982388]]);
             map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
-
+            var sidebar = L.control.sidebar('sidebar').addTo(map);
 
             //<!------ Mapbox Vector Tiles ------>
             //***** Fondo
@@ -288,6 +333,8 @@
                 width: 262,
                 height: 62,
             }).addTo(map);
+
+            
         </script>
     </body>
 </html>
