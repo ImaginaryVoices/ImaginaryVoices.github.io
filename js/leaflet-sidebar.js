@@ -13,7 +13,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
     includes: (L.Evented.prototype || L.Mixin.Events),
 
     options: {
-        position: 'left'
+        position: 'bottomleft'
     },
 
     initialize: function (id, options) {
