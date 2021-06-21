@@ -1,10 +1,10 @@
 .sidebar {
   position: absolute;
-  top: 60;
+  top: 0;
   bottom: 0;
   width: 100%;
   overflow: hidden;
-  z-index: 2000; }
+  z-index: 20; }
   .sidebar.collapsed {
     width: 40px; }
   @media (min-width: 768px) {
