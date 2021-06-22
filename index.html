@@ -319,7 +319,7 @@
                 'Precipitación Jul-Ago': pbfTrois,
                 'Precipitación Sep-Oct': pbfQuatre
             };
-            L.control.layers(baseMaps).addTo(map);
+            L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
             info.addTo(map);
             legendA.addTo(map);
             currentInfo   = info;
