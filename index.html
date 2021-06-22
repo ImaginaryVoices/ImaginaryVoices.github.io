@@ -21,7 +21,7 @@
         }
         .lorem {
             font-style: italic;
-            font: 10pt "Helvetica Neue";
+            font: 10pt "Helvetica Neue", Arial, Helvetica;
             color: rgb(100, 100, 100);
         }
         </style>
@@ -232,7 +232,7 @@
                 var div = L.DomUtil.create('div', 'info legend'),
                     grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
                     labels = ['>55 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '>55 %'],
-                    titulito = ['<strong> Probabilidad </strong>'];
+                    titulito = ['Probabilidad'];
                 
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +=
@@ -240,7 +240,7 @@
                         '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
                         labels[i] + '<br>');
                 }
-                // div.innerHTML = titulito.join('<br>');
+                div.innerHTML = titulito.join('<br>');
                 return div;
             };
             // legendB.onAdd = function (map) {
