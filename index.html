@@ -33,12 +33,12 @@
             <!-- Botones de navegación -->
             <div class="sidebar-tabs">
                 <ul role="tablist">
-                    <li><a href="#home" role="tab"><i class="fa fa-info-circle"></i></a></li>
+                    <li><a href="#home" role="tab"><i class="fa fa-info"></i></a></li>
                     <!-- <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li> -->
                 </ul>
-                <ul role="tablist">
+                <!-- <ul role="tablist">
                     <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-                </ul>
+                </ul> -->
             </div>
             <!-- Función de los botones -->
             <div class="sidebar-content">
@@ -66,9 +66,9 @@
                 <!-- <div class="sidebar-pane" id="profile">
                     <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
                 </div> -->
-                <div class="sidebar-pane" id="settings">
+                <!-- <div class="sidebar-pane" id="settings">
                     <h1 class="sidebar-header">Configuración<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                </div>
+                </div> -->
             </div>
         </div>
         <script src='js/leaflet.js'></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
@@ -231,7 +231,7 @@
             legendA.onAdd = function (map) {
                 var div = L.DomUtil.create('div', 'info legend'),
                     grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
-                    labels = ['>55 % seco', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '>55 %'];
+                    labels = ['>55 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '>55 %'];
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +=
                         '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
