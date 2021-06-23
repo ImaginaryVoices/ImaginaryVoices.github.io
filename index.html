@@ -167,7 +167,7 @@
             };
             info.update = function (props, varnombre) {
                 this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +  (props ?
-                    '<b>' + props['NOM_MUN'] + '</b><br />' + ((props[varnombre])*100.0).toFixed(2) + ' %'
+                    '<b>' + props['NOM_MUN'] + '</b><br />' + (props[varnombre]*100.0).toFixed(2) + ' %'
                     : 'Selecciona un municipio');
             };
             // //***** Mouse hover function
@@ -216,7 +216,7 @@
                             </tr>\
                             <tr>\
                                 <th scope="row">Probabilidad</th>\
-                                <td>' + (properties[varnombre] !== null ? (properties[varnombre]*100.0).toFixed(2) + ' %' : '') + '</td>\
+                                <td>' + (properties[varnombre] !== null ? Math.abs(properties[varnombre]*100.0)).toFixed(2) + ' %' : '') + '</td>\
                             </tr>\
                         </table>';
                     L.popup()
