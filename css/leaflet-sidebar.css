@@ -57,8 +57,8 @@
       overflow: hidden;
       transition: all 80ms; }
       .sidebar-tabs > li:hover, .sidebar-tabs > ul > li:hover {
-        color: #000;
-        background-color: #eee; }
+        color: #fff;
+        background-color: #1D7992; }
       .sidebar-tabs > li.active, .sidebar-tabs > ul > li.active {
         color: #fff;
         background-color: #1D7992; }
