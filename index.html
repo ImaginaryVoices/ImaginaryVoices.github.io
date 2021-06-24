@@ -165,11 +165,18 @@
                 return this._div;
             };
             info.update = function (props, varnombre) {
-                var proba = L.DomUtil.create('div', 'info');
-                proba.innerHTML = Math.abs(props[varnombre]*100.0).toFixed(2);
-                this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +  (props ?
-                    '<b>' + props['NOM_MUN'] + '</b><br />' + proba + ' %'
+                if (props[varnombre] < 0) {
+                    this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +  (props ? '<b>' +
+                        props['NOM_MUN'] + '</b><br />' + Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' + 
+                        'seco'
                     : 'Selecciona un municipio');
+                }
+                else if (props[varnombre] >= 0)
+                    this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +  (props ? '<b>' +
+                        props['NOM_MUN'] + '</b><br />' + Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' + 
+                        'humedo'
+                
+                
             };
             // //***** Mouse hover function
             var highlight;
@@ -312,10 +319,10 @@
 
             //<!------ Menu de capas ------>
             var baseMaps = {
-                'Precipitación Jun-Oct': pbfUn,
-                'Precipitación Jun': pbfDeux,
-                'Precipitación Jul-Ago': pbfTrois,
-                'Precipitación Sep-Oct': pbfQuatre
+                'Precipitación: Jun-Oct': pbfUn,
+                'Precipitación: Jun': pbfDeux,
+                'Precipitación: Jul-Ago': pbfTrois,
+                'Precipitación: Sep-Oct': pbfQuatre
             };
             L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
             info.addTo(map);
