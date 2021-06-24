@@ -167,7 +167,7 @@
             info.update = function (props, varnombre) {
                 this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
                     (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-                    (props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+                    (props[varnombre] ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
                     (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
             };
             // //***** Mouse hover function
@@ -232,7 +232,6 @@
                 var div = L.DomUtil.create('div', 'info legend'),
                     grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
                     labels = ['>55 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '>55 %'];
-                    titulito = ['<strong> Probabilidad de seco/humedo</strong>'];
                     div.innerHTML += '<b>Probabilidad de seco/humedo</b><br>'
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
