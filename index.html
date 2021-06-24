@@ -231,13 +231,14 @@
                 var div = L.DomUtil.create('div', 'info legend'),
                     grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
                     labels = ['>55 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '>55 %'];
-                    titulito = ['<strong> Probabilidad </strong>'];
+                    titulito = ['<strong> Probabilidad de seco/humedo</strong>'];
                 for (var i = 0; i < grades.length; i++) {
+                    div.innerHTML += titulito;
                     div.innerHTML +=
                     // titulito.push(
                     //     '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
                     //     labels[i] + '<br>');
-                        titulito + '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
+                        '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
                         labels[i] + '<br>';
                 }
                 // div.innerHTML = titulito.join('<br>');
