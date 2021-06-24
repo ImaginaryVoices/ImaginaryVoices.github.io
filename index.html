@@ -100,10 +100,7 @@
             var sidebar = L.control.sidebar('sidebar').addTo(map);
 
             //<!------ Ventana con mensaje de inicio ------>
-            var winMtds = L.control.window(map)
-                .title('Bienvenido al mapa interactivo')
-                .content('Puedes encontrar más información en el menú del lado izquierdo.')
-                .show()
+            var winOpts = L.control.window(map,{title:'Heading!',content:'First paragraph.',visible: true})
 
             //<!------ Mapbox Vector Tiles ------>
             //***** Fondo
