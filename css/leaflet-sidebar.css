@@ -38,7 +38,7 @@
   top: 0;
   bottom: 0;
   height: 100%;
-  background-color: #1D7992; }
+  background-color: #fff; }
   .sidebar-left .sidebar-tabs {
     left: 0; }
   .sidebar-right .sidebar-tabs {
@@ -52,7 +52,7 @@
     .sidebar-tabs > li, .sidebar-tabs > ul > li {
       width: 100%;
       height: 31px;
-      color: #fff;
+      color: #333;
       font-size: 12pt;
       overflow: hidden;
       transition: all 80ms; }
@@ -198,6 +198,3 @@
 @media (min-width: 768px) {
   .sidebar-right.collapsed ~ .sidebar-map .leaflet-right {
     right: 50px; } }
-
-.chiquilin {
-  font-size:70%;}
