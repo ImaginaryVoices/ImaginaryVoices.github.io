@@ -99,11 +99,11 @@
             map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
             var sidebar = L.control.sidebar('sidebar').addTo(map);
 
-            // //<!------ Ventana con mensaje de inicio ------>
-            // var winMtds = L.control.window(map)
-            //     .title('Bienvenido al mapa interactivo')
-            //     .content('Puedes encontrar más información en el menú del lado izquierdo.')
-            //     .show()
+            //<!------ Ventana con mensaje de inicio ------>
+            var winMtds = L.control.window(map)
+                .title('Bienvenido al mapa interactivo')
+                .content('Puedes encontrar más información en el menú del lado izquierdo.')
+                .show()
 
             //<!------ Mapbox Vector Tiles ------>
             //***** Fondo
