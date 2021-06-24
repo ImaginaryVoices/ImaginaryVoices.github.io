@@ -216,7 +216,8 @@
                             </tr>\
                             <tr>\
                                 <th scope="row">Probabilidad</th>\
-                                <td>' + (properties[varnombre] !== null ? Math.abs(properties[varnombre]*100.0).toFixed(2) + ' % de ser más seco' : '') + '</td>\
+                                <td>' + (properties[varnombre] !== null ? 
+                                    (properties[varnombre] == 0 ? 'Neutral': Math.abs(properties[varnombre]*100.0).toFixed(2) + ' %') : '') + '</td>\
                             </tr>\
                         </table>';
                     L.popup()
