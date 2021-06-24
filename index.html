@@ -167,7 +167,7 @@
             info.update = function (props, varnombre) {
                 this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
                     (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-                    (props[varnombre] == 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+                    (props[varnombre] = 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
                     (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
             };
             // //***** Mouse hover function
