@@ -165,8 +165,9 @@
                 return this._div;
             };
             info.update = function (props, varnombre) {
+                proba = Math.abs(props[varnombre]*100.0).toFixed(2);
                 this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +  (props ?
-                    '<b>' + props['NOM_MUN'] + '</b><br />' + Math.abs(props[varnombre]*100.0).toFixed(2) + ' %'
+                    '<b>' + props['NOM_MUN'] + '</b><br />' + proba + ' %'
                     : 'Selecciona un municipio');
             };
             // //***** Mouse hover function
@@ -234,9 +235,6 @@
                     titulito = ['<strong> Probabilidad de seco/humedo</strong>'];
                     div.innerHTML += '<b>Probabilidad de seco/humedo</b><br>'
                 for (var i = 0; i < grades.length; i++) {
-                    // titulito.push(
-                    //     '<i style= "background:' + getColorA(grades[i]) + '" ></i>' +
-                    //     labels[i] + '<br>');
                     div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
                 }
                 // div.innerHTML = titulito.join('<br>');
