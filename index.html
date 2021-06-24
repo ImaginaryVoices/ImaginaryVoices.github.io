@@ -168,14 +168,13 @@
                 if (props[varnombre] < 0) {
                     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +  (props ? '<b>' +
                         props['NOM_MUN'] + '</b><br />' + Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' + 
-                        'seco'
-                    : 'Selecciona un municipio');
+                        'seco' : 'Selecciona un municipio');
                 }
-                else if (props[varnombre] >= 0)
+                else if (props[varnombre] >= 0) {
                     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +  (props ? '<b>' +
                         props['NOM_MUN'] + '</b><br />' + Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' + 
-                        'humedo'
-                
+                        'humedo' : 'Selecciona un municipio');
+                }
                 
             };
             // //***** Mouse hover function
