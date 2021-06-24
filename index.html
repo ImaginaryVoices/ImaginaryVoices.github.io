@@ -100,7 +100,11 @@
             var sidebar = L.control.sidebar('sidebar').addTo(map);
 
             //<!------ Ventana con mensaje de inicio ------>
-            var winOpts = L.control.window(map,{title:'Heading!',content:'First paragraph.',visible: true})
+            var winOpts = L.control.window(map, {
+                title:'Bienvenido al mapa interactivo de pronósticos Climathics',
+                content:'Puedes consultar más detalles en el menú de información de la izquierda',
+                visible: true
+            })
 
             //<!------ Mapbox Vector Tiles ------>
             //***** Fondo
