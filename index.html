@@ -77,7 +77,7 @@
         <script src='js/leaflet.fullscreen.min.js'></script> <!-- https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js -->
         <script src='js/leaflet-control-credits-src.js'></script>
         <script src='js/leaflet-sidebar.js'></script>
-        <script src='js/L.Control.Window.js'></script>
+        <!-- <script src='js/L.Control.Window.js'></script> -->
         <script>
 
 
@@ -99,11 +99,11 @@
             map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
             var sidebar = L.control.sidebar('sidebar').addTo(map);
 
-            //<!------ Ventana con mensaje de inicio ------>
-            var winMtds = L.control.window(map)
-                .title('Bienvenido al mapa interactivo')
-                .content('Puedes encontrar más información en el menú del lado izquierdo.')
-                .show()
+            // //<!------ Ventana con mensaje de inicio ------>
+            // var winMtds = L.control.window(map)
+            //     .title('Bienvenido al mapa interactivo')
+            //     .content('Puedes encontrar más información en el menú del lado izquierdo.')
+            //     .show()
 
             //<!------ Mapbox Vector Tiles ------>
             //***** Fondo
