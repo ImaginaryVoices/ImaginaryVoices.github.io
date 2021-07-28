@@ -52,7 +52,7 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 .addTo(map);
 //*****  Más enfrente (Tesela con fronteras estatales)
 map.createPane('labelsf');
-map.getPane('labelsf').style.zIndex = 600;
+map.getPane('labelsf').style.zIndex = 1600;
 map.getPane('labelsf').style.pointerEvents = 'none';
 var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
     id: 'climathics/ckrnuddhn0thc18p0s58igpot',
@@ -69,18 +69,18 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
 var getColorA = function(rrr) {
-    return  rrr <= -0.60 ? 'rgb(166,97,26)':
-            rrr <= -0.55 ? 'rgb(182,124,54)':
-            rrr <= -0.50 ? 'rgb(198,152,82)':
-            rrr <= -0.45 ? 'rgb(215,179,110)':
+    return  rrr <= -0.80 ? 'rgb(166,97,26)':
+            rrr <= -0.75 ? 'rgb(182,124,54)':
+            rrr <= -0.60 ? 'rgb(198,152,82)':
+            rrr <= -0.50 ? 'rgb(215,179,110)':
             rrr <= -0.40 ? 'rgb(230,209,159)':
 //            rrr <= -0.32 ? 'rgb(255,255,255)':
 //            rrr <= 0.32 ? 'rgb(255,255,255)':
             rrr <  0.40 ? 'rgb(255,255,255)':
-            rrr <  0.45 ? 'rgb(202,231,226)':
-            rrr <  0.50 ? 'rgb(152,213,204)':
-            rrr <  0.55 ? 'rgb(113,197,184)':
-            rrr <  0.60 ? 'rgb(85,181,166)':
+            rrr <  0.50 ? 'rgb(202,231,226)':
+            rrr <  0.60 ? 'rgb(152,213,204)':
+            rrr <  0.70 ? 'rgb(113,197,184)':
+            rrr <  0.80 ? 'rgb(85,181,166)':
             rrr <= 1.00 ? 'rgb(1,133,133)':
                         'rgb(213,231,37)';
 };
@@ -182,7 +182,6 @@ legendA.onAdd = function (map) {
         // labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutro', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
         grades = [-0.80, -0.70, -0.60, -0.50, -0.40, 0, 0.40, 0.50, 0.60, 0.70, 0.60],
         labels = ['>80 %', '70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutro', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %', '>80 %'];
-
         div.innerHTML += '<b>Probabilidad<br> de seco (cafés) <b>o<br> húmedo (verdes)</b><br>'
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
