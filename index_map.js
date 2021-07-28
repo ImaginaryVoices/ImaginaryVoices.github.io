@@ -61,7 +61,7 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
     zoomControl:true,
     maxZoom:10,
     minZoom:5,
-    zoomOffset: -1
+    zoomOffset: 0
 })
 .addTo(map);
 
