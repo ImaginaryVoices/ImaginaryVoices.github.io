@@ -57,11 +57,11 @@ map.getPane('labelsf').style.pointerEvents = 'none';
 var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
     id: 'climathics/ckrnuddhn0thc18p0s58igpot',
     pane: 'labelsf',
-    tileSize: 512,
+    tileSize: 5120,
     zoomControl:true,
     maxZoom:10,
     minZoom:5,
-    zoomOffset: 0
+    zoomOffset: +1
 })
 .addTo(map);
 
