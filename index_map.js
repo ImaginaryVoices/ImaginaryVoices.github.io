@@ -70,7 +70,7 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 //***** Mapas de colores y rangos
 var getColorA = function(rrr) {
     return  rrr <= -0.80 ? 'rgb(166,97,26)':
-            rrr <= -0.75 ? 'rgb(182,124,54)':
+            rrr <= -0.70 ? 'rgb(182,124,54)':
             rrr <= -0.60 ? 'rgb(198,152,82)':
             rrr <= -0.50 ? 'rgb(215,179,110)':
             rrr <= -0.40 ? 'rgb(230,209,159)':
