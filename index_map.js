@@ -28,20 +28,35 @@ var winOpts = L.control.window(map, {
 
 //<!------ Mapbox Vector Tiles ------>
 //***** Fondo
-var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2ppc25rdm0xb3F5MzBwOGR2Z2YyMGZ3In0._2aZcvbiTMAnz3XNAfRJAw';
+// var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2ppc25rdm0xb3F5MzBwOGR2Z2YyMGZ3In0._2aZcvbiTMAnz3XNAfRJAw';
+var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2k1Z3BnY2wzd3QwMnJybTY1bjJvY2s3In0.s6hymqVgILyMRjbGnZKWQA';
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
     id: 'climathics/ckhbdu5h6063419o5rmbb27ae',
     tileSize: 512,
     zoomOffset: -1
 })
 .addTo(map);
-//*****  Enfrente (Tesela con los nombres)
+//*****  Enfrente (Tesela con nombres)
 map.createPane('labelsi');
 map.getPane('labelsi').style.zIndex = 650;
 map.getPane('labelsi').style.pointerEvents = 'none';
 var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
     id: 'climathics/ckhipfem70mwy19noba54m2by',
     pane: 'labelsi',
+    tileSize: 512,
+    zoomControl:true,
+    maxZoom:10,
+    minZoom:5,
+    zoomOffset: -1
+})
+.addTo(map);
+//*****  Más enfrente (Tesela con fronteras estatales)
+map.createPane('labelsf');
+map.getPane('labelsf').style.zIndex = 600;
+map.getPane('labelsf').style.pointerEvents = 'none';
+var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+    id: 'climathics/ckrnuddhn0thc18p0s58igpot',
+    pane: 'labelsf',
     tileSize: 512,
     zoomControl:true,
     maxZoom:10,
