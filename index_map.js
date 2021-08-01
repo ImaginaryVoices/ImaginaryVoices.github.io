@@ -297,11 +297,7 @@ var baseMaps = [
             "Jul-Nov" :  pbfUn,
             "Jul"     :  pbfDeux,
             "Ago-Sep" :  pbfTrois
-        }
-    }, {
-        groupName : "OSM Base Maps",
-        layers    : {
-            "OpenStreetMaps" : pbfQuatre
+            "Oct-Nov" : pbfQuatre
         }
     }							
 ];
@@ -311,7 +307,7 @@ var optionsitas = {
     group_maxHeight     : "80px",
     exclusive       	: false
 };
-var control = L.Control.styledLayerControl(baseMaps,null,optionsitas);
+var control = L.Control.styledLayerControl(baseMaps,null,null);
 	map.addControl(control);
 
 //<!------ Logo Banner ------>
