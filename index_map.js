@@ -305,6 +305,8 @@ var baseMaps = [
         }
     }							
 ];
+var overlays = [						 
+];
 var optionsitas = {
     container_width 	: "300px",
     container_maxHeight : "350px", 
