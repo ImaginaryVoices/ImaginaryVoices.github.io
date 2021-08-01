@@ -294,10 +294,10 @@ var baseMaps = [
         groupName : "Precipitación",
         expanded  : true,
         layers    : {
-            "Jul-Nov" : pbfUn,
-            "Jul"     : pbfDeux,
-            "Ago-Sep" : pbfTrois,
-            "Oct-Nov" : pbfQuatre
+            "Jul - Nov" : pbfUn,
+            "Jul"       : pbfDeux,
+            "Ago - Sep" : pbfTrois,
+            "Oct - Nov" : pbfQuatre
         }
     }
 ];
