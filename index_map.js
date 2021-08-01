@@ -305,7 +305,11 @@ var baseMaps = [
         }
     }							
 ];
-var overlays = [						 
+var overlays = [
+    {
+       groupName : "Sao Paulo",
+       expanded  : true,
+    }	 
 ];
 var optionsitas = {
     container_width 	: "300px",
