@@ -305,19 +305,13 @@ var baseMaps = [
         }
     }							
 ];
-var overlays = [
-    {
-       groupName : "Sao Paulo",
-       expanded  : true,
-    }	 
-];
 var optionsitas = {
     container_width 	: "300px",
     container_maxHeight : "350px", 
     group_maxHeight     : "80px",
     exclusive       	: false
 };
-var control = L.Control.styledLayerControl(baseMaps,overlays,optionsitas);
+var control = L.Control.styledLayerControl(baseMaps,null,optionsitas);
 	map.addControl(control);
 
 //<!------ Logo Banner ------>
