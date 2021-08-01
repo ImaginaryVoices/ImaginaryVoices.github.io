@@ -263,13 +263,13 @@ popop(pbfQuatre, nombredearch+ivo);
 
 
 //<!------ Menu de capas ------>
-var baseMaps = {
-    'Precipitación: 2021 Jul-Nov': pbfUn,
-    'Precipitación: 2021 Jul': pbfDeux,
-    'Precipitación: 2021 Ago-Sep': pbfTrois,
-    'Precipitación: 2021 Oct-Nov': pbfQuatre
-};
-L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
+// var baseMaps = {
+//     'Precipitación: 2021 Jul-Nov': pbfUn,
+//     'Precipitación: 2021 Jul': pbfDeux,
+//     'Precipitación: 2021 Ago-Sep': pbfTrois,
+//     'Precipitación: 2021 Oct-Nov': pbfQuatre
+// };
+// L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
 if (window.screen.width > 768) { // Que no aparezca en celulares
     info.addTo(map);
 }
