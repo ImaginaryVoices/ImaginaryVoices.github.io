@@ -296,7 +296,7 @@ var baseMaps = [
         layers    : {
             "Jul-Nov" :  pbfUn,
             "Jul"     :  pbfDeux,
-            "Ago-Sep" :  pbfTrois
+            "Ago-Sep" :  pbfTrois,
             "Oct-Nov" : pbfQuatre
         }
     }
