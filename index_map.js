@@ -301,6 +301,11 @@ var baseMaps = [
         }
     }
 ];
+var layeroptions = {
+    container_width 	: "300px",
+    container_maxHeight : "350px", 
+    exclusive       	: true
+};
 var control = L.Control.styledLayerControl(baseMaps,null,{collapsed:false});
 	map.addControl(control);
 
