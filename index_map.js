@@ -294,20 +294,14 @@ var baseMaps = [
         groupName : "Precipitación",
         expanded  : true,
         layers    : {
-            "Jul-Nov" :  pbfUn,
-            "Jul"     :  pbfDeux,
-            "Ago-Sep" :  pbfTrois,
+            "Jul-Nov" : pbfUn,
+            "Jul"     : pbfDeux,
+            "Ago-Sep" : pbfTrois,
             "Oct-Nov" : pbfQuatre
         }
     }
 ];
-var optionsitas = {
-    container_width 	: "300px",
-    container_maxHeight : "350px", 
-    group_maxHeight     : "80px",
-    exclusive       	: false
-};
-var control = L.Control.styledLayerControl(baseMaps,null,{exclusive:false});
+var control = L.Control.styledLayerControl(baseMaps,null,{collapsed:false});
 	map.addControl(control);
 
 //<!------ Logo Banner ------>
