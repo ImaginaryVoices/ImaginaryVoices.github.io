@@ -313,7 +313,7 @@ var optionsitas = {
     group_maxHeight     : "80px",
     exclusive       	: false
 };
-var control = L.Control.styledLayerControl(baseMaps,null,optionsitas);
+var control = L.Control.styledLayerControl(baseMaps,overlays,optionsitas);
 	map.addControl(control);
 
 //<!------ Logo Banner ------>
