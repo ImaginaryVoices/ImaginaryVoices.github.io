@@ -167,7 +167,7 @@ div[id^="leaflet-control-accordion-layers"] > label:hover {
 
 .leaflet-control-layers:hover {
 	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
-	background: #e0e3ec;
+	background: #d4d4d4;
 	/* background: #e0e3ec url(images/bgnoise_lg.jpg) repeat top left; */
 	border-radius: 5px;
 }
