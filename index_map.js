@@ -299,7 +299,7 @@ var baseMaps = [
             "Ago-Sep" :  pbfTrois
             "Oct-Nov" : pbfQuatre
         }
-    }							
+    }
 ];
 var optionsitas = {
     container_width 	: "300px",
@@ -307,7 +307,7 @@ var optionsitas = {
     group_maxHeight     : "80px",
     exclusive       	: false
 };
-var control = L.Control.styledLayerControl(baseMaps,null,null);
+var control = L.Control.styledLayerControl(baseMaps,null,{exclusive:false});
 	map.addControl(control);
 
 //<!------ Logo Banner ------>
