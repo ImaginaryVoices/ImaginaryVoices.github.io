@@ -289,6 +289,24 @@ legendA.addTo(map);
 //     }
 // })
 
+var baseMaps = [
+    { 
+        groupName : "Precipitación",
+        expanded  : true,
+        layers    : {
+            "Jul-Nov" :  pbfUn,
+            "Jul"     :  pbfDeux,
+            "Ago-Sep" :  pbfTrois
+        }
+    }, {
+        groupName : "OSM Base Maps",
+        layers    : {
+            "OpenStreetMaps" : pbfQuatre
+        }
+    }							
+];
+var control = L.Control.styledLayerControl(baseMaps);
+	map.addControl(control);
 
 //<!------ Logo Banner ------>
 var credctrl = L.controlCredits({
