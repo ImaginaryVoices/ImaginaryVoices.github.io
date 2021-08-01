@@ -288,7 +288,7 @@ legendA.addTo(map);
 //         legendA.addTo(map);
 //     }
 // })
-
+map.addLayer(pbfUn);
 var baseMaps = [
     { 
         groupName : "Precipitación",
