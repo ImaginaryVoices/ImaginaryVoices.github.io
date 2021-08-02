@@ -301,6 +301,7 @@ var baseMaps = [
         }
     }, {
         groupName : "Maiz",
+        expanded  : true,
         layers    : {
             "Jul - Nov" : pbfUn
         }
