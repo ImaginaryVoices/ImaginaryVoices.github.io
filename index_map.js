@@ -187,7 +187,7 @@ legendA.onAdd = function (map) {
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
     }
-    div.innerHTML += '<i>Más húmedo</i>'
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.8)'+' "></i>' + 'Más húmedo<br>';
     return div;
 };
 // legendB.onAdd = function (map) {
@@ -296,10 +296,10 @@ var baseMaps = [
         groupName : "Precipitación",
         expanded  : true,
         layers    : {
-            "Jul - Nov" : pbfUn,
+            "Julio a Noviembre" : pbfUn,
             "Jul"       : pbfDeux,
             "Ago - Sep" : pbfTrois,
-            "Oct - Nov" : pbfQuatre
+            "Octubre a noviembre" : pbfQuatre
         }
     }
 ];
