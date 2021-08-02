@@ -182,11 +182,11 @@ legendA.onAdd = function (map) {
         // labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutro', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
         grades = [-0.70, -0.60, -0.50, -0.40, 0, 0.40, 0.50, 0.60, 0.70],
         labels = ['70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutro', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %'];
-        div.innerHTML += '<b>Probabilidad</b><br> &nbsp;&nbsp;&nbsp;&nbsp;<i>Más seco</i><br>'
+        div.innerHTML += '<b>Probabilidad</b><br> &emsp;<i>Más seco</i><br>'
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
     }
-    div.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;<i>Más húmedo</i>'
+    div.innerHTML += '&emsp;<i>Más húmedo</i>'
     return div;
 };
 // legendB.onAdd = function (map) {
