@@ -307,7 +307,8 @@ var baseMaps = [
     }
 ];
 var layeroptions = {
-    container_width 	: "200px",
+    container_width 	: "160px",
+    group_maxHeight     : "800px",
     exclusive       	: true,
     collapsed           : false
 };
