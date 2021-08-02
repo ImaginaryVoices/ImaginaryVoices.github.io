@@ -104,9 +104,9 @@ const estilillo = {
     weight: 0.3
 };
 const estilillo2 = {
-    fill: false,
+    fill: true,
     stroke: true,
-    color: 'gray',
+    color: 'black',
     weight: 0.6
 };
 // //***** Cuadro de informacion personalizada
