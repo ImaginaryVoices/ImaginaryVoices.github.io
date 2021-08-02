@@ -291,7 +291,7 @@ legendA.addTo(map);
 map.addLayer(pbfUn);
 var baseMaps = [
     { 
-        groupName : "Precipitación 2021",
+        groupName : "Precipitación",
         expanded  : true,
         layers    : {
             "Jul - Nov" : pbfUn,
@@ -299,11 +299,15 @@ var baseMaps = [
             "Ago - Sep" : pbfTrois,
             "Oct - Nov" : pbfQuatre
         }
+    }, {
+        groupName : "Maiz",
+        layers    : {
+            "Jul - Nov" : pbfUn
+        }
     }
 ];
 var layeroptions = {
-    container_width 	: "300px",
-    container_maxHeight : "350px", 
+    container_width 	: "200px",
     exclusive       	: true,
     collapsed           : false
 };
