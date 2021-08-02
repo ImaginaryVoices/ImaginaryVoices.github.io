@@ -299,22 +299,15 @@ var baseMaps = [
             "Ago - Sep" : pbfTrois,
             "Oct - Nov" : pbfQuatre
         }
-    }, {
-        groupName : "Maiz",
-        expanded  : true,
-        layers    : {
-            "Jul - Nov" : pbfUn
-        }
     }
 ];
 var layeroptions = {
     container_width 	: "160px",
-    group_maxHeight     : "800px",
     exclusive       	: true,
     collapsed           : false
 };
 var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
-	map.addControl(control);
+map.addControl(control);
 
 //<!------ Logo Banner ------>
 var credctrl = L.controlCredits({
