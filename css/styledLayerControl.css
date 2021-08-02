@@ -58,7 +58,7 @@ div[id^="leaflet-control-accordion-layers"] > label:hover {
 	position: absolute;
 	width: 24px;
 	height: 24px;
-	right: 1px;
+	right: 2px;
 	top: 7px;
 	background: transparent url(images/arrow_down.png) no-repeat center center;
 }

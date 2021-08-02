@@ -181,7 +181,7 @@ legendA.onAdd = function (map) {
         // grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
         // labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutro', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
         grades = [-0.80, -0.70, -0.60, -0.50, -0.40, 0, 0.40, 0.50, 0.60, 0.70, 0.80],
-        labels = ['>80 %', '70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutro', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %', '>80 %'];
+        labels = ['+ seco', '70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutro', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %', '+húmedo'];
         div.innerHTML += '<b>Probabilidad<br> de seco (cafés) <b>o<br> húmedo (verdes)</b><br>'
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
