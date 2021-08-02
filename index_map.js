@@ -299,6 +299,12 @@ var baseMaps = [
             "Ago - Sep" : pbfTrois,
             "Oct - Nov" : pbfQuatre
         }
+    }, {
+        groupName : "Maiz",
+        expanded  : true,
+        layers    : {
+            "Jul - Nov" : pbfUn
+        }
     }
 ];
 var layeroptions = {
