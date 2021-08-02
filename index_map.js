@@ -94,21 +94,7 @@ var getColorA = function(rrr) {
 //             rrr >= 40000 ? '#c2e699':
 //                          '#e1f3b3';
 // };
-//***** Estilo general
-const estilillo = {
-    fill: true,
-    fillOpacity: 1.0,
-    stroke: true,
-    color: 'gray',
-    opacity: 0.7,
-    weight: 0.3
-};
-const estilillo2 = {
-    fill: true,
-    stroke: true,
-    color: 'black',
-    weight: 0.6
-};
+
 // //***** Cuadro de informacion personalizada
 var info   = L.control({position: 'bottomleft'});
 info.onAdd = function (map) {
@@ -210,6 +196,21 @@ legendA.onAdd = function (map) {
 
 
 //<!------ Protobuf Tiles (.pbf) ------>
+//***** Estils generales
+const estilillo = {
+    fill: true,
+    fillOpacity: 1.0,
+    stroke: true,
+    color: 'gray',
+    opacity: 0.7,
+    weight: 0.3
+};
+const estilillo_states = {
+    fill: false,
+    stroke: true,
+    color: rgb(0,0,0),
+    weight: 0.6
+};
 //***** Estilos
 function vectorTileStylingF(funco, varnombre){
     var estail = {
@@ -270,7 +271,7 @@ hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Capa Estatal
 var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: estilillo2,
+	vectorTileLayerStyles: estilillo_states,
     interactive: false,
 })
 .addTo(map);
