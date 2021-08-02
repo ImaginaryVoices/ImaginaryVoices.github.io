@@ -207,7 +207,7 @@ const estilillo_states = {
     fill: false,
     stroke: true,
     color: 'black',
-    opacity: 0.5,
+    opacity: 0.3,
     weight: 0.3
 };
 var estail2 = {
