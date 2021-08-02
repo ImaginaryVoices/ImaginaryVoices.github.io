@@ -6,17 +6,17 @@
 /* @font-face {
     font-family: Alegreya-Regular;
     src: url(fonts/Alegreya-Regular.ttf);
-}
+} */
 
-@font-face {
+/* @font-face {
     font-family: Ubuntu-Medium;
     src: url(fonts/Ubuntu-Medium.ttf);
-}
+} */
 
 @font-face {
     font-family: Ubuntu-Regular;
     src: url(fonts/Ubuntu-Regular.ttf);
-} */
+}
 
 
 
@@ -62,7 +62,7 @@ div[id^="leaflet-control-accordion-layers"] > label:hover {
 }
 .ac-container input.menu:checked + label,
 .ac-container input.menu:checked + label:hover{
-	background: #8CD4E8;
+	background: #afdbe7;
 	color: #145062;
 	text-shadow: 0px 1px 1px rgba(255,255,255, 0.6);
 	box-shadow:
