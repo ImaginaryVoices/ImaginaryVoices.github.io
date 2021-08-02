@@ -103,6 +103,12 @@ const estilillo = {
     opacity: 0.7,
     weight: 0.3
 };
+const estilillo2 = {
+    fill: false,
+    stroke: true,
+    color: 'gray',
+    weight: 0.6
+};
 // //***** Cuadro de informacion personalizada
 var info   = L.control({position: 'bottomleft'});
 info.onAdd = function (map) {
@@ -264,7 +270,7 @@ hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Capa Estatal
 var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: estilillo,
+	vectorTileLayerStyles: estilillo2,
     interactive: false,
 });
 
