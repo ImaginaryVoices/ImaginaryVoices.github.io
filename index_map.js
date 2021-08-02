@@ -65,7 +65,6 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 })
 .addTo(map);
 
-
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
 var getColorA = function(rrr) {
@@ -194,7 +193,6 @@ legendA.onAdd = function (map) {
 //     return div;
 // };
 
-
 //<!------ Protobuf Tiles (.pbf) ------>
 //***** Estils generales
 const estilillo = {
@@ -208,8 +206,8 @@ const estilillo = {
 const estilillo_states = {
     fill: false,
     stroke: true,
-    color: '#171717',
-    weight: 0.6
+    color: 'black',
+    weight: 0.3
 };
 //***** Estilos
 function vectorTileStylingF(funco, varnombre){
