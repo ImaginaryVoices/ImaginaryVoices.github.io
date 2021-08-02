@@ -208,7 +208,7 @@ const estilillo = {
 const estilillo_states = {
     fill: false,
     stroke: true,
-    color: 'rgb(0,0,0)',
+    color: '#171717',
     weight: 0.6
 };
 //***** Estilos
