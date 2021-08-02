@@ -183,11 +183,11 @@ legendA.onAdd = function (map) {
         grades = [-0.70, -0.60, -0.50, -0.40, 0, 0.40, 0.50, 0.60, 0.70],
         labels = ['70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutro', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %'];
         div.innerHTML += '<b>Probabilidad</b><br>'
-    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.8)'+' "></i>' + 'Más seco<br>';
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.6)'+' "></i>' + 'Más seco<br>';
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
     }
-    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.8)'+' "></i>' + 'Más húmedo<br>';
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.5)'+' "></i>' + 'Más húmedo<br>';
     return div;
 };
 // legendB.onAdd = function (map) {
@@ -296,9 +296,9 @@ var baseMaps = [
         groupName : "Precipitación",
         expanded  : true,
         layers    : {
-            "Julio a Noviembre" : pbfUn,
-            "Jul"       : pbfDeux,
-            "Ago - Sep" : pbfTrois,
+            "Julio a noviembre"   : pbfUn,
+            "Julio"               : pbfDeux,
+            "Agosto a septiembre" : pbfTrois,
             "Octubre a noviembre" : pbfQuatre
         }
     }
