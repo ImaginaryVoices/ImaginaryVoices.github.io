@@ -262,7 +262,11 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
-
+//***** Capa Estatal
+var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: estilillo,
+    interactive: false,
+});
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
