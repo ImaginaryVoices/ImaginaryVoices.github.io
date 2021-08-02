@@ -29,7 +29,7 @@
 }
 
 div[id^="leaflet-control-accordion-layers"] > label {
-	font-family: 'Ubuntu-Medium', 'Arial Narrow', Arial, sans-serif;
+	/* font-family: 'Ubuntu-Medium', 'Arial Narrow', Arial, sans-serif; */
 	padding: 5px 20px;
 	position: relative;
 	z-index: 20;
