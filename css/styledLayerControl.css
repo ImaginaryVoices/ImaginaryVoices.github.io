@@ -8,10 +8,10 @@
     src: url(fonts/Alegreya-Regular.ttf);
 }
 
-/* @font-face {
+@font-face {
     font-family: Ubuntu-Medium;
     src: url(fonts/Ubuntu-Medium.ttf);
-} */
+}
 
 /* @font-face {
     font-family: Ubuntu-Regular;
@@ -29,7 +29,7 @@
 }
 
 div[id^="leaflet-control-accordion-layers"] > label {
-	font-family: 'Alegreya-Regular', 'Arial Narrow', Arial, sans-serif;
+	font-family: 'Ubuntu-Medium', 'Arial Narrow', Arial, sans-serif;
 	padding: 5px 20px;
 	position: relative;
 	z-index: 20;
