@@ -209,6 +209,13 @@ const estilillo_states = {
     color: 'black',
     weight: 0.3
 };
+var estail2 = {
+    divpolest: function(zoom) {
+        return {
+            ...estilillo_states,
+        }
+    }
+}
 //***** Estilos
 function vectorTileStylingF(funco, varnombre){
     var estail = {
@@ -269,7 +276,7 @@ hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Capa Estatal
 var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: estilillo_states,
+	vectorTileLayerStyles: estail2,
     interactive: false,
 })
 .addTo(map);
