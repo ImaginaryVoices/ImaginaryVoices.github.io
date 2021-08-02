@@ -187,7 +187,7 @@ legendA.onAdd = function (map) {
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
     }
-    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.2)'+' "></i>' + '<em>Más húmedo</em><br>';
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más húmedo</em><br>';
     return div;
 };
 // legendB.onAdd = function (map) {
