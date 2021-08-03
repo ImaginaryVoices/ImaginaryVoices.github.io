@@ -50,10 +50,7 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
     zoomOffset: -1
 })
 .addTo(map);
-//*****  Más enfrente (Tesela con fronteras estatales)
-map.createPane('states');
-map.getPane('states').style.zIndex = 700;
-map.getPane('states').style.pointerEvents = 'none';
+
 
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
@@ -184,7 +181,7 @@ legendA.onAdd = function (map) {
 // };
 
 //<!------ Protobuf Tiles (.pbf) ------>
-//***** Estils generales
+//***** Estilos
 const estilillo = {
     fill: true,
     fillOpacity: 1.0,
@@ -207,7 +204,6 @@ var estail2 = {
         }
     }
 }
-//***** Estilos
 function vectorTileStylingF(funco, varnombre){
     var estail = {
         pce_2021_07_11_ppt: function(properties, zoom) {
@@ -265,9 +261,12 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
-//***** Capa Estatal
+//*****  Teselas con fronteras estatales
+map.createPane('states');
+map.getPane('states').style.zIndex = 600;
+map.getPane('states').style.pointerEvents = 'none';
 var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: estail2,
+	vectorTileLayerStyles: estilillo_states,
     interactive: false,
     pane: 'states'
 })
@@ -281,25 +280,6 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 //     'Precipitación: 2021 Oct-Nov': pbfQuatre
 // };
 // L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
-if (window.screen.width > 768) { // Que no aparezca en celulares
-    info.addTo(map);
-}
-legendA.addTo(map);
-// currentInfo   = info;
-// currentLegend = legendA;
-// map.on('baselayerchange', function (eventLayer) {
-//     if (eventLayer.name === 'Precipitación Jun-Oct') {
-//         map.removeControl(currentLegend);
-//         currentLegend = legendA;
-//         legendA.addTo(map);
-//     }
-//     else if  (eventLayer.name === 'Precipitación Jun') {
-//         map.removeControl(currentLegend);
-//         currentLegend = legendA;
-//         legendA.addTo(map);
-//     }
-// })
-map.addLayer(pbfUn);
 var baseMaps = [
     { 
         groupName : "Precipitación",
@@ -320,6 +300,22 @@ var layeroptions = {
 var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
 map.addControl(control);
 
+//<!------ Cambio de leyenda ------>
+// currentInfo   = info;
+// currentLegend = legendA;
+// map.on('baselayerchange', function (eventLayer) {
+//     if (eventLayer.name === 'Precipitación Jun-Oct') {
+//         map.removeControl(currentLegend);
+//         currentLegend = legendA;
+//         legendA.addTo(map);
+//     }
+//     else if  (eventLayer.name === 'Precipitación Jun') {
+//         map.removeControl(currentLegend);
+//         currentLegend = legendA;
+//         legendA.addTo(map);
+//     }
+// })
+
 //<!------ Logo Banner ------>
 var credctrl = L.controlCredits({
     image: "css/images/climathics_banner_nano.png",
@@ -330,3 +326,10 @@ var credctrl = L.controlCredits({
 if (window.screen.width > 768) { // Que no aparezca en celulares
     credctrl.addTo(map);
 }
+
+//<!------ Detalles finales ------>
+if (window.screen.width > 768) { // Que no aparezca info en celulares
+    info.addTo(map);
+}
+legendA.addTo(map);
+map.addLayer(pbfUn);
