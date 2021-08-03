@@ -269,7 +269,7 @@ popop(pbfQuatre, nombredearch+ivo);
 var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: estail2,
     interactive: false,
-    pane: states
+    pane: 'states'
 })
 .addTo(map);
 
