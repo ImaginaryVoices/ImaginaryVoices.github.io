@@ -51,17 +51,9 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 })
 .addTo(map);
 //*****  Más enfrente (Tesela con fronteras estatales)
-map.createPane('labelsf');
-map.getPane('labelsf').style.zIndex = 1600;
-map.getPane('labelsf').style.pointerEvents = 'none';
-var positronLabels = L.tileLayer('data/divpolest/{z}/{x}/{y}.pbf', {
-    pane: 'labelsf',
-    tileSize: 5120,
-    zoomControl:true,
-    maxZoom:10,
-    minZoom:5,
-})
-.addTo(map);
+map.createPane('states');
+map.getPane('states').style.zIndex = 700;
+map.getPane('states').style.pointerEvents = 'none';
 
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
@@ -274,11 +266,12 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Capa Estatal
-// var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-// 	vectorTileLayerStyles: estail2,
-//     interactive: false,
-// })
-// .addTo(map);
+var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: estail2,
+    interactive: false,
+    pane: states
+})
+.addTo(map);
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
