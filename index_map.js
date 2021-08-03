@@ -207,8 +207,8 @@ const estilillo_states = {
     fill: false,
     stroke: true,
     color: 'black',
-    opacity: 0.4,
-    weight: 0.6
+    opacity: 0.2,
+    weight: 1.0
 };
 var estail2 = {
     divpolest: function(zoom) {
