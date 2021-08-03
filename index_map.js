@@ -54,14 +54,12 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 map.createPane('labelsf');
 map.getPane('labelsf').style.zIndex = 1600;
 map.getPane('labelsf').style.pointerEvents = 'none';
-var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
-    id: 'climathics/ckrnuddhn0thc18p0s58igpot',
+var positronLabels = L.tileLayer('data/divpolest/{z}/{x}/{y}.pbf', {
     pane: 'labelsf',
     tileSize: 5120,
     zoomControl:true,
     maxZoom:10,
     minZoom:5,
-    zoomOffset: +1
 })
 .addTo(map);
 
@@ -276,11 +274,11 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Capa Estatal
-var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: estail2,
-    interactive: false,
-})
-.addTo(map);
+// var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: estail2,
+//     interactive: false,
+// })
+// .addTo(map);
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
