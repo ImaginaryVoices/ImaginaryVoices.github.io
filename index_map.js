@@ -188,21 +188,14 @@ const estilillo = {
     opacity: 0.7,
     weight: 0.3
 };
-const estilillo_states = {
-    fill: false,
-    stroke: true,
-    color: 'gray',
-    opacity: 0.8,
-    weight: 3.0
-};
-var estail2 = {
+var estail_states = {
     divpolest: function(zoom) {
         return {
             fill: false,
             stroke: true,
-            color: 'black',
-            opacity: 0.2,
-            weight: 1.0
+            color: 'gray',
+            opacity: 0.8,
+            weight: 2.0
         }
     }
 }
@@ -268,7 +261,7 @@ map.createPane('states');
 map.getPane('states').style.zIndex = 600;
 map.getPane('states').style.pointerEvents = 'none';
 var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: estail2,
+	vectorTileLayerStyles: estail_states,
     interactive: false,
     pane: 'states'
 })
