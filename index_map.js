@@ -195,7 +195,7 @@ var estail_states = {
             stroke: true,
             color: 'gray',
             opacity: 0.8,
-            weight: 2.0
+            weight: 1.0
         }
     }
 }
