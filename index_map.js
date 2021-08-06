@@ -156,10 +156,8 @@ var legendA = L.control({position: 'bottomright'}),
     legendB = L.control({position: 'bottomright'});
 legendA.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        // grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
-        // labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutro', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
-        grades = [-0.70, -0.60, -0.50, -0.40, 0, 0.40, 0.50, 0.60, 0.70],
-        labels = ['70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutro', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %'];
+        grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
+        labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutro', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
         div.innerHTML += '<b>Probabilidad</b><br>'
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más seco</em><br>';
     for (var i = 0; i < grades.length; i++) {
@@ -193,9 +191,9 @@ const estilillo = {
 const estilillo_states = {
     fill: false,
     stroke: true,
-    color: 'black',
-    opacity: 0.2,
-    weight: 1.0
+    color: 'gray',
+    opacity: 0.8,
+    weight: 2.0
 };
 var estail2 = {
     divpolest: function(zoom) {
