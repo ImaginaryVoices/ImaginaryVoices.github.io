@@ -4,11 +4,11 @@
 "version": "2",
 "minzoom": "5",
 "maxzoom": "10",
-"center": "-92.636719,18.145772,10",
-"bounds": "-118.365000,14.535000,-86.711000,32.719000",
+"center": "-103.886719,22.431245,10",
+"bounds": "-118.408000,14.532000,-86.710000,32.719000",
 "type": "overlay",
 "format": "pbf",
 "generator": "tippecanoe v1.36.0",
 "generator_options": "tippecanoe -z10 -Z5 -e ./divpolest divpolest.geojson",
-"json": "{\"vector_layers\": [ { \"id\": \"divpolest\", \"description\": \"\", \"minzoom\": 5, \"maxzoom\": 10, \"fields\": {} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"divpolest\",\"count\": 32,\"geometry\": \"Polygon\",\"attributeCount\": 0,\"attributes\": []}]}}"
+"json": "{\"vector_layers\": [ { \"id\": \"divpolest\", \"description\": \"\", \"minzoom\": 5, \"maxzoom\": 10, \"fields\": {} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"divpolest\",\"count\": 32,\"geometry\": \"LineString\",\"attributeCount\": 0,\"attributes\": []}]}}"
 }
