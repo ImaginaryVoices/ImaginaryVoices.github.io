@@ -368,7 +368,7 @@ currentLegend = legendA;
 //         legendB.addTo(map);
 //     }
 // })
-map.on('baselayerchange', function (baseLayer) {
+map.on('baselayerchange', function (group) {
     if (group.groupName === 'Precipitación') {
         map.removeControl(currentLegend);
         currentLegend = legendA;
