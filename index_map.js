@@ -99,10 +99,10 @@ infoB.onAdd = function (map) {
     return this._div;
 };
 infoB.update = function (props, varnombre) {
-    this._div.innerHTML = '<h4>Probabilidad de categoría de rendimiento</h4>' +
+    this._div.innerHTML = '<h4>Rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
         (props[varnombre] == null ? 'Null': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
-        (props[varnombre] <= 0 ? ' de ser mayor': ' de ser menor')) : 'Selecciona un municipio');                
+        (props[varnombre] <= 0 ? ' mayor': ' menor')) : 'Selecciona un municipio');                
 };
 
 //***** Mouse hover function
@@ -180,7 +180,7 @@ legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
         labels = ['30 —40 %', '20 — 30 %', '10 — 20 %', '0 — 10 %', '0 — -10 %', '-10 — -20 %', '-20 — -30 %', '-30 — -40 %'];
-        div.innerHTML += '<b>Probabilidad</b><br>'
+        div.innerHTML += '<b>Rendimiento</b><br>'
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Mayor rendimiento</em><br>';
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorB(grades[i]) + '" ></i>' + labels[i] + '<br>';
