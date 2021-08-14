@@ -223,7 +223,7 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 })
 .addTo(map);
 //***** Variable A
-const nombredearch = 'pce_2021_08_12_ppt';
+var nombredearch = 'pce_2021_08_12_ppt';
 //***** Capa 1
 var ivo = '_ago-dic';
 var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -270,7 +270,7 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Variable B
-const nombredearch = 'pce_2021_08_12_ppt';
+var nombredearch = 'pce_2021_08_12_ppt';
 //***** Capa 1 B
 var ivo = '_ago-dic';
 var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
