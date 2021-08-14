@@ -82,17 +82,24 @@ var getColorB = function(rrr) {
 };
 
 //***** Cuadro de informacion personalizada
-var info   = L.control({position: 'bottomleft'});
-info.onAdd = function (map) {
+var infoA  = L.control({position: 'bottomleft'}),
+    infoB  = L.control({position: 'bottomleft'});
+infoA.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
     return this._div;
 };
-info.update = function (props, varnombre) {
+infoA.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-        (props[varnombre] === 0 ? 'Neutro': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+        (props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
         (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
+};
+infoB.update = function (props, varnombre) {
+    this._div.innerHTML = '<h4>Probabilidad de categoría de rendimiento</h4>' +
+        (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
+        (props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+        (props[varnombre] < 0 ? ' de ser mayor': ' de ser menor')) : 'Selecciona un municipio');                
 };
 
 //***** Mouse hover function
@@ -118,12 +125,12 @@ function hoveruber(capalayer, funco, varnombre){
             weight: 2
         };
         capalayer.setFeatureStyle(properties.CVEGEO, style);
-        info.update(properties, varnombre);
+        infoA.update(properties, varnombre);
     })
     capalayer.on('mouseout', function(e) {
         var properties = e.layer.properties;
         clearHighlight(capalayer);
-        info.update();
+        infoA.update();
     })
 };
 //***** Pop-up
@@ -141,7 +148,7 @@ function popop(capalayer, varnombre){
                 </tr>\
                 <tr>\
                     <th scope="row">Probabilidad</th>\
-                    <td>' + (properties[varnombre] !== null ? (properties[varnombre] == 0 ? 'Neutro':
+                    <td>' + (properties[varnombre] !== null ? (properties[varnombre] == 0 ? 'Neutral':
                         Math.abs(properties[varnombre]*100.0).toFixed(2) + ' %') : '') + '</td>\
                 </tr>\
             </table>';
@@ -355,7 +362,7 @@ var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
 map.addControl(control);
 
 //<!------ Cambio de leyenda ------>
-currentInfo   = info;
+currentInfo   = infoA;
 currentLegend = legendA;
 // map.on('baselayerchange', function (eventLayer) {
 //     if (eventLayer.name === 'Agosto a diciembre') {
@@ -373,12 +380,14 @@ map.on('layeradd', function (eventLayer) {
     if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
         eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
         map.removeControl(currentLegend);
+        currentInfo   = infoA;
         currentLegend = legendA;
         legendA.addTo(map);
     }
     else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
         eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
         map.removeControl(currentLegend);
+        currentInfo   = infoB;
         currentLegend = legendB;
         legendB.addTo(map);
     }
@@ -397,7 +406,7 @@ if (window.screen.width > 768) { // Que no aparezca en celulares
 
 //<!------ Detalles finales ------>
 if (window.screen.width > 768) { // Que no aparezca info en celulares
-    info.addTo(map);
+    infoA.addTo(map);
 }
 legendA.addTo(map);
 map.addLayer(pbfUn);
