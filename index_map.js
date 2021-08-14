@@ -68,14 +68,14 @@ var getColorA = function(rrr) {
                            'rgb(001,133,133)';
 };
 var getColorB = function(rrr) {
-    return  rrr <  -0.30 ? 'rgb(145,000,255)':
-            rrr <  -0.20 ? 'rgb(177,073,255)':
-            rrr <  -0.10 ? 'rgb(208,146,255)':
-            rrr <   0.00 ? 'rgb(240,219,255)':
-            rrr <=  0.10 ? 'rgb(251,248,222)':
-            rrr <=  0.20 ? 'rgb(242,233,154)':
-            rrr <=  0.30 ? 'rgb(233,218,086)':
-            rrr <=  0.40 ? 'rgb(223,203,018)':
+    return  rrr <  -0.30 ? 'rgb(123,012,148)':
+            rrr <  -0.20 ? 'rgb(164,116,182)':
+            rrr <  -0.10 ? 'rgb(202,177,213)':
+            rrr <   0.00 ? 'rgb(232,224,236)':
+            rrr <=  0.10 ? 'rgb(224,239,223)':
+            rrr <=  0.20 ? 'rgb(178,223,173)':
+            rrr <=  0.30 ? 'rgb(095,184,155)':
+            rrr <=  0.40 ? 'rgb(000,136,055)':
                            'rgba(001,133,133,0)';
 };
 
@@ -101,7 +101,7 @@ infoB.onAdd = function (map) {
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-        (props[varnombre] == null ? 'Sin producción': Mprops[varnombre]*100.0.toFixed(2) + ' %' +
+        (props[varnombre] == null ? 'Sin producción': props[varnombre]*100.0.toFixed(2) + ' %' +
         (props[varnombre] <= 0 ? ' mayor': ' menor')) : 'Selecciona un municipio');                
 };
 
