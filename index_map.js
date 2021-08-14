@@ -273,7 +273,7 @@ popop(pbfQuatre, nombredearch+ivo);
 var nombredearch = 'pce_2021_08_12_ppt';
 //***** Capa 1 B
 var ivo = '_ago-dic';
-var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -281,41 +281,41 @@ var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     }
 })
 .addTo(map);
-hoveruber(pbfUn, getColorA, nombredearch+ivo);
-popop(pbfUn, nombredearch+ivo);
+hoveruber(pbfUnB, getColorA, nombredearch+ivo);
+popop(pbfUnB, nombredearch+ivo);
 //***** Capa 2 B
 var ivo = '_ago';
-var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfDeux, getColorA, nombredearch+ivo);
-popop(pbfDeux, nombredearch+ivo);
+hoveruber(pbfDeuxB, getColorA, nombredearch+ivo);
+popop(pbfDeuxB, nombredearch+ivo);
 //***** Capa 3 B
 var ivo = '_sep-oct';
-var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfTrois, getColorA, nombredearch+ivo);
-popop(pbfTrois, nombredearch+ivo);
+hoveruber(pbfTroisB, getColorA, nombredearch+ivo);
+popop(pbfTroisB, nombredearch+ivo);
 //***** Capa 4 B
 var ivo = '_nov-dic';
-var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
-popop(pbfQuatre, nombredearch+ivo);
+hoveruber(pbfQuatreB, getColorA, nombredearch+ivo);
+popop(pbfQuatreB, nombredearch+ivo);
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
@@ -338,10 +338,10 @@ var baseMaps = [
     },{ 
         groupName : "Maíz",
         layers    : {
-            "Agosto a diciembre"    : pbfUn,
-            "Agosto"                : pbfDeux,
-            "Septiembre y octubre"  : pbfTrois,
-            "Noviembre y diciembre" : pbfQuatre
+            "Agosto a diciembre"    : pbfUnB,
+            "Agosto"                : pbfDeuxB,
+            "Septiembre y octubre"  : pbfTroisB,
+            "Noviembre y diciembre" : pbfQuatreB
         }
     }
 ];
