@@ -82,22 +82,24 @@ var getColorB = function(rrr) {
 };
 
 //***** Cuadro de informacion personalizada
-var infoA  = L.control({position: 'bottomleft'});
+var infoA  = L.control({position: 'bottomleft'}),
+    infoB  = L.control({position: 'bottomleft'});
 infoA.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
     return this._div;
 };
-
-infoB = JSON.parse(JSON.stringify(infoA));
-
 infoA.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
         (props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
         (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
 };
-
+infoB.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
