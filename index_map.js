@@ -151,8 +151,8 @@ function popop(capalayer, varnombre, tipo){
                 </tr>\
                 <tr>\
                     <th scope="row">Probabilidad</th>\
-                    <td>' + (properties[varnombre] !== null ? (properties[varnombre] == 0 ? 'Neutral':
-                        Math.abs(properties[varnombre]*100.0).toFixed(2) + ' %') : '') + '</td>\
+                    <td>' + (properties[varnombre] !== null ? (properties[varnombre] == 0 ? 'Neutral': 
+                    Math.abs(properties[varnombre]*100.0).toFixed(2) + ' %') : '') + '</td>\
                 </tr>\
             </table>';
         }
@@ -168,7 +168,8 @@ function popop(capalayer, varnombre, tipo){
                     </tr>\
                     <tr>\
                         <th scope="row">Rendimiento</th>\
-                        <td>' + (properties[varnombre] == null ? 'N/A': properties[varnombre]*100.0.toFixed(2) + ' %') + '</td>\
+                        <td>' + (properties[varnombre] == null ? 'N/A': 
+                        (properties[varnombre] >= 0 ? '+ ': '') + properties[varnombre]*100.0.toFixed(2) + ' %') + '</td>\
                     </tr>\
                 </table>';
             }
@@ -196,7 +197,7 @@ legendA.onAdd = function (map) {
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
-        labels = ['30 —40 %', '20 — 30 %', '10 — 20 %', '0 — 10 %', '0 — -10 %', '-10 — -20 %', '-20 — -30 %', '-30 — -40 %'];
+        labels = ['>30 %', '>20 %', '>10 %', '>0 %', '<-10 %', '<-20 %', '<-30 %', '<-40 %'];
         div.innerHTML += '<b>Cambio en rendimiento</b><br>'
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Mayor</em><br>';
     for (var i = 0; i < grades.length; i++) {
@@ -309,7 +310,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     }
 });
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
-popop(pbfUnB, nombredearch+ivo, 'AB');
+popop(pbfUnB, nombredearch+ivo, 'B');
 //***** Capa 2_B
 var ivo = '_t_temporal';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
