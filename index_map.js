@@ -89,9 +89,14 @@ infoA.onAdd = function (map) {
 };
 infoA.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
-        (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-        (props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
-        (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
+        (
+            props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
+            (
+                props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+                (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')
+            )
+            : 'Selecciona un municipio'
+        );                
 };
 infoB.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info');
@@ -100,9 +105,14 @@ infoB.onAdd = function (map) {
 };
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
-        (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-        (props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+ ' : '') +
-        props[varnombre]*100.0.toFixed(2) + ' %') : 'Selecciona un municipio');                
+        (
+            props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
+            (
+                props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+ ' : '') +
+                props[varnombre]*100.0.toFixed(2) + ' %'
+            )
+            : 'Selecciona un municipio'
+        );                
 };
 //***** Mouse hover function
 var highlight;
@@ -186,7 +196,7 @@ legendA.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
         labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
-        div.innerHTML += '<b>Probabilidad</b><br>'
+    div.innerHTML += '<b>Probabilidad</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más seco</em><br>';
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
@@ -198,7 +208,7 @@ legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
         labels = ['> 30 %', '> 20 %', '> 10 %', '> 0 %', '< -0 %', '< -10 %', '< -20 %', '< -30 %'];
-        div.innerHTML += '<b>Cambio en rendimiento</b><br>'
+    div.innerHTML += '<b>Cambio en rendimiento</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorB(grades[i]) + '" ></i>' + labels[i] + '<br>';
