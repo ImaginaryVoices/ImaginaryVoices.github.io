@@ -168,7 +168,7 @@ function popop(capalayer, varnombre, tipo){
                     </tr>\
                     <tr>\
                         <th scope="row">Rendimiento</th>\
-                        <td>' + (properties[varnombre] == null ? 'N/A': 
+                        <td>' + (properties[varnombre] == null ? 'Sin producción': 
                         (properties[varnombre] >= 0 ? '+ ': '') + properties[varnombre]*100.0.toFixed(2) + ' %') + '</td>\
                     </tr>\
                 </table>';
