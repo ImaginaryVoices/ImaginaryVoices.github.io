@@ -168,13 +168,14 @@ legendA.onAdd = function (map) {
 };
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
-        labels = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55];
+        grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
+        labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
+        div.innerHTML += '<b>Probabilidad</b><br>'
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más seco</em><br>';
     for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
-            labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
+        div.innerHTML += '<i style= "background:' + getColorB(grades[i]) + '" ></i>' + labels[i] + '<br>';
     }
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más húmedo</em><br>';
     return div;
 };
 
