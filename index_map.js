@@ -283,7 +283,7 @@ popop(pbfQuatre, nombredearch+ivo);
 //***** Variable B
 var nombredearch = 'pce_2021_pv_mai';
 //***** Capa 1_B
-var ivo = '_riego';
+var ivo = '_riegox';
 var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -294,7 +294,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo);
 //***** Capa 2_B
-var ivo = '_temporal';
+var ivo = '_temporalx';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -362,8 +362,7 @@ map.on('layeradd', function (eventLayer) {
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
-        eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
+    else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB) {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
