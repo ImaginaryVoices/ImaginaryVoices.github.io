@@ -71,6 +71,7 @@ var getColorB = function(rrr) {
             rrr <  -0.20 ? 'rgb(164,116,182)':
             rrr <  -0.10 ? 'rgb(202,177,213)':
             rrr <   0.00 ? 'rgb(232,224,236)':
+            rrr ==  0.00 ? 'rgba(001,133,133,0)':
             rrr <=  0.10 ? 'rgb(234,250,231)':
             rrr <=  0.20 ? 'rgb(191,240,183)':
             rrr <=  0.30 ? 'rgb(148,230,134)':
@@ -167,7 +168,7 @@ function popop(capalayer, varnombre, tipo){
                     </tr>\
                     <tr>\
                         <th scope="row">Rendimiento</th>\
-                        <td>' + (properties[varnombre] !== null ? properties[varnombre]*100.0.toFixed(2) + ' %' : 'N/A') + '</td>\
+                        <td>' + (properties[varnombre] == null ? 'N/A': properties[varnombre]*100.0.toFixed(2) + ' %') + '</td>\
                     </tr>\
                 </table>';
             }
