@@ -51,7 +51,6 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 })
 .addTo(map);
 
-
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
 var getColorA = function(rrr) {
@@ -94,7 +93,7 @@ infoA.update = function (props, varnombre) {
         (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
 };
 infoB.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this._div = L.DomUtil.create('div', 'info');
     this.update();
     return this._div;
 };
@@ -102,9 +101,8 @@ infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
         (props[varnombre] == null ? 'Sin producción': props[varnombre]*100.0.toFixed(2) + ' %' +
-        (props[varnombre] <= 0 ? ' mayor': ' menor')) : 'Selecciona un municipio');                
+        (props[varnombre] >= 0 ? ' mayor': ' menor')) : 'Selecciona un municipio');                
 };
-
 //***** Mouse hover function
 var highlight;
 var clearHighlight = function(capalayer) {
@@ -137,9 +135,10 @@ function hoveruber(capalayer, funco, varnombre){
     })
 };
 //***** Pop-up
-function popop(capalayer, varnombre){
+function popop(capalayer, varnombre, tipo){
     capalayer.on('click', function(e) {
         var properties = e.layer.properties;
+        if (tipo === 'A'){
         var popupContenti = '<table>\
                 <tr>\
                     <th scope="row">Estado</th>\
@@ -155,6 +154,23 @@ function popop(capalayer, varnombre){
                         Math.abs(properties[varnombre]*100.0).toFixed(2) + ' %') : '') + '</td>\
                 </tr>\
             </table>';
+        }
+        else if (tipo === 'A'){
+            var popupContenti = '<table>\
+                    <tr>\
+                        <th scope="row">Estado</th>\
+                        <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Municipio</th>\
+                        <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Rendimiento</th>\
+                        <td>' + (properties[varnombre] !== null ? properties[varnombre]*100.0.toFixed(2) + ' %' : 'N/A') + '</td>\
+                    </tr>\
+                </table>';
+            }
         L.popup()
             .setContent(popupContenti)
             .setLatLng(e.latlng)
