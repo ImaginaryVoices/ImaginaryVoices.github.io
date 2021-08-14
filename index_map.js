@@ -369,12 +369,12 @@ currentLegend = legendA;
 //     }
 // })
 map.on('baselayerchange', function (baseLayer) {
-    if (baseLayer.name === 'Agosto a diciembre') {
+    if (group.name === 'Precipitación') {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (baseLayer.name === 'Agosto a diciembre ') {
+    else if  (group.name === 'Maíz') {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
