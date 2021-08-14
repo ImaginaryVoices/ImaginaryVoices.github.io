@@ -55,18 +55,18 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
 var getColorA = function(rrr) {
-    return  rrr <= -0.80 ? 'rgb(166,97,26)':
-            rrr <= -0.70 ? 'rgb(182,124,54)':
-            rrr <= -0.60 ? 'rgb(198,152,82)':
-            rrr <= -0.50 ? 'rgb(215,179,110)':
+    return  rrr <= -0.60 ? 'rgb(166,97,26)':
+            rrr <= -0.55 ? 'rgb(182,124,54)':
+            rrr <= -0.50 ? 'rgb(198,152,82)':
+            rrr <= -0.45 ? 'rgb(215,179,110)':
             rrr <= -0.40 ? 'rgb(230,209,159)':
 //            rrr <= -0.32 ? 'rgb(255,255,255)':
 //            rrr <= 0.32 ? 'rgb(255,255,255)':
             rrr <  0.40 ? 'rgb(255,255,255)':
-            rrr <  0.50 ? 'rgb(202,231,226)':
-            rrr <  0.60 ? 'rgb(152,213,204)':
-            rrr <  0.70 ? 'rgb(113,197,184)':
-            rrr <  0.80 ? 'rgb(85,181,166)':
+            rrr <  0.45 ? 'rgb(202,231,226)':
+            rrr <  0.55 ? 'rgb(152,213,204)':
+            rrr <  0.60 ? 'rgb(113,197,184)':
+            rrr <  0.65 ? 'rgb(85,181,166)':
             rrr <= 1.00 ? 'rgb(1,133,133)':
                         'rgb(213,231,37)';
 };
