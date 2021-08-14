@@ -71,13 +71,13 @@ var getColorA = function(rrr) {
                         'rgb(213,231,37)';
 };
 var getColorB = function(rrr) {
-    return  rrr >= 30000 ? '#006837':
-		    rrr >= 24000 ? '#188645':
-			rrr >= 20000 ? '#31a354':
-			rrr >= 16000 ? '#54b566':
-            rrr >= 12000 ? '#78c679':
-            rrr >= 80000 ? '#9dd689':
-            rrr >= 40000 ? '#c2e699':
+    return  rrr >= 0.300 ? '#006837':
+		    rrr >= 0.240 ? '#188645':
+			rrr >= 0.200 ? '#31a354':
+			rrr >= 0.160 ? '#54b566':
+            rrr >= 0.120 ? '#78c679':
+            rrr >= 0.800 ? '#9dd689':
+            rrr >= 0.400 ? '#c2e699':
                          '#e1f3b3';
 };
 
@@ -336,10 +336,10 @@ var baseMaps = [
     },{ 
         groupName : "Maíz",
         layers    : {
-            "Agosto a diciembre"    : pbfUnB,
-            "Agosto"                : pbfDeuxB,
-            "Septiembre y octubre"  : pbfTroisB,
-            "Noviembre y diciembre" : pbfQuatreB
+            "Agosto a diciembre "    : pbfUnB,
+            "Agosto "                : pbfDeuxB,
+            "Septiembre y octubre "  : pbfTroisB,
+            "Noviembre y diciembre " : pbfQuatreB
         }
     }
 ];
@@ -357,12 +357,12 @@ map.addControl(control);
 currentInfo   = info;
 currentLegend = legendA;
 map.on('baselayerchange', function (eventLayer) {
-    if (eventLayer.groupName === 'Precipitación') {
+    if (eventLayer.name === 'Agosto a diciembre') {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.groupName === 'Maíz') {
+    else if  (eventLayer.name === 'Agosto a diciembre ') {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
