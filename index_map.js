@@ -65,7 +65,6 @@ var getColorA = function(rrr) {
             rrr <   0.50 ? 'rgb(152,213,204)':
             rrr <   0.55 ? 'rgb(113,197,184)':
             rrr <   0.60 ? 'rgb(085,181,166)':
-            // rrr <   1.00 ? 'rgb(001,133,133)':
                            'rgb(001,133,133)';
 };
 var getColorB = function(rrr) {
@@ -73,12 +72,11 @@ var getColorB = function(rrr) {
             rrr <= -0.20 ? 'rgb(177,073,255)':
             rrr <= -0.10 ? 'rgb(208,146,255)':
             rrr <=  0.00 ? 'rgb(240,219,255)':
-            rrr <   0.10 ? 'rgb(251,238,222)':
-            rrr <   0.20 ? 'rgb(242,202,154)':
-            rrr <   0.30 ? 'rgb(233,167,086)':
+            rrr <   0.10 ? 'rgb(251,248,222)':
+            rrr <   0.20 ? 'rgb(242,233,154)':
+            rrr <   0.30 ? 'rgb(233,218,086)':
             rrr <   0.40 ? 'rgb(223,131,019)':
-            rrr <   1.00 ? 'rgb(001,133,133)':
-                           'rgb(213,231,037)';
+                           'rgb(001,133,133)';
 };
 
 //***** Cuadro de informacion personalizada
