@@ -125,12 +125,12 @@ function hoveruber(capalayer, funco, varnombre){
             weight: 2
         };
         capalayer.setFeatureStyle(properties.CVEGEO, style);
-        infoA.update(properties, varnombre);
+        currentInfo.update(properties, varnombre);
     })
     capalayer.on('mouseout', function(e) {
         var properties = e.layer.properties;
         clearHighlight(capalayer);
-        infoA.update();
+        currentInfo.update();
     })
 };
 //***** Pop-up
@@ -362,7 +362,6 @@ var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
 map.addControl(control);
 
 //<!------ Cambio de leyenda ------>
-currentInfo   = infoA;
 currentLegend = legendA;
 // map.on('baselayerchange', function (eventLayer) {
 //     if (eventLayer.name === 'Agosto a diciembre') {
@@ -380,18 +379,36 @@ map.on('layeradd', function (eventLayer) {
     if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
         eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
         map.removeControl(currentLegend);
-        currentInfo   = infoA;
         currentLegend = legendA;
         legendA.addTo(map);
     }
     else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
         eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
         map.removeControl(currentLegend);
-        currentInfo   = infoB;
         currentLegend = legendB;
         legendB.addTo(map);
     }
 })
+
+//<!------ Cambio de cuadro de información ------>
+currentInfo = infoA;
+if (window.screen.width > 768) { // Que no aparezca info en celulares
+    infoA.addTo(map);
+    map.on('layeradd', function (eventLayer) {
+        if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
+            eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
+            map.removeControl(currentInfo);
+            currentInfo = infoA;
+            infoA.addTo(map);
+        }
+        else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
+            eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
+            map.removeControl(currentInfo);
+            currentInfo = infoB;
+            infoB.addTo(map);
+        }
+    })
+}
 
 //<!------ Logo Banner ------>
 var credctrl = L.controlCredits({
@@ -404,9 +421,5 @@ if (window.screen.width > 768) { // Que no aparezca en celulares
     credctrl.addTo(map);
 }
 
-//<!------ Detalles finales ------>
-if (window.screen.width > 768) { // Que no aparezca info en celulares
-    infoA.addTo(map);
-}
 legendA.addTo(map);
 map.addLayer(pbfUn);
