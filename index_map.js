@@ -101,8 +101,8 @@ infoB.onAdd = function (map) {
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-        (props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
-        (props[varnombre] < 0 ? ' de ser mayor': ' de ser menor')) : 'Selecciona un municipio');                
+        (props[varnombre] == null ? 'Null': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+        (props[varnombre] <= 0 ? ' de ser mayor': ' de ser menor')) : 'Selecciona un municipio');                
 };
 
 //***** Mouse hover function
