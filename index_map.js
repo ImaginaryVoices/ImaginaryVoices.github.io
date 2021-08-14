@@ -345,7 +345,7 @@ var baseMaps = [
 ];
 var layeroptions = {
     // container_width 	: "160px",
-    container_maxHeight : "300px",
+    container_maxHeight : "400px",
     // group_maxHeight     : "80px",
     exclusive       	: true,
     collapsed           : false
@@ -357,12 +357,12 @@ map.addControl(control);
 currentInfo   = info;
 currentLegend = legendA;
 map.on('baselayerchange', function (eventLayer) {
-    if (eventLayer.name === 'Agosto a diciembre') {
+    if (eventLayer.name === 'Precipitación') {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.name === 'Agosto') {
+    else if  (eventLayer.name === 'Maíz') {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
