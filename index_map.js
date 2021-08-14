@@ -346,7 +346,7 @@ var baseMaps = [
     }
 ];
 var layeroptions = {
-    container_width 	: "160px",
+    // container_width 	: "160px",
     exclusive       	: true,
     collapsed           : false
 };
