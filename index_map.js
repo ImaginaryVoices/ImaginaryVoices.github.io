@@ -370,12 +370,12 @@ currentLegend = legendA;
 //     }
 // })
 map.on('layeradd', function (eventLayer) {
-    if (eventLayer.layer === pbfUn) {
+    if (eventLayer.layer === pbfUn || pbfDeux || pbfTrois || pbfQuatre) {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.layer === pbfUnB) {
+    else if  (eventLayer.layer === pbfUnB || pbfDeuxB || pbfTroisB || pbfQuatreB) {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
