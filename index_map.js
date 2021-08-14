@@ -66,7 +66,7 @@ var getColorA = function(rrr) {
             rrr <   0.55 ? 'rgb(113,197,184)':
             rrr <   0.60 ? 'rgb(085,181,166)':
             // rrr <   1.00 ? 'rgb(001,133,133)':
-                           'rgb(213,231,037)';
+                           'rgb(001,133,133)';
 };
 var getColorB = function(rrr) {
     return  rrr <= -0.30 ? 'rgb(145,000,255)':
@@ -180,8 +180,8 @@ legendA.onAdd = function (map) {
 };
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [-0.4, -0.3, -0.2, -0.1, 0.1, 0.2, 0.3, 0.4],
-        labels = ['30 —40 %', '20 — 30 %', '10 — 20 %', '0 — 10 %', '0 — 10 %', '10 — 20 %', '20 — 30 %', '30 — 10 %'];
+        grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
+        labels = ['30 —40 %', '20 — 30 %', '10 — 20 %', '0 — 10 %', '0 — -10 %', '-10 — -20 %', '-20 — -30 %', '-30 — -40 %'];
         div.innerHTML += '<b>Probabilidad</b><br>'
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Mayor rendimiento</em><br>';
     for (var i = 0; i < grades.length; i++) {
@@ -214,7 +214,7 @@ var estail_states = {
 }
 function vectorTileStylingF(funco, varnombre){
     var estail = {
-        pce_2021_pv_mai: function(properties, zoom) {
+        pce_2021_08_12_ppt: function(properties, zoom) {
             return {
                 ...estilillo,
                 fillColor: funco(properties[varnombre])
@@ -236,7 +236,7 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 })
 .addTo(map);
 //***** Variable A
-var nombredearch = 'pce_2021_pv_mai';
+var nombredearch = 'pce_2021_08_12_ppt';
 //***** Capa 1
 var ivo = '_ago-dic';
 var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -382,8 +382,7 @@ if (window.screen.width > 768) { // Que no aparezca info en celulares
             currentInfo = infoA;
             infoA.addTo(map);
         }
-        else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
-            eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
+        else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB) {
             map.removeControl(currentInfo);
             currentInfo = infoB;
             infoB.addTo(map);
