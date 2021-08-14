@@ -214,7 +214,7 @@ var estail_states = {
 }
 function vectorTileStylingF(funco, varnombre){
     var estail = {
-        pce_2021_08_12_ppt: function(properties, zoom) {
+        pce_2021_pv_mai: function(properties, zoom) {
             return {
                 ...estilillo,
                 fillColor: funco(properties[varnombre])
@@ -236,10 +236,11 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 })
 .addTo(map);
 //***** Variable A
+var nombredearch2 = 'pce_2021_pv_mai';
 var nombredearch = 'pce_2021_08_12_ppt';
 //***** Capa 1
 var ivo = '_ago-dic';
-var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -250,7 +251,7 @@ hoveruber(pbfUn, getColorA, nombredearch+ivo);
 popop(pbfUn, nombredearch+ivo);
 //***** Capa 2
 var ivo = '_ago';
-var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -261,7 +262,7 @@ hoveruber(pbfDeux, getColorA, nombredearch+ivo);
 popop(pbfDeux, nombredearch+ivo);
 //***** Capa 3
 var ivo = '_sep-oct';
-var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -272,7 +273,7 @@ hoveruber(pbfTrois, getColorA, nombredearch+ivo);
 popop(pbfTrois, nombredearch+ivo);
 //***** Capa 4
 var ivo = '_nov-dic';
-var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
