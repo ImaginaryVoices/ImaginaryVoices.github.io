@@ -67,16 +67,26 @@ var getColorA = function(rrr) {
                            'rgb(001,133,133)';
 };
 var getColorB = function(rrr) {
-    return  rrr <  -0.30 ? 'rgb(147,060,213)':
-            rrr <  -0.20 ? 'rgb(123,012,148)':
-            rrr <  -0.10 ? 'rgb(164,116,182)':
-            rrr <   0.00 ? 'rgb(202,177,213)':
+    // return  rrr <  -0.30 ? 'rgb(147,060,213)':
+    //         rrr <  -0.20 ? 'rgb(123,012,148)':
+    //         rrr <  -0.10 ? 'rgb(164,116,182)':
+    //         rrr <   0.00 ? 'rgb(202,177,213)':
+    //         rrr ==  0.00 ? 'rgba(001,133,133,0)':
+    //         rrr <=  0.10 ? 'rgb(191,240,183)':
+    //         rrr <=  0.20 ? 'rgb(148,230,134)':
+    //         rrr <=  0.30 ? 'rgb(105,220,086)':
+    //         rrr <=  0.40 ? 'rgb(069,143,056)':
+    //                        'rgba(001,133,133,0)';
+    return  rrr <  -0.30 ? 'rgb(179,059,019)':
+            rrr <  -0.20 ? 'rgb(255,028,028)':
+            rrr <  -0.10 ? 'rgb(065,093,093)':
+            rrr <   0.00 ? 'rgb(255,158,158)':
             rrr ==  0.00 ? 'rgba(001,133,133,0)':
             rrr <=  0.10 ? 'rgb(191,240,183)':
             rrr <=  0.20 ? 'rgb(148,230,134)':
             rrr <=  0.30 ? 'rgb(105,220,086)':
             rrr <=  0.40 ? 'rgb(069,143,056)':
-                           'rgba(001,133,133,0)';
+                            'rgba(001,133,133,0)';
 };
 
 //***** Cuadro de informacion personalizada
@@ -207,7 +217,7 @@ legendA.onAdd = function (map) {
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
-        labels = ['> 30 %', '> 20 %', '> 10 %', '> 0 %', '< -0 %', '< -10 %', '< -20 %', '< -30 %'];
+        labels = ['> +30 %', '> +20 %', '> +10 %', '> +0 %', '< -0 %', '< -10 %', '< -20 %', '< -30 %'];
     div.innerHTML += '<b>Cambio en <br>rendimiento</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
     for (var i = 0; i < grades.length; i++) {
