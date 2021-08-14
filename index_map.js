@@ -76,7 +76,7 @@ var getColorB = function(rrr) {
             rrr <=  0.20 ? 'rgb(242,233,154)':
             rrr <=  0.30 ? 'rgb(233,218,086)':
             rrr <=  0.40 ? 'rgb(223,131,019)':
-                           'rgb(001,133,133)';
+                           'rgba(001,133,133,0)';
 };
 
 //***** Cuadro de informacion personalizada
@@ -294,7 +294,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo);
 //***** Capa 2_B
-var ivo = '_t_temporalx';
+var ivo = '_t_temporal';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
