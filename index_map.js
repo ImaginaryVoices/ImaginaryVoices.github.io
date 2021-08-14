@@ -370,12 +370,14 @@ currentLegend = legendA;
 //     }
 // })
 map.on('layeradd', function (eventLayer) {
-    if (eventLayer.layer === pbfUn || pbfDeux || pbfTrois || pbfQuatre) {
+    if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
+        eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.layer === pbfUnB || pbfDeuxB || pbfTroisB || pbfQuatreB) {
+    else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
+        eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
