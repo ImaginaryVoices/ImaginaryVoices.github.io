@@ -283,7 +283,7 @@ popop(pbfQuatre, nombredearch+ivo);
 //***** Variable B
 var nombredearch = 'pce_2021_pv_mai';
 //***** Capa 1_B
-var ivo = '_riegox';
+var ivo = '_r_riego';
 var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -294,7 +294,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo);
 //***** Capa 2_B
-var ivo = '_temporalx';
+var ivo = '_t_temporalx';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
