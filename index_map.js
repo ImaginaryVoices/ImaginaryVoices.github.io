@@ -155,7 +155,7 @@ function popop(capalayer, varnombre, tipo){
                 </tr>\
             </table>';
         }
-        else if (tipo === 'A'){
+        else if (tipo === 'B'){
             var popupContenti = '<table>\
                     <tr>\
                         <th scope="row">Estado</th>\
@@ -262,7 +262,7 @@ var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
     }
 });
 hoveruber(pbfUn, getColorA, nombredearch+ivo);
-popop(pbfUn, nombredearch+ivo);
+popop(pbfUn, nombredearch+ivo, 'A');
 //***** Capa 2
 var ivo = '_ago';
 var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
@@ -273,7 +273,7 @@ var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
     }
 });
 hoveruber(pbfDeux, getColorA, nombredearch+ivo);
-popop(pbfDeux, nombredearch+ivo);
+popop(pbfDeux, nombredearch+ivo, 'A');
 //***** Capa 3
 var ivo = '_sep-oct';
 var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
@@ -284,7 +284,7 @@ var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
     }
 });
 hoveruber(pbfTrois, getColorA, nombredearch+ivo);
-popop(pbfTrois, nombredearch+ivo);
+popop(pbfTrois, nombredearch+ivo, 'A');
 //***** Capa 4
 var ivo = '_nov-dic';
 var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
@@ -295,7 +295,7 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', 
     }
 });
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
-popop(pbfQuatre, nombredearch+ivo);
+popop(pbfQuatre, nombredearch+ivo, 'A');
 //***** Variable B
 var nombredearch = 'pce_2021_pv_mai';
 //***** Capa 1_B
@@ -308,7 +308,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     }
 });
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
-popop(pbfUnB, nombredearch+ivo);
+popop(pbfUnB, nombredearch+ivo, 'AB');
 //***** Capa 2_B
 var ivo = '_t_temporal';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -319,7 +319,7 @@ var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     }
 });
 hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
-popop(pbfDeuxB, nombredearch+ivo);
+popop(pbfDeuxB, nombredearch+ivo, 'B');
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
