@@ -358,6 +358,7 @@ map.addControl(control);
 //<!------ Cambio de leyenda ------>
 currentInfo   = info;
 currentLegend = legendA;
+// legendA.addTo(map);
 map.on('baselayerchange', function (eventLayer) {
     if (eventLayer.name === 'Agosto a diciembre') {
         map.removeControl(currentLegend);
@@ -386,5 +387,4 @@ if (window.screen.width > 768) { // Que no aparezca en celulares
 if (window.screen.width > 768) { // Que no aparezca info en celulares
     info.addTo(map);
 }
-legendA.addTo(map);
 map.addLayer(pbfUn);
