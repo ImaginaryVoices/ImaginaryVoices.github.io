@@ -337,7 +337,6 @@ var baseMaps = [
         }
     },{ 
         groupName : "Maíz",
-        expanded  : false,
         layers    : {
             "Agosto a diciembre"    : pbfUn,
             "Agosto"                : pbfDeux,
