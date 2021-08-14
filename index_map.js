@@ -344,9 +344,9 @@ var baseMaps = [
     }
 ];
 var layeroptions = {
-    // container_width     : "160px",
-    container_maxHeight : "400px",
-    group_maxHeight     : "400px",
+    // container_width     : "160px", //default = automatic
+    // container_maxHeight : "400px", //default = automatic
+    // group_maxHeight     : "400px", //default = 100px
     exclusive           : true,
     collapsed           : false
 };
@@ -356,13 +356,13 @@ map.addControl(control);
 //<!------ Cambio de leyenda ------>
 currentInfo   = info;
 currentLegend = legendA;
-map.on('baselayerchange', function (baseMaps) {
-    if (baseMaps.groupName === 'Precipitación') {
+map.on('baselayerchange', function (eventLayer) {
+    if (eventLayer.groupName === 'Precipitación') {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (baseMaps.groupName === 'Maíz') {
+    else if  (eventLayer.groupName === 'Maíz') {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
