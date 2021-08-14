@@ -346,7 +346,7 @@ var baseMaps = [
 var layeroptions = {
     // container_width     : "160px",
     // container_maxHeight : "400px",
-    group_maxHeight     : "160px",
+    group_maxHeight     : "200px",
     exclusive           : true,
     collapsed           : false
 };
