@@ -157,7 +157,7 @@ var legendA = L.control({position: 'bottomright'}),
 legendA.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
-        labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutro', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
+        labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
         div.innerHTML += '<b>Probabilidad</b><br>'
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más seco</em><br>';
     for (var i = 0; i < grades.length; i++) {
@@ -271,50 +271,50 @@ hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Variable B
 var nombredearch = 'pce_2021_08_12_ppt';
-//***** Capa 1 B
+//***** Capa 1_B
 var ivo = '_ago-dic';
 var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-    vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 })
 .addTo(map);
-hoveruber(pbfUnB, getColorA, nombredearch+ivo);
+hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo);
-//***** Capa 2 B
+//***** Capa 2_B
 var ivo = '_ago';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfDeuxB, getColorA, nombredearch+ivo);
+hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
 popop(pbfDeuxB, nombredearch+ivo);
-//***** Capa 3 B
+//***** Capa 3_B
 var ivo = '_sep-oct';
 var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfTroisB, getColorA, nombredearch+ivo);
+hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
 popop(pbfTroisB, nombredearch+ivo);
-//***** Capa 4 B
+//***** Capa 4_B
 var ivo = '_nov-dic';
 var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfQuatreB, getColorA, nombredearch+ivo);
+hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
 popop(pbfQuatreB, nombredearch+ivo);
 
 //<!------ Menu de capas ------>
@@ -356,18 +356,18 @@ map.addControl(control);
 //<!------ Cambio de leyenda ------>
 currentInfo   = info;
 currentLegend = legendA;
-// map.on('baselayerchange', function (eventLayer) {
-//     if (eventLayer.name === 'Precipitación Jun-Oct') {
-//         map.removeControl(currentLegend);
-//         currentLegend = legendA;
-//         legendA.addTo(map);
-//     }
-//     else if  (eventLayer.name === 'Precipitación Jun') {
-//         map.removeControl(currentLegend);
-//         currentLegend = legendA;
-//         legendA.addTo(map);
-//     }
-// })
+map.on('baselayerchange', function (eventLayer) {
+    if (eventLayer.name === 'Agosto a diciembre') {
+        map.removeControl(currentLegend);
+        currentLegend = legendA;
+        legendA.addTo(map);
+    }
+    else if  (eventLayer.name === 'Agosto') {
+        map.removeControl(currentLegend);
+        currentLegend = legendB;
+        legendB.addTo(map);
+    }
+})
 
 //<!------ Logo Banner ------>
 var credctrl = L.controlCredits({
