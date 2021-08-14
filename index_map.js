@@ -89,7 +89,7 @@ infoA.onAdd = function (map) {
     return this._div;
 };
 
-infoB = infoA;
+infoB = JSON.parse(JSON.stringify(infoA));
 
 infoA.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
