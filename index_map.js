@@ -362,10 +362,10 @@ var baseMaps = [
             "Noviembre y diciembre" : pbfQuatre
         }
     },{ 
-        groupName : "Maíz",
+        groupName : "Maíz: P-V",
         layers    : {
-            "Riego (P-V)"         : pbfUnB,
-            "Temporal (P-V)"      : pbfDeuxB,
+            "Riego (municipal)"         : pbfUnB,
+            "Temporal (municipal)"      : pbfDeuxB,
         }
     }
 ];
