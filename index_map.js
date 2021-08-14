@@ -82,14 +82,14 @@ var getColorB = function(rrr) {
 };
 
 //***** Cuadro de informacion personalizada
-var infoA  = L.control({position: 'bottomleft'}),
-    infoB  = L.control({position: 'bottomleft'});
+var infoA  = L.control({position: 'bottomleft'});
 infoA.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
     return this._div;
 };
-infoB = infoA
+
+infoB = infoA;
 
 infoA.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
