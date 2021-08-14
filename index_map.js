@@ -232,8 +232,7 @@ var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
-})
-.addTo(map);
+});
 hoveruber(pbfUn, getColorA, nombredearch+ivo);
 popop(pbfUn, nombredearch+ivo);
 //***** Capa 2
@@ -279,8 +278,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
-})
-.addTo(map);
+});
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo);
 //***** Capa 2_B
@@ -347,7 +345,7 @@ var baseMaps = [
 ];
 var layeroptions = {
     // container_width 	: "160px",
-    container_maxHeight : "200px",
+    container_maxHeight : "300px",
     // group_maxHeight     : "80px",
     exclusive       	: true,
     collapsed           : false
