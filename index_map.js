@@ -344,10 +344,10 @@ var baseMaps = [
     }
 ];
 var layeroptions = {
-    // container_width 	: "160px",
+    // container_width     : "160px",
     // container_maxHeight : "400px",
     group_maxHeight     : "160px",
-    exclusive       	: true,
+    exclusive           : true,
     collapsed           : false
 };
 var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
@@ -356,13 +356,13 @@ map.addControl(control);
 //<!------ Cambio de leyenda ------>
 currentInfo   = info;
 currentLegend = legendA;
-map.on('baselayerchange', function (eventLayer) {
-    if (eventLayer.name === 'Precipitación') {
+map.on('baselayerchange', function (baseMaps) {
+    if (baseMaps.groupName === 'Precipitación') {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.name === 'Maíz') {
+    else if  (baseMaps.groupName === 'Maíz') {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
