@@ -214,7 +214,7 @@ var estail_states = {
 }
 function vectorTileStylingF(funco, varnombre){
     var estail = {
-        pce_2021_08_12_ppt: function(properties, zoom) {
+        pce_2021_pv_mai: function(properties, zoom) {
             return {
                 ...estilillo,
                 fillColor: funco(properties[varnombre])
@@ -236,7 +236,7 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 })
 .addTo(map);
 //***** Variable A
-var nombredearch = 'pce_2021_08_12_ppt';
+var nombredearch = 'pce_2021_pv_mai';
 //***** Capa 1
 var ivo = '_ago-dic';
 var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -282,9 +282,9 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
 //***** Variable B
-var nombredearch = 'pce_2021_08_12_ppt';
+var nombredearch = 'pce_2021_pv_mai';
 //***** Capa 1_B
-var ivo = '_ago-dic';
+var ivo = '_riego';
 var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -295,7 +295,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo);
 //***** Capa 2_B
-var ivo = '_ago';
+var ivo = '_temporal';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -305,28 +305,6 @@ var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
 hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
 popop(pbfDeuxB, nombredearch+ivo);
-//***** Capa 3_B
-var ivo = '_sep-oct';
-var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
-popop(pbfTroisB, nombredearch+ivo);
-//***** Capa 4_B
-var ivo = '_nov-dic';
-var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
-popop(pbfQuatreB, nombredearch+ivo);
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
@@ -349,10 +327,8 @@ var baseMaps = [
     },{ 
         groupName : "Maíz",
         layers    : {
-            "Agosto a diciembre "    : pbfUnB,
-            "Agosto "                : pbfDeuxB,
-            "Septiembre y octubre "  : pbfTroisB,
-            "Noviembre y diciembre " : pbfQuatreB
+            "Riego"         : pbfUnB,
+            "Temporal"      : pbfDeuxB,
         }
     }
 ];
