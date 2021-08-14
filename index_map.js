@@ -64,9 +64,9 @@ var getColorA = function(rrr) {
 //            rrr <= 0.32 ? 'rgb(255,255,255)':
             rrr <  0.40 ? 'rgb(255,255,255)':
             rrr <  0.45 ? 'rgb(202,231,226)':
-            rrr <  0.55 ? 'rgb(152,213,204)':
-            rrr <  0.60 ? 'rgb(113,197,184)':
-            rrr <  0.65 ? 'rgb(85,181,166)':
+            rrr <  0.50 ? 'rgb(152,213,204)':
+            rrr <  0.55 ? 'rgb(113,197,184)':
+            rrr <  0.60 ? 'rgb(85,181,166)':
             rrr <= 1.00 ? 'rgb(1,133,133)':
                         'rgb(213,231,37)';
 };
@@ -89,12 +89,15 @@ infoA.onAdd = function (map) {
     this.update();
     return this._div;
 };
+infoB = infoA
+
 infoA.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de precipitación</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
         (props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
         (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
 };
+
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Probabilidad de categoría de rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
