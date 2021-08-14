@@ -368,7 +368,7 @@ currentLegend = legendA;
 //         legendB.addTo(map);
 //     }
 // })
-map.on('baselayerchange', function (eventLayer) {
+map.on('layeradd', function (eventLayer) {
     if (eventLayer.layer === pbfUn) {
         map.removeControl(currentLegend);
         currentLegend = legendA;
