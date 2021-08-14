@@ -180,8 +180,8 @@ legendA.onAdd = function (map) {
 };
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
-        labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
+        grades = [-0.4, -0.3, -0.2, -0.1, 0.1, 0.2, 0.3, 0.4],
+        labels = ['30 —40 %', '20 — 30 %', '10 — 20 %', '0 — 10 %', '0 — 10 %', '10 — 20 %', '20 — 30 %', '30 — 10 %'];
         div.innerHTML += '<b>Probabilidad</b><br>'
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Mayor rendimiento</em><br>';
     for (var i = 0; i < grades.length; i++) {
