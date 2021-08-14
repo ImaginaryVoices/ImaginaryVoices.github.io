@@ -201,7 +201,7 @@ var estail_states = {
 }
 function vectorTileStylingF(funco, varnombre){
     var estail = {
-        pce_2021_07_11_ppt: function(properties, zoom) {
+        pce_2021_08_12_ppt: function(properties, zoom) {
             return {
                 ...estilillo,
                 fillColor: funco(properties[varnombre])
@@ -210,9 +210,9 @@ function vectorTileStylingF(funco, varnombre){
     }
     return estail;
 };
-const nombredearch = 'pce_2021_07_11_ppt';
+const nombredearch = 'pce_2021_08_12_ppt';
 //***** Capa 1
-var ivo = '_jul-nov';
+var ivo = '_ago-dic';
 var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
@@ -224,7 +224,7 @@ var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUn, getColorA, nombredearch+ivo);
 popop(pbfUn, nombredearch+ivo);
 //***** Capa 2
-var ivo = '_jul';
+var ivo = '_ago';
 var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
@@ -235,7 +235,7 @@ var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfDeux, getColorA, nombredearch+ivo);
 popop(pbfDeux, nombredearch+ivo);
 //***** Capa 3
-var ivo = '_ago-sep';
+var ivo = '_sep-oct';
 var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
@@ -246,7 +246,7 @@ var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfTrois, getColorA, nombredearch+ivo);
 popop(pbfTrois, nombredearch+ivo);
 //***** Capa 4
-var ivo = '_oct-nov';
+var ivo = '_nov-dic';
 var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
@@ -280,10 +280,10 @@ var baseMaps = [
         groupName : "Precipitación",
         expanded  : true,
         layers    : {
-            "Julio a noviembre"   : pbfUn,
-            "Julio"               : pbfDeux,
-            "Agosto a septiembre" : pbfTrois,
-            "Octubre a noviembre" : pbfQuatre
+            "Agosto a diciembre"    : pbfUn,
+            "Agosto"                : pbfDeux,
+            "Septiembre y octubre"  : pbfTrois,
+            "Noviembre y diciembre" : pbfQuatre
         }
     }
 ];
