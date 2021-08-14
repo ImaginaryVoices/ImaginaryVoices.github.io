@@ -356,13 +356,25 @@ map.addControl(control);
 //<!------ Cambio de leyenda ------>
 currentInfo   = info;
 currentLegend = legendA;
-map.on('baselayerchange', function (eventLayer) {
-    if (eventLayer.name === 'Agosto a diciembre') {
+// map.on('baselayerchange', function (eventLayer) {
+//     if (eventLayer.name === 'Agosto a diciembre') {
+//         map.removeControl(currentLegend);
+//         currentLegend = legendA;
+//         legendA.addTo(map);
+//     }
+//     else if  (eventLayer.name === 'Agosto a diciembre ') {
+//         map.removeControl(currentLegend);
+//         currentLegend = legendB;
+//         legendB.addTo(map);
+//     }
+// })
+map.on('baselayerchange', function (baseLayer) {
+    if (baseLayer.name === 'Agosto a diciembre') {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.name === 'Agosto a diciembre ') {
+    else if  (baseLayer.name === 'Agosto a diciembre ') {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
