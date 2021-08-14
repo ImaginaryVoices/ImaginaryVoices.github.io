@@ -368,13 +368,13 @@ currentLegend = legendA;
 //         legendB.addTo(map);
 //     }
 // })
-map.on('baselayerchange', function (group) {
-    if (group.name === 'Precipitación') {
+map.on('baselayerchange', function (eventLayer) {
+    if (eventLayer.layer === pbfUn) {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (group.name === 'Maíz') {
+    else if  (eventLayer.layer === pbfUnB) {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
