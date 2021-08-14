@@ -75,8 +75,8 @@ var getColorB = function(rrr) {
             rrr <=  0.10 ? 'rgb(251,248,222)':
             rrr <=  0.20 ? 'rgb(242,233,154)':
             rrr <=  0.30 ? 'rgb(233,218,086)':
-            rrr <=  0.40 ? 'rgb(223,131,019)':
-                           'rgba(001,133,133,0)';
+            rrr <=  0.40 ? 'rgb(223,203,018)':
+                           'rgba(001,133,133,1)';
 };
 
 //***** Cuadro de informacion personalizada
@@ -99,7 +99,7 @@ infoB.onAdd = function (map) {
     return this._div;
 };
 infoB.update = function (props, varnombre) {
-    this._div.innerHTML = '<h4>Rendimiento</h4>' +
+    this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
         (props[varnombre] == null ? 'Sin producción': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
         (props[varnombre] <= 0 ? ' mayor': ' menor')) : 'Selecciona un municipio');                
@@ -180,7 +180,7 @@ legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
         labels = ['30 —40 %', '20 — 30 %', '10 — 20 %', '0 — 10 %', '0 — -10 %', '-10 — -20 %', '-20 — -30 %', '-30 — -40 %'];
-        div.innerHTML += '<b>Rendimiento</b><br>'
+        div.innerHTML += '<b>Cambio en rendimiento</b><br>'
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Mayor</em><br>';
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorB(grades[i]) + '" ></i>' + labels[i] + '<br>';
@@ -326,8 +326,8 @@ var baseMaps = [
     },{ 
         groupName : "Maíz",
         layers    : {
-            "Riego"         : pbfUnB,
-            "Temporal"      : pbfDeuxB,
+            "Riego (P-V)"         : pbfUnB,
+            "Temporal (P-V)"      : pbfDeuxB,
         }
     }
 ];
