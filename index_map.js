@@ -79,7 +79,7 @@ var getColorB = function(rrr) {
     //                        'rgba(001,133,133,0)';
     return  rrr <  -0.30 ? 'rgb(179,059,019)':
             rrr <  -0.20 ? 'rgb(255,028,028)':
-            rrr <  -0.10 ? 'rgb(065,093,093)':
+            rrr <  -0.10 ? 'rgb(255,093,093)':
             rrr <   0.00 ? 'rgb(255,158,158)':
             rrr ==  0.00 ? 'rgba(001,133,133,0)':
             rrr <=  0.10 ? 'rgb(191,240,183)':
@@ -118,7 +118,7 @@ infoB.update = function (props, varnombre) {
         (
             props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
             (
-                props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+ ' : '') +
+                props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+' : '') +
                 (props[varnombre]*100.0).toFixed(2) + ' %'
             )
             : 'Selecciona un municipio'
@@ -189,7 +189,7 @@ function popop(capalayer, varnombre, tipo){
                     <tr>\
                         <th scope="row">Rendimiento</th>\
                         <td>' + (properties[varnombre] == null ? 'Sin producción': 
-                        (properties[varnombre] >= 0 ? '+ ': '') + (properties[varnombre]*100.0).toFixed(2) + ' %') + '</td>\
+                        (properties[varnombre] >= 0 ? '+': '') + (properties[varnombre]*100.0).toFixed(2) + ' %') + '</td>\
                     </tr>\
                 </table>';
             }
