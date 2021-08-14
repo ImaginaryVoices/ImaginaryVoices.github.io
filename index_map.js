@@ -70,18 +70,18 @@ var getColorA = function(rrr) {
             rrr <= 1.00 ? 'rgb(1,133,133)':
                         'rgb(213,231,37)';
 };
-// var getColorB = function(rrr) {
-//     return  rrr >= 30000 ? '#006837':
-// 		    rrr >= 24000 ? '#188645':
-// 			rrr >= 20000 ? '#31a354':
-// 			rrr >= 16000 ? '#54b566':
-//             rrr >= 12000 ? '#78c679':
-//             rrr >= 80000 ? '#9dd689':
-//             rrr >= 40000 ? '#c2e699':
-//                          '#e1f3b3';
-// };
+var getColorB = function(rrr) {
+    return  rrr >= 30000 ? '#006837':
+		    rrr >= 24000 ? '#188645':
+			rrr >= 20000 ? '#31a354':
+			rrr >= 16000 ? '#54b566':
+            rrr >= 12000 ? '#78c679':
+            rrr >= 80000 ? '#9dd689':
+            rrr >= 40000 ? '#c2e699':
+                         '#e1f3b3';
+};
 
-// //***** Cuadro de informacion personalizada
+//***** Cuadro de informacion personalizada
 var info   = L.control({position: 'bottomleft'});
 info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -95,7 +95,7 @@ info.update = function (props, varnombre) {
         (props[varnombre] < 0 ? ' de ser más seco': ' de ser más húmedo')) : 'Selecciona un municipio');                
 };
 
-// //***** Mouse hover function
+//***** Mouse hover function
 var highlight;
 var clearHighlight = function(capalayer) {
     if (highlight) {
@@ -126,7 +126,7 @@ function hoveruber(capalayer, funco, varnombre){
         info.update();
     })
 };
-// //***** Pop-up
+//***** Pop-up
 function popop(capalayer, varnombre){
     capalayer.on('click', function(e) {
         var properties = e.layer.properties;
@@ -166,19 +166,19 @@ legendA.onAdd = function (map) {
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más húmedo</em><br>';
     return div;
 };
-// legendB.onAdd = function (map) {
-//     var div = L.DomUtil.create('div', 'info legend'),
-//         grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
-//         labels = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55];
-//     for (var i = 0; i < grades.length; i++) {
-//         div.innerHTML +=
-//             '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
-//             labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
-//     }
-//     return div;
-// };
+legendB.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55],
+        labels = [-0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55];
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style= "background:' + getColorB(grades[i]) + '" ></i>' +
+            labels[i] + ( grades[i+1] ? ' &ndash; ' + labels[i+1] + '<br>' : ' +' );
+    }
+    return div;
+};
 
-//<!------ Protobuf Tiles (.pbf) ------>
+//<!------ Protobuf Tiles (Estilos) ------>
 //***** Estilos
 const estilillo = {
     fill: true,
@@ -210,6 +210,19 @@ function vectorTileStylingF(funco, varnombre){
     }
     return estail;
 };
+
+//<!------ Protobuf Tiles (Capas) ------>
+//*****  Teselas con fronteras estatales
+map.createPane('states');
+map.getPane('states').style.zIndex = 600;
+map.getPane('states').style.pointerEvents = 'none';
+var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: estail_states,
+    interactive: false,
+    pane: 'states'
+})
+.addTo(map);
+//***** Variable A
 const nombredearch = 'pce_2021_08_12_ppt';
 //***** Capa 1
 var ivo = '_ago-dic';
@@ -256,16 +269,53 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo);
-//*****  Teselas con fronteras estatales
-map.createPane('states');
-map.getPane('states').style.zIndex = 600;
-map.getPane('states').style.pointerEvents = 'none';
-var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: estail_states,
-    interactive: false,
-    pane: 'states'
+//***** Variable B
+const nombredearch = 'pce_2021_08_12_ppt';
+//***** Capa 1 B
+var ivo = '_ago-dic';
+var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+    vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
 })
 .addTo(map);
+hoveruber(pbfUn, getColorA, nombredearch+ivo);
+popop(pbfUn, nombredearch+ivo);
+//***** Capa 2 B
+var ivo = '_ago';
+var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfDeux, getColorA, nombredearch+ivo);
+popop(pbfDeux, nombredearch+ivo);
+//***** Capa 3 B
+var ivo = '_sep-oct';
+var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfTrois, getColorA, nombredearch+ivo);
+popop(pbfTrois, nombredearch+ivo);
+//***** Capa 4 B
+var ivo = '_nov-dic';
+var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
+popop(pbfQuatre, nombredearch+ivo);
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
@@ -285,6 +335,15 @@ var baseMaps = [
             "Septiembre y octubre"  : pbfTrois,
             "Noviembre y diciembre" : pbfQuatre
         }
+    },{ 
+        groupName : "Maíz",
+        expanded  : true,
+        layers    : {
+            "Agosto a diciembre"    : pbfUn,
+            "Agosto"                : pbfDeux,
+            "Septiembre y octubre"  : pbfTrois,
+            "Noviembre y diciembre" : pbfQuatre
+        }
     }
 ];
 var layeroptions = {
@@ -296,8 +355,8 @@ var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
 map.addControl(control);
 
 //<!------ Cambio de leyenda ------>
-// currentInfo   = info;
-// currentLegend = legendA;
+currentInfo   = info;
+currentLegend = legendA;
 // map.on('baselayerchange', function (eventLayer) {
 //     if (eventLayer.name === 'Precipitación Jun-Oct') {
 //         map.removeControl(currentLegend);
