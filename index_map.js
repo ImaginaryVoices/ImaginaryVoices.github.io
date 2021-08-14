@@ -101,8 +101,8 @@ infoB.onAdd = function (map) {
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-        (props[varnombre] == null ? 'Sin producción': props[varnombre]*100.0.toFixed(2) + ' %' +
-        (props[varnombre] >= 0 ? ' mayor': ' menor')) : 'Selecciona un municipio');                
+        (props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+ ' : '') +
+        props[varnombre]*100.0.toFixed(2) + ' %') : 'Selecciona un municipio');                
 };
 //***** Mouse hover function
 var highlight;
@@ -197,13 +197,13 @@ legendA.onAdd = function (map) {
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
-        labels = ['>30 %', '>20 %', '>10 %', '>0 %', '<-10 %', '<-20 %', '<-30 %', '<-40 %'];
+        labels = ['> 30 %', '> 20 %', '> 10 %', '> 0 %', '< -0 %', '< -10 %', '< -20 %', '< -30 %'];
         div.innerHTML += '<b>Cambio en rendimiento</b><br>'
-    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Mayor</em><br>';
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML += '<i style= "background:' + getColorB(grades[i]) + '" ></i>' + labels[i] + '<br>';
     }
-    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Menor</em><br>';
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Decremento</em><br>';
     return div;
 };
 
