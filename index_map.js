@@ -345,8 +345,8 @@ var baseMaps = [
 ];
 var layeroptions = {
     // container_width     : "160px",
-    // container_maxHeight : "400px",
-    group_maxHeight     : "200px",
+    container_maxHeight : "400px",
+    group_maxHeight     : "400px",
     exclusive           : true,
     collapsed           : false
 };
