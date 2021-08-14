@@ -76,7 +76,7 @@ var getColorB = function(rrr) {
             rrr <=  0.20 ? 'rgb(242,233,154)':
             rrr <=  0.30 ? 'rgb(233,218,086)':
             rrr <=  0.40 ? 'rgb(223,203,018)':
-                           'rgba(001,133,133,1)';
+                           'rgba(001,133,133,0)';
 };
 
 //***** Cuadro de informacion personalizada
@@ -101,7 +101,7 @@ infoB.onAdd = function (map) {
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
-        (props[varnombre] == null ? 'Sin producción': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+        (props[varnombre] == null ? 'Sin producción': Mprops[varnombre]*100.0.toFixed(2) + ' %' +
         (props[varnombre] <= 0 ? ' mayor': ' menor')) : 'Selecciona un municipio');                
 };
 
