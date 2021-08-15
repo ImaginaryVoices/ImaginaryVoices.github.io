@@ -242,9 +242,9 @@ legendB.onAdd = function (map) {
     div.innerHTML += '<b>Cambio en <br>rendimiento</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
     for (var i = 0; i < grades.length; i++) {
-        div.innerHTML += '<i style= "background:' + getColorB(grades[i]) + '" ></i>' + <p align="right">labels[i]</p> + '<br>';
+        div.innerHTML += '<i salign="right" style=" background:'+getColorB(grades[i])+' "></i>' + '<br>';
     }
-    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Decremento</em><br>';
+    div.innerHTML += '<i style=" background:'+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Decremento</em><br>';
     return div;
 };
 
