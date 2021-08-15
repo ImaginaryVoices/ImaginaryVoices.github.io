@@ -20,7 +20,7 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 //<!------ Ventana con mensaje de inicio ------>
 var winOpts = L.control.window(map, {
     title:'¡Bienvenido!',
-    content:'Si te interesa obtener más detalles sobre este mapa interactivo, revisa el menú de información de la izquierda.<br><br><small><i>*Este mapa no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>',
+    content:'Para obtener detalles y análisis sobre este mapa interactivo, revisa la barra de información de la izquierda.<br><br><small><i>*Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>',
     modal: true,
     maxWidth: 400,
     visible: true
@@ -225,7 +225,7 @@ var legendA = L.control({position: 'bottomright'}),
 legendA.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
-        labels = ['>60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '>60 %'];
+        labels = ['> 60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '> 60 %'];
     div.innerHTML += '<b>Probabilidad</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más seco</em><br>';
     for (var i = 0; i < grades.length; i++) {
@@ -237,7 +237,7 @@ legendA.onAdd = function (map) {
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
-        labels = ['> 30 %', '20 — 30 %', '10 — 20 %', '&nbsp;&nbsp;&nbsp;0 — 10 %', '&ensp;&nbsp;&nbsp;0 — -10 %', '-10 — -20 %', '-20 — -30 %', '< -30 %'];
+        labels = ['> 30 %', '20 — 30 %', '10 — 20 %', '&nbsp;&nbsp;0 — 10 %', '&nbsp;&nbsp;&nbsp;0 — -10 %', '-10 — -20 %', '-20 — -30 %', '< -30 %'];
 
     div.innerHTML += '<b>Cambio en <br>rendimiento</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
