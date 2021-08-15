@@ -35,11 +35,11 @@
             <div class="sidebar-tabs">
                 <ul role="tablist">
                     <li><a href="#informi" role="tab"><i class="fa fa-info"></i></a></li>
-                    <li><a href="#analisi" role="tab"><i class="fa fa-line-chart"></i></a></li>
+                    <li><a href="#profile" role="tab"><i class="fa fa-line-chart"></i></a></li>
                 </ul>
-                <ul role="tablist">
+                <!-- <ul role="tablist">
                     <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-                </ul>
+                </ul> -->
             </div>
             <!-- Función de los botones -->
             <div class="sidebar-content">
@@ -67,16 +67,23 @@
                     <p class="lorem"><b>Si quieres saber más sobre nuestros pronósticos climáticos estacionales,
                         visita nuestro sitio: <a href="https://climathics.com/pce/" target="_blank" rel="noopener noreferrer">https://climathics.com/pce</a>.</b></p>
                 </div>
-                <div class="sidebar-pane" id="analisi">
+                <div class="sidebar-pane" id="profile">
                     <h1 class="sidebar-header">
                         Profile
                         <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                     </h1>
-                    <p><b>Pronóstico climático estacional de precipitación 2021</b><br>
+                    <p><b>Análisis</b><br>
+                    <p class="lorem"><b>Descripción general:</b><br>
+                        Este mapa fue elaborado considerando tres categorías de lluvias relativas al promedio climatológico:
+                        una categoría de lluvias abundantes, otra de lluvias escasas y la tercera de lluvias cercanas al promedio
+                        climatológico. Los colores indican la categoría más probable de las tres, con verdes indicando expectativas
+                        de lluvias abundantes, cafés lluvias escasas y blancos lluvias cercanas al promedio. Las tonalidades cafés
+                        y verdes establecen la probabilidad de que ocurra la categoría correspondiente, como se señala en la barra de colores.
+                        Es posible elegir distintos periodos de acumulación de precipitación en el menú de capas.</p>
                 </div>
-                <div class="sidebar-pane" id="settings">
+                <!-- <div class="sidebar-pane" id="settings">
                     <h1 class="sidebar-header">Configuración<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                </div>
+                </div> -->
             </div>
         </div>
         <script src='js/leaflet.js'></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
