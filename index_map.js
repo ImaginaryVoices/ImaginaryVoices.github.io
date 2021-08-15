@@ -227,7 +227,8 @@ legendA.onAdd = function (map) {
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
-        labels = ['> +30 %', '> +20 %', '> +10 %', '> +0 %', '< -0 %', '< -10 %', '< -20 %', '< -30 %'];
+        labels = ['>30 %', '20 — 30 %', '10 — 20 %', '0 — 10 %', '0 — -10 %', '-10 — -20 %', '-20 — -30 %', '>-30 %'];
+
     div.innerHTML += '<b>Cambio en <br>rendimiento</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
     for (var i = 0; i < grades.length; i++) {
