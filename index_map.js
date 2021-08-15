@@ -247,8 +247,7 @@ legendB.onAdd = function (map) {
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Decremento</em><br>';
     return div;
 };
-<p align="right">
-</p>
+
 //<!------ Protobuf Tiles (Estilos) ------>
 //***** Estilos
 const estilillo = {
