@@ -238,7 +238,6 @@ legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
         labels = ['&nbsp;> 30 %', '&nbsp;20 — 30 %', '&nbsp;10 — 20 %', '&nbsp;&nbsp;&nbsp;0 — 10 %', '&nbsp;&nbsp;&nbsp;0 — -10 %', '-10 — -20 %', '-20 — -30 %', '< -30 %'];
-
     div.innerHTML += '<b>Cambio en <br>rendimiento</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
     for (var i = 0; i < grades.length; i++) {
@@ -264,8 +263,8 @@ var estail_states = {
             fill: false,
             stroke: true,
             color: 'gray',
-            opacity: 0.8,
-            weight: 1.0
+            opacity: 0.7,
+            weight: 1.4
         }
     }
 }
@@ -394,7 +393,7 @@ var layeroptions = {
     // container_width     : "160px", //default = automatic
     // container_maxHeight : "400px", //default = automatic
     // group_maxHeight     : "400px", //default = 100px
-    exclusive           : true,
+    exclusive           : false,
     collapsed           : false
 };
 var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
