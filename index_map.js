@@ -383,6 +383,7 @@ var baseMaps = [
         }
     },{ 
         groupName : "Maíz: P-V",
+        expanded  : true,
         layers    : {
             "Riego (municipal)"         : pbfUnB,
             "Temporal (municipal)"      : pbfDeuxB,
