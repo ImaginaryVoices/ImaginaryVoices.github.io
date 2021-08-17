@@ -363,12 +363,12 @@ var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
-popop(pbfDeuxB, nombredearch+ivo, 'B');
+    hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
+    popop(pbfDeuxB, nombredearch+ivo, 'B');
 //***** Variable B2: Palomitas de maiz
-var nombredearch = 'pce_2021_08a';
-//***** Capa 1_B2
-var ivo = '_mai_r_riego';
+var nombredearch = 'pce_2021_08b';
+//***** Capa 3_B
+var ivo = '_mai_riego';
 var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -376,10 +376,10 @@ var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
-popop(pbfTroisB, nombredearch+ivo, 'B');
-//***** Capa 2_B2
-var ivo = '_mai_t_temporal';
+    hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
+    popop(pbfTroisB, nombredearch+ivo, 'B');
+//***** Capa 4_B
+var ivo = '_mai_temporal';
 var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -387,8 +387,19 @@ var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', 
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
-popop(pbfQuatreB, nombredearch+ivo, 'B');
+    hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
+    popop(pbfQuatreB, nombredearch+ivo, 'B');
+//***** Capa 5_B
+var ivo = '_mai_total';
+var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+    hoveruber(pbfCinqB, getColorB, nombredearch+ivo);
+    popop(pbfCinqB, nombredearch+ivo, 'B');
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
@@ -406,7 +417,8 @@ var baseMaps = [
             "Riego :: Municipal"    : pbfUnB,
             "Riego :: Estatal"      : pbfTroisB,
             "Temporal :: Municipal" : pbfDeuxB,
-            "Temporal :: Estatal"   : pbfQuatreB
+            "Temporal :: Estatal"   : pbfQuatreB,
+            "Total :: Estatal"      : pbfCinqB
         }
     },{ 
         groupName : "Precipitación",
