@@ -21,10 +21,10 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 //<!------ Ventana con mensaje de inicio ------>
 var contenu = {
     content:'Para obtener análisis o detalles acerca de mapa interactivo, revisa la barra de información de la izquierda.',
-}
+};
 if (window.screen.width > 768) { // Que no aparezca en celulares
-    contenu = contenu + '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>',
-}
+    contenu = contenu + '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
+};
 var winOpts = L.control.window(map, {
     title:'¡Bienvenido!',
     ...contenu,
@@ -342,7 +342,7 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo, 'A');
 //***** Variable B: Maiz palomero
-var nombredearch = 'pce_2021_08a';
+// var nombredearch = 'pce_2021_08a';
 //***** Capa 1_B
 var ivo = '_mai_r_riego';
 var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -355,6 +355,30 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo, 'B');
 //***** Capa 2_B
+var ivo = '_mai_t_temporal';
+var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
+popop(pbfDeuxB, nombredearch+ivo, 'B');
+//***** Variable B2: Palomitas de maiz
+var nombredearch = 'pce_2021_08a';
+//***** Capa 1_B2
+var ivo = '_mai_r_riego';
+var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+    vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfUnB, getColorB, nombredearch+ivo);
+popop(pbfUnB, nombredearch+ivo, 'B');
+//***** Capa 2_B2
 var ivo = '_mai_t_temporal';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
@@ -379,8 +403,10 @@ var baseMaps = [
         groupName : "Maíz: P-V",
         expanded  : true,
         layers    : {
-            "Riego (municipal)"         : pbfUnB,
-            "Temporal (municipal)"      : pbfDeuxB,
+            "Riego :: Municipal"    : pbfUnB,
+            "Riego :: Estatal"      : pbfTroisB,
+            "Temporal :: Municipal" : pbfDeuxB,
+            "Temporal :: Estatal"   : pbfQuatreB
         }
     },{ 
         groupName : "Precipitación",
