@@ -22,9 +22,9 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 var contenu = {
     content:'Para obtener análisis o detalles acerca de mapa interactivo, revisa la barra de información de la izquierda.'
 };
-// if (window.screen.width > 768) { // Que no aparezca en celulares
-//     contenu = contenu + '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
-// };
+if (window.screen.width > 768) { // Que no aparezca en celulares
+    contenu = contenu + '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
+};
 var winOpts = L.control.window(map, {
     title:'¡Bienvenido!',
     ...contenu,
@@ -295,7 +295,7 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
     pane: 'states'
 })
 .addTo(map);
-//***** Variable A: Precipitación
+//*****_____ Variable A: Precipitación _____*****
 var nombredearch = 'pce_2021_08a';
 //***** Capa 1
 var ivo = '_ppt_ago-dic';
@@ -341,7 +341,7 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo, 'A');
-//***** Variable B: Maiz palomero
+//*****_____ Variable B: Maiz palomero _____*****
 // var nombredearch = 'pce_2021_08a';
 //***** Capa 1_B
 var ivo = '_mai_r_riego';
@@ -365,7 +365,7 @@ var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
     hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
     popop(pbfDeuxB, nombredearch+ivo, 'B');
-//***** Variable B2: Palomitas de maiz
+//*****_____ Variable B2: Palomitas de maiz _____*****
 var nombredearch = 'pce_2021_08b';
 //***** Capa 3_B
 var ivo = '_mai_riego';
