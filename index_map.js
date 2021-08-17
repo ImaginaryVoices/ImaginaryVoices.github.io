@@ -494,7 +494,7 @@ map.on('layeradd', function (eventLayer) {
         legendA.addTo(map);
     }
     else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
-              eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
+              eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
@@ -513,7 +513,7 @@ if (window.screen.width > 768) { // Que no aparezca info en celulares
             infoA.addTo(map);
         }
         else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
-                  eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB) {
+                  eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
             map.removeControl(currentInfo);
             currentInfo = infoB;
             infoB.addTo(map);
