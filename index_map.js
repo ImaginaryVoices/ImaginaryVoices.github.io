@@ -300,7 +300,7 @@ var estail_states = {
 }
 function vectorTileStylingF(funco, varnombre){
     var estail = {
-        pce_2021_08a: function(properties, zoom) {
+        pce_2021_08b: function(properties, zoom) {
             return {
                 fill:        true,
                 fillOpacity: 1.0,
