@@ -502,7 +502,7 @@ map.on('layeradd', function (eventLayer) {
 })
 
 //<!------ Cambio de cuadro de información ------>
-currentInfo = infoA;
+currentInfo = infoB;
 if (window.screen.width > 768) { // Que no aparezca info en celulares
     infoA.addTo(map);
     map.on('layeradd', function (eventLayer) {
@@ -512,12 +512,16 @@ if (window.screen.width > 768) { // Que no aparezca info en celulares
             currentInfo = infoA;
             infoA.addTo(map);
         }
-        else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
-                  eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
+        else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB) {
             map.removeControl(currentInfo);
             currentInfo = infoB;
             infoB.addTo(map);
         }
+        else if  (eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
+            map.removeControl(currentInfo);
+            currentInfo = infoC;
+            infoB.addTo(map);
+  }
     })
 }
 
