@@ -20,14 +20,14 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 
 //<!------ Ventana con mensaje de inicio ------>
 var contenu = {
-    content:'Para obtener análisis o detalles acerca de mapa interactivo, revisa la barra de información de la izquierda.'
+    content:'Revisa la barra de información de la izquierda para obtener más detalles acerca de este mapa interactivo.<br><br><small>Pronóstico emitido el 13.08.2021.</small>'
 };
 if (window.screen.width <= 768) { // Que no aparezca en celulares
     contenu.content = contenu.content +
     '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
 };
 var winOpts = L.control.window(map, {
-    title:'¡Bienvenido!',
+    title:'¡BIENVENIDO!',
     ...contenu,
     modal: true,
     maxWidth: 400,
@@ -451,7 +451,7 @@ var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 // L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
 var baseMaps = [
     {
-        groupName : "Maíz: P-V",
+        groupName : "Maíz: PV",
         expanded  : true,
         layers    : {
             "Riego :: Municipal"    : pbfUnB,
@@ -529,7 +529,7 @@ if (window.screen.width > 768) { // Que no aparezca info en celulares
         else if  (eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
             map.removeControl(currentInfo);
             currentInfo = infoC;
-            infoB.addTo(map);
+            infoC.addTo(map);
   }
     })
 }

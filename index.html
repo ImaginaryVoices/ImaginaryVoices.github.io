@@ -45,7 +45,7 @@
             <div class="sidebar-content">
                 <div class="sidebar-pane" id="analisi">
                     <h1 class="sidebar-header">
-                        ANÁLISIS DEL PRONÓSTICO
+                        Análisis del pronóstico
                         <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                     </h1>
                     <p class="lorem">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="sidebar-pane" id="informi">
                     <h1 class="sidebar-header">
-                        INFORMACIÓN
+                        Información
                         <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                     </h1>
                     <p class="lorem">
@@ -102,24 +102,24 @@
                     </p>
                     <p class="lorem" style="font-style: italic;">
                         <b>Descripción general:</b>
-                        Estas capas representan el cambio porcentual, respecto al promedio climatológico, en el rendimiento de maiz para
-                        el ciclo PV-2021. Los datos se generaron ejecutando los simuladores de cultivo
-                        <a href="https://climathics.com/proyectos/SEIMVRA/" target="_blank" rel="noopener noreferrer">SIEMVRA</a>, alimentados
-                        con pronósticos climáticos estacionales. La información se puede desplegar a escala municipal o como agregados municipales a
+                        Representa el cambio porcentual, respecto al promedio climatológico, en el rendimiento de maiz para
+                        el ciclo primavera-verano (PV). La información se puede desplegar a escala municipal o como agregados municipales a
                         escala estatal.
                     </p>
                     <p class="lorem" style="font-style: italic;">
                         <b>Descripción técnica:</b>
-                        Se hizo una reducción de escala espacial para proyectar la información a escala municipal. Los datos estatales se
-                        agregaron como un promedio ponderado de los datos municipales, donde los pesos corresponden a la producción municipal
-                        como fracción de la producción estatal.
+                        Los datos fueron generados ejecutando los simuladores de cultivo
+                        <a href="https://climathics.com/proyectos/siemvra/" target="_blank" rel="noopener noreferrer">SIEMVRA</a>,
+                        alimentados con pronósticos climáticos estacionales (PCE). La información del periodo previo al abarcado por los PCE
+                        se llenó con datos de AgERA5, y la información del periodo posterior a los PCE se obtuvo de una muestra climatológica.
+                        Los datos estatales se agregaron como un promedio ponderado de los datos municipales.
                     </p>
                     <p class="lorem">
                         <br><b>II. Precipitación</b><br>
                     </p>
                     <p class="lorem" style="font-style: italic;">
                         <b>Descripción general:</b>
-                        Los datos de precipitación fueron elaborados considerando tres categorías de lluvias relativas al promedio climatológico:
+                        Los datos de precipitación se elaboran considerando tres categorías de lluvias relativas al promedio climatológico:
                         lluvias abundantes (1), lluvias escasas (2) y lluvias cercanas al promedio climatológico (3). Los colores indican la
                         categoría más probable de las tres, con verdes indicando expectativas de lluvias abundantes, cafés lluvias escasas
                         y blancos lluvias cercanas al promedio. Las tonalidades cafés y verdes establecen la probabilidad de que ocurra la
@@ -161,3 +161,4 @@
         <script src='index_map.js'></script>
     </body>
 </html>
+e
