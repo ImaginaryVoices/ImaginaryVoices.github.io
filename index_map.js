@@ -482,7 +482,7 @@ var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
 map.addControl(control);
 
 //<!------ Cambio de leyenda ------>
-currentLegend = legendA;
+currentLegend = legendB;
 // map.on('baselayerchange', function (eventLayer) {
 //     if (eventLayer.name === 'Agosto a diciembre') {
 //         map.removeControl(currentLegend);
@@ -513,7 +513,7 @@ map.on('layeradd', function (eventLayer) {
 //<!------ Cambio de cuadro de información ------>
 currentInfo = infoB;
 if (window.screen.width > 768) { // Que no aparezca info en celulares
-    infoA.addTo(map);
+    infoB.addTo(map);
     map.on('layeradd', function (eventLayer) {
         if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
             eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
