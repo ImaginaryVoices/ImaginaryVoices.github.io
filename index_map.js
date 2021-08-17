@@ -158,13 +158,13 @@ function hoveruber(capalayer, funco, varnombre){
         clearHighlight(capalayer);
         highlight = properties.CVEGEO;
         var style = {
-            fillColor: funco(properties[varnombre]),
+            fillColor:   funco(properties[varnombre]),
             fillOpacity: 0.6,
-            stroke: true,
-            fill: true,
-            color: 'gray',
-            opacity: 1.0,
-            weight: 2
+            stroke:      true,
+            fill:        true,
+            color:      'gray',
+            opacity:     1.0,
+            weight:      2
         };
         capalayer.setFeatureStyle(properties.CVEGEO, style);
         currentInfo.update(properties, varnombre);
@@ -249,31 +249,28 @@ legendB.onAdd = function (map) {
 
 //<!------ Protobuf Tiles (Estilos) ------>
 //***** Estilos
-const estilillo = {
-    fill: true,
-    fillOpacity: 1.0,
-    stroke: true,
-    color: 'gray',
-    opacity: 0.7,
-    weight: 0.3
-};
 var estail_states = {
     divpolest: function(zoom) {
         return {
-            fill: false,
-            stroke: true,
-            color: 'gray',
+            fill:    false,
+            stroke:  true,
+            color:  'gray',
             opacity: 0.7,
-            weight: 1.4
+            weight:  1.4
         }
     }
 }
 function vectorTileStylingF(funco, varnombre){
     var estail = {
-        pce_2021_pv_mai: function(properties, zoom) {
+        pce_2021_08a: function(properties, zoom) {
             return {
-                ...estilillo,
-                fillColor: funco(properties[varnombre])
+                fill:        true,
+                fillOpacity: 1.0,
+                stroke:      true,
+                color:      'gray',
+                opacity:     0.7,
+                weight:      0.3,
+                fillColor:   funco(properties[varnombre])
             }
         }
     }
