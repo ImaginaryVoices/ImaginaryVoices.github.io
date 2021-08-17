@@ -23,7 +23,7 @@ var contenu = {
     content:'Para obtener análisis o detalles acerca de mapa interactivo, revisa la barra de información de la izquierda.'
 };
 if (window.screen.width > 768) { // Que no aparezca en celulares
-    contenu = contenu + '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
+    contenu.content = contenu.content + '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
 };
 var winOpts = L.control.window(map, {
     title:'¡Bienvenido!',
