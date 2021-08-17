@@ -22,8 +22,9 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 var contenu = {
     content:'Para obtener análisis o detalles acerca de mapa interactivo, revisa la barra de información de la izquierda.'
 };
-if (window.screen.width > 768) { // Que no aparezca en celulares
-    contenu.content = contenu.content + '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
+if (window.screen.width <= 768) { // Que no aparezca en celulares
+    contenu.content = contenu.content +
+    '<br><br><small><i>Nota: Este mapa aún no es 100 % compatible con la resolución de un teléfono móvil. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small>'
 };
 var winOpts = L.control.window(map, {
     title:'¡Bienvenido!',
@@ -143,7 +144,7 @@ infoB.onAdd = function (map) {
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (
-            props['NOM_MUN'] ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
+            props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
             (
                 props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+' : '') +
                 (props[varnombre]*100.0).toFixed(2) + ' %'
