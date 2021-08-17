@@ -119,7 +119,8 @@ var getColorB = function(rrr) {
 
 //***** Cuadro de informacion personalizada
 var infoA  = L.control({position: 'bottomleft'}),
-    infoB  = L.control({position: 'bottomleft'});
+    infoB  = L.control({position: 'bottomleft'}),
+    infoC  = L.control({position: 'bottomleft'});
 infoA.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
@@ -150,6 +151,22 @@ infoB.update = function (props, varnombre) {
                 (props[varnombre]*100.0).toFixed(2) + ' %'
             )
             : 'Selecciona un municipio'
+        );                
+};
+infoC.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+};
+infoC.update = function (props, varnombre) {
+    this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
+        (
+            props ? '<b>' + props['NOM_ENT'] + '</b><br/>' +
+            (
+                props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+' : '') +
+                (props[varnombre]*100.0).toFixed(2) + ' %'
+            )
+            : 'Selecciona un estado'
         );                
 };
 //***** Mouse hover function
@@ -213,6 +230,19 @@ function popop(capalayer, varnombre, tipo){
                     <tr>\
                         <th scope="row">Municipio</th>\
                         <td>' + (properties['NOM_MUN'] !== null ? properties['NOM_MUN'] : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Rendimiento</th>\
+                        <td>' + (properties[varnombre] == null ? 'Sin producción': 
+                        (properties[varnombre] >= 0 ? '+': '') + (properties[varnombre]*100.0).toFixed(2) + ' %') + '</td>\
+                    </tr>\
+                </table>';
+            }
+        else if (tipo === 'B2'){
+            var popupContenti = '<table>\
+                    <tr>\
+                        <th scope="row">Estado</th>\
+                        <td>' + (properties['NOM_ENT'] !== null ? properties['NOM_ENT'] : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Rendimiento</th>\
@@ -378,7 +408,7 @@ var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     }
 });
     hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
-    popop(pbfTroisB, nombredearch+ivo, 'B');
+    popop(pbfTroisB, nombredearch+ivo, 'B2');
 //***** Capa 4_B
 var ivo = '_mai_temporal';
 var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -389,7 +419,7 @@ var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', 
     }
 });
     hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
-    popop(pbfQuatreB, nombredearch+ivo, 'B');
+    popop(pbfQuatreB, nombredearch+ivo, 'B2');
 //***** Capa 5_B
 var ivo = '_mai_total';
 var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -400,7 +430,7 @@ var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     }
 });
     hoveruber(pbfCinqB, getColorB, nombredearch+ivo);
-    popop(pbfCinqB, nombredearch+ivo, 'B');
+    popop(pbfCinqB, nombredearch+ivo, 'B2');
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
