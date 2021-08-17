@@ -369,26 +369,26 @@ popop(pbfDeuxB, nombredearch+ivo, 'B');
 var nombredearch = 'pce_2021_08a';
 //***** Capa 1_B2
 var ivo = '_mai_r_riego';
-var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfUnB, getColorB, nombredearch+ivo);
-popop(pbfUnB, nombredearch+ivo, 'B');
+hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
+popop(pbfTroisB, nombredearch+ivo, 'B');
 //***** Capa 2_B2
 var ivo = '_mai_t_temporal';
-var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
-popop(pbfDeuxB, nombredearch+ivo, 'B');
+hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
+popop(pbfQuatreB, nombredearch+ivo, 'B');
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
