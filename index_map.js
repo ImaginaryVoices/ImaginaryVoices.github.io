@@ -536,5 +536,5 @@ if (window.screen.width > 768) { // Que no aparezca en celulares
     credctrl.addTo(map);
 }
 
-legendA.addTo(map);
+legendB.addTo(map);
 map.addLayer(pbfDeuxB);
