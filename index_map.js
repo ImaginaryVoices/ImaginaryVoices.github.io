@@ -291,12 +291,11 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
     pane: 'states'
 })
 .addTo(map);
-//***** Variable A
-var nombredearch2 = 'pce_2021_pv_mai';
-var nombredearch = 'pce_2021_08_12_ppt';
+//***** Variable A: Precipitación
+var nombredearch = 'pce_2021_08a';
 //***** Capa 1
-var ivo = '_ago-dic';
-var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
+var ivo = '_ppt_ago-dic';
+var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -306,8 +305,8 @@ var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUn, getColorA, nombredearch+ivo);
 popop(pbfUn, nombredearch+ivo, 'A');
 //***** Capa 2
-var ivo = '_ago';
-var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
+var ivo = '_ppt_ago';
+var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -317,8 +316,8 @@ var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfDeux, getColorA, nombredearch+ivo);
 popop(pbfDeux, nombredearch+ivo, 'A');
 //***** Capa 3
-var ivo = '_sep-oct';
-var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
+var ivo = '_ppt_sep-oct';
+var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -328,8 +327,8 @@ var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfTrois, getColorA, nombredearch+ivo);
 popop(pbfTrois, nombredearch+ivo, 'A');
 //***** Capa 4
-var ivo = '_nov-dic';
-var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', {
+var ivo = '_ppt_nov-dic';
+var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
@@ -338,10 +337,10 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch2+'/{z}/{x}/{y}.pbf', 
 });
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo, 'A');
-//***** Variable B
-var nombredearch = 'pce_2021_pv_mai';
+//***** Variable B: Maiz palomero
+var nombredearch = 'pce_2021_08a';
 //***** Capa 1_B
-var ivo = '_r_riego';
+var ivo = '_mai_r_riego';
 var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -352,7 +351,7 @@ var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUnB, getColorB, nombredearch+ivo);
 popop(pbfUnB, nombredearch+ivo, 'B');
 //***** Capa 2_B
-var ivo = '_t_temporal';
+var ivo = '_mai_t_temporal';
 var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
     interactive: true,
@@ -372,7 +371,14 @@ popop(pbfDeuxB, nombredearch+ivo, 'B');
 // };
 // L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
 var baseMaps = [
-    { 
+    {
+        groupName : "Maíz: P-V",
+        expanded  : true,
+        layers    : {
+            "Riego (municipal)"         : pbfUnB,
+            "Temporal (municipal)"      : pbfDeuxB,
+        }
+    },{ 
         groupName : "Precipitación",
         expanded  : true,
         layers    : {
@@ -380,13 +386,6 @@ var baseMaps = [
             "Agosto"                : pbfDeux,
             "Septiembre y octubre"  : pbfTrois,
             "Noviembre y diciembre" : pbfQuatre
-        }
-    },{ 
-        groupName : "Maíz: P-V",
-        expanded  : true,
-        layers    : {
-            "Riego (municipal)"         : pbfUnB,
-            "Temporal (municipal)"      : pbfDeuxB,
         }
     }
 ];
@@ -459,4 +458,4 @@ if (window.screen.width > 768) { // Que no aparezca en celulares
 }
 
 legendA.addTo(map);
-map.addLayer(pbfUn);
+map.addLayer(pbfDeuxB);
