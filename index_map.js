@@ -287,6 +287,14 @@ legendB.onAdd = function (map) {
 
 //<!------ Protobuf Tiles (Estilos) ------>
 //***** Estilos
+const estilillo = {
+    fill: true,
+    fillOpacity: 1.0,
+    stroke: true,
+    color: 'gray',
+    opacity: 0.7,
+    weight: 0.3
+};
 var estail_states = {
     divpolest: function(zoom) {
         return {
@@ -300,14 +308,15 @@ var estail_states = {
 }
 function vectorTileStylingF(funco, varnombre){
     var estail = {
+        pce_2021_08a: function(properties, zoom) {
+            return {
+                ...estilillo,
+                fillColor:   funco(properties[varnombre])
+            }
+        },
         pce_2021_08b: function(properties, zoom) {
             return {
-                fill:        true,
-                fillOpacity: 1.0,
-                stroke:      true,
-                color:      'gray',
-                opacity:     0.7,
-                weight:      0.3,
+                ...estilillo,
                 fillColor:   funco(properties[varnombre])
             }
         }
