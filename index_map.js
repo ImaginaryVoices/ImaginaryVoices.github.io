@@ -143,7 +143,7 @@ infoB.onAdd = function (map) {
 infoB.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (
-            props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
+            props['NOM_MUN'] ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
             (
                 props[varnombre] == null ? 'Sin producción': (props[varnombre] >= 0 ? '+' : '') +
                 (props[varnombre]*100.0).toFixed(2) + ' %'
