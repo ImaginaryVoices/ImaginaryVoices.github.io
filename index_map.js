@@ -237,7 +237,7 @@ function popop(capalayer, varnombre, tipo){
                         (properties[varnombre] >= 0 ? '+': '') + (properties[varnombre]*100.0).toFixed(2) + ' %') + '</td>\
                     </tr>\
                 </table>';
-            }
+        }
         else if (tipo === 'B2'){
             var popupContenti = '<table>\
                     <tr>\
@@ -250,7 +250,7 @@ function popop(capalayer, varnombre, tipo){
                         (properties[varnombre] >= 0 ? '+': '') + (properties[varnombre]*100.0).toFixed(2) + ' %') + '</td>\
                     </tr>\
                 </table>';
-            }
+        }
         L.popup()
             .setContent(popupContenti)
             .setLatLng(e.latlng)
