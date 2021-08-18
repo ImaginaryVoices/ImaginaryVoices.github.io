@@ -87,16 +87,18 @@ var getColorA = function(rrr) {
                            'rgb(001,133,133)';
 };
 var getColorB = function(rrr) {
-    return  rrr <  -0.30 ? 'rgb(166,094,061)':
-            rrr <  -0.20 ? 'rgb(180,125,058)':
-            rrr <  -0.10 ? 'rgb(205,158,048)':
-            rrr <   0.00 ? 'rgb(238,211,101)':
-            rrr ==  0.00 ? 'rgba(001,133,133,0)':
-            rrr <=  0.10 ? 'rgb(185,219,106)':
-            rrr <=  0.20 ? 'rgb(103,179,59)':
-            rrr <=  0.30 ? 'rgb(077,136,054)':
-            rrr <=  0.40 ? 'rgb(056,093,047)':
-                           'rgba(001,133,133,0)';
+    return  rrr <= -0.90 ? 'rgb( 5, 113, 176)':
+            rrr <= -0.80 ? 'rgb( 61, 147, 195)':
+            rrr <= -0.70 ? 'rgb(118, 180, 213)':
+            rrr <= -0.60 ? 'rgb(166, 207, 227)':
+            rrr <= -0.50 ? 'rgb(207, 227, 237)':
+            rrr <   0.50 ? 'rgb(255,255,255)':
+            rrr <   0.60 ? 'rgb(246, 215, 200)':
+            rrr <   0.70 ? 'rgb(245, 182, 154)':
+            rrr <   0.80 ? 'rgb(236, 132, 110)':
+            rrr <   0.90 ? 'rgb(219, 66, 71)':
+            rrr <=  1.00 ? 'rgb(202, 0, 32)':
+                           'rgb(001,133,133)';
 };
 
 //***** Cuadro de informacion personalizada
@@ -481,24 +483,24 @@ currentLegend = legendA;
 currentInfo = infoA;
 if (window.screen.width > 768) { // Que no aparezca info en celulares
     infoA.addTo(map);
-    map.on('layeradd', function (eventLayer) {
-        if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
-            eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
-            map.removeControl(currentInfo);
-            currentInfo = infoA;
-            infoA.addTo(map);
-        }
-        else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB) {
-            map.removeControl(currentInfo);
-            currentInfo = infoB;
-            infoB.addTo(map);
-        }
-        else if  (eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
-            map.removeControl(currentInfo);
-            currentInfo = infoC;
-            infoC.addTo(map);
-  }
-    })
+    // map.on('layeradd', function (eventLayer) {
+    //     if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
+    //         eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
+    //         map.removeControl(currentInfo);
+    //         currentInfo = infoA;
+    //         infoA.addTo(map);
+    //     }
+    //     else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB) {
+    //         map.removeControl(currentInfo);
+    //         currentInfo = infoB;
+    //         infoB.addTo(map);
+    //     }
+    //     else if  (eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
+    //         map.removeControl(currentInfo);
+    //         currentInfo = infoC;
+    //         infoC.addTo(map);
+    //     }
+    // })
 }
 
 //<!------ Logo Banner ------>
