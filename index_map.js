@@ -283,7 +283,7 @@ var estail_states = {
             fill:    false,
             stroke:  true,
             color:  'gray',
-            opacity: 0.7,
+            opacity: 0.9,
             weight:  1.4
         }
     }
@@ -317,7 +317,7 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
     pane: 'states'
 })
 .addTo(map);
-//*****_____ Variable A: Precipitación _____*****
+//*****_____ Variable A: Temperatura mínima _____*****
 var nombredearch = 'pce_2021_08c';
 //***** Capa 1
 var ivo = '_tmn_ago-dic';
@@ -363,6 +363,51 @@ var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
 hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
 popop(pbfQuatre, nombredearch+ivo, 'A');
+//*****_____ Variable A: Temperatura máxima _____*****
+//***** Capa 1
+var ivo = '_tmx_ago-dic';
+var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+    vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfUnB, getColorA, nombredearch+ivo);
+popop(pbfUnB, nombredearch+ivo, 'A');
+//***** Capa 2
+var ivo = '_tmx_ago';
+var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfDeuxB, getColorA, nombredearch+ivo);
+popop(pbfDeuxB, nombredearch+ivo, 'A');
+//***** Capa 3
+var ivo = '_tmx_sep-oct';
+var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfTroisB, getColorA, nombredearch+ivo);
+popop(pbfTroisB, nombredearch+ivo, 'A');
+//***** Capa 4
+var ivo = '_tmx_nov-dic';
+var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfQuatreB, getColorA, nombredearch+ivo);
+popop(pbfQuatreB, nombredearch+ivo, 'A');
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
@@ -386,10 +431,10 @@ var baseMaps = [
         groupName : "Temperatura máx.",
         expanded  : true,
         layers    : {
-            "Agosto a diciembre"    : pbfUn,
-            "Agosto"                : pbfDeux,
-            "Septiembre y octubre"  : pbfTrois,
-            "Noviembre y diciembre" : pbfQuatre
+            "Agosto a diciembre"    : pbfUnB,
+            "Agosto"                : pbfDeuxB,
+            "Septiembre y octubre"  : pbfTroisB,
+            "Noviembre y diciembre" : pbfQuatreB
         }
     }
 ];
@@ -417,20 +462,20 @@ currentLegend = legendA;
 //         legendB.addTo(map);
 //     }
 // })
-map.on('layeradd', function (eventLayer) {
-    if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
-        eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
-        map.removeControl(currentLegend);
-        currentLegend = legendA;
-        legendA.addTo(map);
-    }
-    else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
-              eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
-        map.removeControl(currentLegend);
-        currentLegend = legendB;
-        legendB.addTo(map);
-    }
-})
+// map.on('layeradd', function (eventLayer) {
+//     if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
+//         eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
+//         map.removeControl(currentLegend);
+//         currentLegend = legendA;
+//         legendA.addTo(map);
+//     }
+//     else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
+//               eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
+//         map.removeControl(currentLegend);
+//         currentLegend = legendB;
+//         legendB.addTo(map);
+//     }
+// })
 
 //<!------ Cambio de cuadro de información ------>
 currentInfo = infoA;
