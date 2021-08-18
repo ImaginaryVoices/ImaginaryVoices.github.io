@@ -30,7 +30,66 @@
     </head>
     <body>
         <div id='map'  class='sidebar-map'></div>
-
+        <div id="sidebar" class="sidebar collapsed">
+            <!-- Botones de navegación -->
+            <div class="sidebar-tabs">
+                <ul role="tablist">
+                    <li><a href="#analisi" role="tab"><i class="fa fa-line-chart"></i></a></li>
+                    <li><a href="#informi" role="tab"><i class="fa fa-info"></i></a></li>
+                </ul>
+                <!-- <ul role="tablist">
+                    <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+                </ul> -->
+            </div>
+            <!-- Función de los botones -->
+            <div class="sidebar-content">
+                <div class="sidebar-pane" id="informi">
+                    <h1 class="sidebar-header">
+                        Información
+                        <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                    </h1>
+                    <p class="lorem">
+                        <b><large>PRONÓSTICO CLIMÁTICO ESTACIONAL 2021</b></large><br>
+                        <small>EMITIDO: 13 DE AGOSTO</small>
+                    </p>
+                    <p class="lorem">
+                        <br>Aquí encontraras información descriptiva sobre las variables disponibles en el menú de capas.
+                    </p>
+                    <p class="lorem">
+                        <br><b>I. Temperatura mínima y máxima</b><br>
+                    </p>
+                    <p class="lorem" style="font-style: italic;">
+                        <b>Descripción general:</b>
+                        Los datos de temperatura se elaboran considerando tres categorías de temperatura relativas al promedio climatológico:
+                        temperaturas altas (1), temperaturas bajas (2) y temperaturas cercanas al promedio climatológico (3). Los colores indican la
+                        categoría más probable de las tres, con rojos indicando expectativas de temperaturas más cálidas, cafés temperaturas
+                        más frías y blancos temperaturas cercanas al promedio. Las tonalidades establecen la probabilidad de que ocurra la
+                        categoría correspondiente.<br>
+                    </p>
+                    <!-- <p class="lorem" style="font-style: italic;">
+                        <b>Descripción técnica:</b>
+                        Las categorías de lluvia fueron establecidas por los terciles de la distribución climatológica de
+                        precipitación durante el periodo 1993-2019. Las probabilidades del pronóstico fueron determinadas a partir de
+                        un muestreo basado en un modelo Bayesiano de distribución de probabilidad conjunta entre observaciones-pronósticos,
+                        el cual sirvió para corregir sesgos. Adicionalmente, se hizo una reducción de escala espacial para
+                        proyectar la información a escala municipal.
+                    </p> -->
+                    <p class="lorem">
+                        <br>*Elaborado con datos provenientes del modelo ECMWF-5, obtenidos del portal https://climate.copernicus.eu.
+                    </p>
+                    <p class="lorem">
+                        <b>Para saber más sobre los pronósticos climáticos estacionales, visita el sitio:
+                        <a href="https://climathics.com/pce/" target="_blank" rel="noopener noreferrer">https://climathics.com/pce/</a>.</b>
+                    </p>
+                </div>
+                <!-- <div class="sidebar-pane" id="settings">
+                    <h1 class="sidebar-header">
+                        Configuración
+                        <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                    </h1>
+                </div> -->
+            </div>
+        </div>
         <script src='js/leaflet.js'></script> <!--https://unpkg.com/leaflet@1.7.1/dist/leaflet.js-->
         <script src='js/leaflet-hash.js'></script> <!--https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js-->
         <script src='js/leaflet-VectorGrid.js'></script> <!--https://unpkg.com/leaflet.vectorgrid@1.2.0-->
