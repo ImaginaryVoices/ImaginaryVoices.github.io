@@ -73,16 +73,16 @@ var getColorA = function(rrr) {
     //         rrr <   0.55 ? 'rgb(113,197,184)':
     //         rrr <   0.60 ? 'rgb(085,181,166)':
     //                        'rgb(001,133,133)';
-    return  rrr <= -0.60 ? 'rgb( 5, 113, 176)':
-            rrr <= -0.55 ? 'rgb( 61, 147, 195)':
-            rrr <= -0.50 ? 'rgb(118, 180, 213)':
-            rrr <= -0.45 ? 'rgb(166, 207, 227)':
+    return  rrr <= -0.80 ? 'rgb( 5, 113, 176)':
+            rrr <= -0.70 ? 'rgb( 61, 147, 195)':
+            rrr <= -0.60 ? 'rgb(118, 180, 213)':
+            rrr <= -0.50 ? 'rgb(166, 207, 227)':
             rrr <= -0.40 ? 'rgb(207, 227, 237)':
             rrr <   0.40 ? 'rgb(246, 215, 200)':
-            rrr <   0.45 ? 'rgb(245, 182, 154)':
-            rrr <   0.50 ? 'rgb(236, 132, 110)':
-            rrr <   0.55 ? 'rgb(219, 66, 71)':
-            rrr <   0.60 ? 'rgb(202, 0, 32)':
+            rrr <   0.50 ? 'rgb(245, 182, 154)':
+            rrr <   0.60 ? 'rgb(236, 132, 110)':
+            rrr <   0.70 ? 'rgb(219, 66, 71)':
+            rrr <   0.80 ? 'rgb(202, 0, 32)':
                            'rgb(001,133,133)';
 };
 var getColorB = function(rrr) {
@@ -243,8 +243,8 @@ var legendA = L.control({position: 'bottomright'}),
     legendB = L.control({position: 'bottomright'});
 legendA.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
-        labels = ['> 60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '> 60 %'];
+        grades = [-0.80, -0.70, -0.60, -0.50, -0.40, 0, 0.40, 0.50, 0.60, 0.70, 0.80],
+        labels = ['> 80 %', '70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutral', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %', '> 80 %'];
     div.innerHTML += '<b>Probabilidad</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más cálido</em><br>';
     for (var i = 0; i < grades.length; i++) {
@@ -373,7 +373,7 @@ popop(pbfQuatre, nombredearch+ivo, 'A');
 // L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
 var baseMaps = [
     {
-        groupName : "Temperatura",
+        groupName : "Temperatura mín.",
         expanded  : true,
         layers    : {
             "Agosto a diciembre"    : pbfUn,
@@ -381,15 +381,15 @@ var baseMaps = [
             "Septiembre y octubre"  : pbfTrois,
             "Noviembre y diciembre" : pbfQuatre
         }
-    // },{ 
-    //     groupName : "Precipitación",
-    //     expanded  : true,
-    //     layers    : {
-    //         "Agosto a diciembre"    : pbfUn,
-    //         "Agosto"                : pbfDeux,
-    //         "Septiembre y octubre"  : pbfTrois,
-    //         "Noviembre y diciembre" : pbfQuatre
-    //     }
+    },{ 
+        groupName : "Temperatura máx.",
+        expanded  : true,
+        layers    : {
+            "Agosto a diciembre"    : pbfUn,
+            "Agosto"                : pbfDeux,
+            "Septiembre y octubre"  : pbfTrois,
+            "Noviembre y diciembre" : pbfQuatre
+        }
     }
 ];
 var layeroptions = {
