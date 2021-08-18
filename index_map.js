@@ -284,7 +284,7 @@ var estail_states = {
         return {
             fill:    false,
             stroke:  true,
-            color:  'gray',
+            color:  'white',
             opacity: 0.9,
             weight:  1.4
         }
