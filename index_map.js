@@ -62,16 +62,17 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
 var getColorA = function(rrr) {
-    // return  rrr <= -0.60 ? 'rgb(166,097,026)':
-    //         rrr <= -0.55 ? 'rgb(182,124,054)':
-    //         rrr <= -0.50 ? 'rgb(198,152,082)':
-    //         rrr <= -0.45 ? 'rgb(215,179,110)':
-    //         rrr <= -0.40 ? 'rgb(230,209,159)':
-    //         rrr <   0.40 ? 'rgb(255,255,255)':
-    //         rrr <   0.45 ? 'rgb(202,231,226)':
-    //         rrr <   0.50 ? 'rgb(152,213,204)':
-    //         rrr <   0.55 ? 'rgb(113,197,184)':
-    //         rrr <   0.60 ? 'rgb(085,181,166)':
+    // return  rrr <= -0.90 ? 'rgb( 5, 113, 176)':
+    //         rrr <= -0.80 ? 'rgb( 61, 147, 195)':
+    //         rrr <= -0.70 ? 'rgb(118, 180, 213)':
+    //         rrr <= -0.60 ? 'rgb(166, 207, 227)':
+    //         rrr <= -0.50 ? 'rgb(207, 227, 237)':
+    //         rrr <   0.50 ? 'rgb(255,255,255)':
+    //         rrr <   0.60 ? 'rgb(246, 215, 200)':
+    //         rrr <   0.70 ? 'rgb(245, 182, 154)':
+    //         rrr <   0.80 ? 'rgb(236, 132, 110)':
+    //         rrr <   0.90 ? 'rgb(219, 66, 71)':
+    //         rrr <=  1.00 ? 'rgb(202, 0, 32)':
     //                        'rgb(001,133,133)';
     return  rrr <= -0.80 ? 'rgb( 5, 113, 176)':
             rrr <= -0.70 ? 'rgb( 61, 147, 195)':
@@ -284,8 +285,8 @@ var estail_states = {
         return {
             fill:    false,
             stroke:  true,
-            color:  'gray',
-            opacity: 1.0,
+            color:  'black',
+            opacity: 0.5,
             weight:  1.4
         }
     }
