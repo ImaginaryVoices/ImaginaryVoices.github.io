@@ -78,11 +78,12 @@ var getColorA = function(rrr) {
             rrr <= -0.60 ? 'rgb(118, 180, 213)':
             rrr <= -0.50 ? 'rgb(166, 207, 227)':
             rrr <= -0.40 ? 'rgb(207, 227, 237)':
-            rrr <   0.40 ? 'rgb(246, 215, 200)':
-            rrr <   0.50 ? 'rgb(245, 182, 154)':
-            rrr <   0.60 ? 'rgb(236, 132, 110)':
-            rrr <   0.70 ? 'rgb(219, 66, 71)':
-            rrr <   0.80 ? 'rgb(202, 0, 32)':
+            rrr <   0.40 ? 'rgb(255,255,255)':
+            rrr <   0.50 ? 'rgb(246, 215, 200)':
+            rrr <   0.60 ? 'rgb(245, 182, 154)':
+            rrr <   0.70 ? 'rgb(236, 132, 110)':
+            rrr <   0.80 ? 'rgb(219, 66, 71)':
+            rrr <=  1.00 ? 'rgb(202, 0, 32)':
                            'rgb(001,133,133)';
 };
 var getColorB = function(rrr) {
@@ -403,7 +404,7 @@ var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
 map.addControl(control);
 
 //<!------ Cambio de leyenda ------>
-currentLegend = legendB;
+currentLegend = legendA;
 // map.on('baselayerchange', function (eventLayer) {
 //     if (eventLayer.name === 'Agosto a diciembre') {
 //         map.removeControl(currentLegend);
@@ -432,7 +433,7 @@ map.on('layeradd', function (eventLayer) {
 })
 
 //<!------ Cambio de cuadro de información ------>
-currentInfo = infoB;
+currentInfo = infoA;
 if (window.screen.width > 768) { // Que no aparezca info en celulares
     infoA.addTo(map);
     map.on('layeradd', function (eventLayer) {
