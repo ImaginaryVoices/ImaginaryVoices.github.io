@@ -319,7 +319,7 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 //*****_____ Variable A: Precipitación _____*****
 var nombredearch = 'pce_2021_08c';
 //***** Capa 1
-var ivo = '_tmp_ago-dic';
+var ivo = '_tmn_ago-dic';
 var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
@@ -330,7 +330,7 @@ var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfUn, getColorA, nombredearch+ivo);
 popop(pbfUn, nombredearch+ivo, 'A');
 //***** Capa 2
-var ivo = '_tmp_ago';
+var ivo = '_tmn_ago';
 var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
@@ -341,7 +341,7 @@ var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfDeux, getColorA, nombredearch+ivo);
 popop(pbfDeux, nombredearch+ivo, 'A');
 //***** Capa 3
-var ivo = '_tmp_sep-oct';
+var ivo = '_tmn_sep-oct';
 var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
@@ -352,7 +352,7 @@ var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 hoveruber(pbfTrois, getColorA, nombredearch+ivo);
 popop(pbfTrois, nombredearch+ivo, 'A');
 //***** Capa 4
-var ivo = '_tmp_nov-dic';
+var ivo = '_tmn_nov-dic';
 var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
