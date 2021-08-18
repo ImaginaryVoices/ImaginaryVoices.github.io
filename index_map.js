@@ -15,7 +15,7 @@ var hash = new L.Hash(map);     //URL dinamica
 map.attributionControl.setPrefix(atribuciones);
 map.fitBounds([[14.5388286402, -117.12776], [32.72083, -86.811982388]]);
 map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
-var sidebar = L.control.sidebar('sidebar').addTo(map);
+// var sidebar = L.control.sidebar('sidebar').addTo(map);
 
 
 //<!------ Ventana con mensaje de inicio ------>
