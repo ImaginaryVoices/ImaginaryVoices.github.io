@@ -17,7 +17,6 @@ map.fitBounds([[14.5388286402, -117.12776], [32.72083, -86.811982388]]);
 map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
 var sidebar = L.control.sidebar('sidebar').addTo(map);
 
-
 //<!------ Ventana con mensaje de inicio ------>
 var contenu = {
     content:'Revisa la barra de información de la izquierda para obtener más detalles acerca de este mapa interactivo.<br><br><small>Pronóstico emitido el 13.08.2021.</small>'
