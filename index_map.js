@@ -509,12 +509,6 @@ map.on('layeradd', function (eventLayer) {
         legendB.addTo(map);
     }
 })
-// Que no se descuadre con el zoom del navegador
-map.on('zoomend', onZoomend);
-function onZoomend(){
-    if(map.getZoom()!=13){
-    map.removeControl(currentLegend);}
-    };
 
 //<!------ Cambio de cuadro de información ------>
 currentInfo = infoB;
