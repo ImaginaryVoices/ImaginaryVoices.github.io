@@ -261,7 +261,7 @@ function popop(capalayer, varnombre, tipo){
 var legendA = L.control({position: 'bottomright'}),
     legendB = L.control({position: 'bottomright'});
 legendA.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend'),
+    var div = L.DomUtil.create('div', 'infolito legend'),
         grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
         labels = ['> 60 %', '55 — 60 %', '50 — 55 %', '45 — 50 %', '40 — 45 %', 'Neutral', '40 — 45 %', '45 — 50 %', '50 — 55 %', '55 — 60 %', '> 60 %'];
     div.innerHTML += '<b>Probabilidad</b><br>';
@@ -273,7 +273,7 @@ legendA.onAdd = function (map) {
     return div;
 };
 legendB.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend'),
+    var div = L.DomUtil.create('div', 'infolito legend'),
         grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
         labels = ['&nbsp;> 30 %', '&nbsp;20 — 30 %', '&nbsp;10 — 20 %', '&nbsp;&nbsp;&nbsp;0 — 10 %', '&nbsp;&nbsp;&nbsp;0 — -10 %', '-10 — -20 %', '-20 — -30 %', '< -30 %'];
     div.innerHTML += '<b>Cambio en <br>rendimiento</b><br>';
