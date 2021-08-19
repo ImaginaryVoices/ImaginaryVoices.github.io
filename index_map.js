@@ -512,7 +512,7 @@ map.on('layeradd', function (eventLayer) {
 // Que no se descuadre con el zoom del navegador
 map.on('zoomend', onZoomend);
 function onZoomend(){
-    if(map.getZoom()>13){
+    if(map.getZoom()!=13){
     map.removeControl(currentLegend);}
     };
 
