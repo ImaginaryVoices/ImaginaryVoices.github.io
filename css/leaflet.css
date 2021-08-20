@@ -656,8 +656,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* Leyenda */
 .infolito {
-    padding: 16px 18px;
-    font: 16px/18px Arial, Helvetica, sans-serif;
+    padding: 6px 8px;
+    font: 16px/16px Arial, Helvetica, sans-serif;
     background: white;
     background: rgba(255,255,255,0.8);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
