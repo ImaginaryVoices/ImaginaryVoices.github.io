@@ -669,8 +669,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	color: #555;
 }
 .legend i {
-	width: 17px;
-	height: 17px;
+	width: 10px;
+	height: 10px;
 	float: left;
 	margin-right: 16px;
 	opacity: 0.9;
