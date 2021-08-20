@@ -663,15 +663,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
 	border-radius: 5px;
 	text-align: left;
-}
-.infolito h4 {
-    margin: 0 0 5px;
-    color: #777;
+	float: left;
 }
 .legend {
 	line-height: 18px;
 	color: #555;
-	float: left;
+
 }
 .legend i {
 	width: 18px;
