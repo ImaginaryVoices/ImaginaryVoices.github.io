@@ -665,12 +665,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	text-align: left;
 }
 .legend {
-	line-height: 19px;
+	line-height: 18px;
 	color: #555;
 }
 .legend i {
-	width: 18px;
-	height: 18px;
+	width: 17px;
+	height: 17px;
 	float: left;
 	margin-right: 16px;
 	opacity: 0.9;
