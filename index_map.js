@@ -88,8 +88,10 @@ var getColorB = function(rrr) {
     return  rrr <  -0.30 ? 'rgb(166,094,061)':
             rrr <  -0.20 ? 'rgb(180,125,058)':
             rrr <  -0.10 ? 'rgb(205,158,048)':
-            rrr <   0.00 ? 'rgb(238,211,101)':
+            rrr <   0.05 ? 'rgb(238,211,101)':
+            rrr <   0.00 ? 'rgb(001,133,133,0)':
             rrr ==  0.00 ? 'rgba(001,133,133,0)':
+            rrr <=  0.05 ? 'rgba(001,133,133,0)':
             rrr <=  0.10 ? 'rgb(185,219,106)':
             rrr <=  0.20 ? 'rgb(103,179,59)':
             rrr <=  0.30 ? 'rgb(077,136,054)':
@@ -274,8 +276,8 @@ legendA.onAdd = function (map) {
 };
 legendB.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'infolito legend'),
-        grades = [0.4, 0.3, 0.2, 0.1, -0.1, -0.2, -0.3, -0.4],
-        labels = ['&nbsp;> 30 %', '&nbsp;20 — 30 %', '&nbsp;10 — 20 %', '&nbsp;&nbsp;&nbsp;0 — 10 %', '&nbsp;&nbsp;&nbsp;0 — -10 %', '-10 — -20 %', '-20 — -30 %', '< -30 %'];
+        grades = [0.4, 0.3, 0.2, 0.1, 0.0, -0.1, -0.2, -0.3, -0.4],
+        labels = ['&nbsp;> 30 %', '&nbsp;20 — 30 %', '&nbsp;10 — 20 %', '&nbsp;&nbsp;&nbsp;5 — 10 %', '&nbsp;&nbsp;&nbsp;5 — -5 %', '&nbsp;&nbsp;&nbsp;-5 — -10 %', '-10 — -20 %', '-20 — -30 %', '< -30 %'];
     div.innerHTML += '<b>Cambio en <br>rendimiento</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Incremento</em><br>';
     for (var i = 0; i < grades.length; i++) {
