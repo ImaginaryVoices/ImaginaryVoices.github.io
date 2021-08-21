@@ -50,8 +50,10 @@
     cursor: -webkit-grab;
     cursor: -moz-grab;
     padding: 4px 20px 4px 20px;
+    margin-bottom: -4px;
     background-color: #1D7992;
     color: #ffffff;
+    border-radius: 5px;
 }
 
 .leaflet-control-window .close {
