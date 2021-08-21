@@ -50,7 +50,6 @@
     cursor: -webkit-grab;
     cursor: -moz-grab;
     padding: 2px 20px 2px 20px;
-    margin-bottom: -40px;
     background-color: #1D7992;
     color: #ffffff;
 }
@@ -114,7 +113,7 @@
     -webkit-border-radius: 4px;
     border-radius: 4px;
     padding: 8px;
-    margin: 12px 8px 0 8px;
+    margin: 8px 8px 0 8px;
 }
 
 .leaflet-control-window button:focus {
