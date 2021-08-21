@@ -50,7 +50,7 @@
     cursor: grab;
     cursor: -webkit-grab;
     cursor: -moz-grab;
-    padding: 10px 45px 10px 10px;
+    padding: 10px 45px 10px 20px;
     background-color: #27A1C3;
 }
 
@@ -82,8 +82,8 @@
 }
 
 .leaflet-control-window .content{
-    padding: 8px;
-    margin-top: -10px;
+    padding: 10px;
+    margin-top: 10px;
     z-index:29;
     overflow: auto;
 }
