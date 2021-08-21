@@ -20,7 +20,8 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 
 //<!------ Ventana con mensaje de inicio ------>
 var contenu = {
-    content:'En la barra de la izquierda encontrarás más información sobre este mapa interactivo. Selecciona:<br> &emsp;<i class="fa fa-line-chart"></i> para consultar un breve análisis de los datos.<br> &emsp;&nbsp;<i class="fa fa-info"></i> para consultar la descripción de las variables desplegadas. <br><br><small>~Pronóstico emitido el 13.08.2021~</small>'
+    content:'En la barra de la izquierda encontrarás más información sobre este mapa interactivo.',
+    content: 'Selecciona:<br> &emsp;<i class="fa fa-line-chart"></i> para consultar un breve análisis de los datos.<br> &emsp;&emsp;<i class="fa fa-info"></i> para consultar la descripción de las variables desplegadas. <br><br><small>~Pronóstico emitido el 13.08.2021~</small>'
 };
 if (window.screen.width <= 768) { // Que no aparezca en celulares
     contenu.content = '<small><i>ADVERTENCIA: Este mapa aún no es 100 % compatible con la resolución de un teléfono. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small><br><br>'
@@ -30,7 +31,7 @@ var winOpts = L.control.window(map, {
     title:'¡BIENVENIDO!',
     ...contenu,
     modal: true,
-    maxWidth: 450,
+    maxWidth: 440,
     visible: true
 }).prompt({callback:function(){}})
 
