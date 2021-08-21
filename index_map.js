@@ -7,8 +7,8 @@ var map = L.map('map', {
     minZoom:5,
     fullscreenControl: true
 })
-atribuciones = '<a href="https://climathics.com">Climathics</a> | \
-            <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> \
+atribuciones = '<a href="https://climathics.com" title="Información climática inteligente">Climathics</a> | \
+            <a href="https://leafletjs.com" title="Una librería JS para mapas interactivos">Leaflet</a> \
             &middot; &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> \
             &middot; &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
 var hash = new L.Hash(map);     //URL dinamica
