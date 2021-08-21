@@ -29,7 +29,7 @@ var winOpts = L.control.window(map, {
     title:'¡BIENVENIDO!',
     ...contenu,
     modal: true,
-    maxWidth: 440,
+    maxWidth: 450,
     visible: true
 }).prompt({callback:function(){}})
 
