@@ -45,12 +45,12 @@
 }
 
 .leaflet-control-window .titlebar{
-    min-height: 12px;
+    min-height: 20px;
     cursor: grab;
     cursor: -webkit-grab;
     cursor: -moz-grab;
     padding: 6px 20px 6px 20px;
-    background-color: #6A7DB0;
+    background-color: #1D7992;
 }
 
 .leaflet-control-window .close {
@@ -81,6 +81,7 @@
 
 .leaflet-control-window .content{
     padding: 20px 20px 0px 20px;
+    margin-bottom: -20px;
     z-index:29;
     overflow: auto;
 }
