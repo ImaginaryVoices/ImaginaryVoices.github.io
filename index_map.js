@@ -386,7 +386,7 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 // pbfCinqB = ahorrar('_mai_e_total', getColorB, 'B2')
 
 // //*****_____ Variable C: Temperatura mínima _____*****
-// var nombredearch = 'pce_2021_09';
+// var nombredearch = 'pce_2021_09a';
 // pbfUnC = ahorrar('_tmn_sep-ene', getColorC, 'A')
 // pbfDeuxC = ahorrar('_tmn_sep', getColorC, 'A')
 // pbfTroisC = ahorrar('_tmn_oct-nov', getColorC, 'A')
