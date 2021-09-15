@@ -370,49 +370,32 @@ function ahorrar(ivo, getColor, tipo) {
 
 // //*****_____ Variable A: Precipitación _____*****
 // var nombredearch = 'pce_2021_09a';
-// //***** Capa 1_A
 // pbfUnA = ahorrar('_ppt_sep-ene', getColorA, 'A')
-// //***** Capa 2_A
 // pbfDeuxA = ahorrar('_ppt_sep', getColorA, 'A')
-// //***** Capa 3_A
 // pbfTroisA = ahorrar('_ppt_oct-nov', getColorA, 'A')
-// //***** Capa 4_A
 // pbfQuatreA = ahorrar('_ppt_dic-ene', getColorA, 'A')
 
 // //*****_____ Variable B: Maiz palomero _____*****
-// //***** Capa 1_B
 // pbfUnB = ahorrar('_mai_r_riego', getColorB, 'B')
-// //***** Capa 2_B
 // pbfDeuxB = ahorrar('_mai_r_temporal', getColorB, 'B')
 
 // //*****_____ Variable B2: Palomitas de maiz _____*****
 // var nombredearch = 'pce_2021_09b';
-// //***** Capa 3_B
 // pbfTroisB = ahorrar('_mai_riego', getColorB, 'B2')
-// //***** Capa 4_B
 // pbfQuatreB = ahorrar('_mai_temporal', getColorB, 'B2')
-// //***** Capa 5_B
 // pbfCinqB = ahorrar('_mai_total', getColorB, 'B2')
 
 // //*****_____ Variable C: Temperatura mínima _____*****
 // var nombredearch = 'pce_2021_09';
-// //***** Capa 1_C
 // pbfUnC = ahorrar('_tmn_sep-ene', getColorC, 'A')
-// //***** Capa 2_C
 // pbfDeuxC = ahorrar('_tmn_sep', getColorC, 'A')
-// //***** Capa 3_C
 // pbfTroisC = ahorrar('_tmn_oct-nov', getColorC, 'A')
-// //***** Capa 4_C
 // pbfQuatreC = ahorrar('_tmn_dic-ene', getColorC, 'A')
 
 // //*****_____ Variable C2: Temperatura máxima _____*****
-// //***** Capa 5_C
 // pbfCinqC = ahorrar('_tmx_sep-ene', getColorC, 'A')
-// //***** Capa 6_C
 // pbfSixC = ahorrar('_tmx_sep', getColorC, 'A')
-// //***** Capa 7_C
 // pbfSeptC = ahorrar('_tmx_oct-nov', getColorC, 'A')
-// //***** Capa 8_C
 // pbfHuitC = ahorrar('_tmx_dic-ene', getColorC, 'A')
 
 //*****_____ Variable A: Precipitación _____*****
