@@ -297,7 +297,7 @@ legendC.onAdd = function (map) {
     div.innerHTML += '<b>Probabilidad</b><br>';
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más cálido</em><br>';
     for (var i = 0; i < grades.length; i++) {
-        div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
+        div.innerHTML += '<i style= "background:' + getColorC(grades[i]) + '" ></i>' + labels[i] + '<br>';
     }
     div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más frío</em><br>';
     return div;
@@ -650,7 +650,7 @@ var layeroptions = {
     // container_width     : "160px", //default = automatic
     // container_maxHeight : "400px", //default = automatic
     // group_maxHeight     : "400px", //default = 100px
-    exclusive           : false,
+    exclusive           : true,
     collapsed           : false
 };
 var control = L.Control.styledLayerControl(baseMaps,null,layeroptions);
@@ -688,8 +688,8 @@ if (window.screen.width > 768) { // Que no aparezca info en celulares
     infoB.addTo(map);
     map.on('layeradd', function (eventLayer) {
         if (eventLayer.layer === pbfUnA || eventLayer.layer === pbfDeuxA ||
-            eventLayer.layer === pbfTroisA || eventLayer.layer === pbfQuatreA
-            || eventLayer.layer === pbfUnC || eventLayer.layer === pbfDeuxC ||
+            eventLayer.layer === pbfTroisA || eventLayer.layer === pbfQuatreA || 
+            eventLayer.layer === pbfUnC || eventLayer.layer === pbfDeuxC ||
             eventLayer.layer === pbfTroisC || eventLayer.layer === pbfQuatreC ||
             eventLayer.layer === pbfCinqC || eventLayer.layer === pbfSixC ||
             eventLayer.layer === pbfSeptC || eventLayer.layer === pbfHuitC) {
