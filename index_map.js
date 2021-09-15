@@ -340,7 +340,7 @@ var estail_states = {
             weight:  1.4
         }
     }
-}
+};
 
 //<!------ Protobuf Tiles (Capas) ------>
 //*****  Teselas con fronteras estatales
