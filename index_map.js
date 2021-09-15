@@ -315,13 +315,13 @@ const estilillo = {
 };
 function vectorTileStylingF(funco, varnombre){
     var estail = {
-        pce_2021_08a: function(properties, zoom) {
+        pce_2021_09a: function(properties, zoom) {
             return {
                 ...estilillo,
                 fillColor:   funco(properties[varnombre])
             }
         },
-        pce_2021_08b: function(properties, zoom) {
+        pce_2021_09b: function(properties, zoom) {
             return {
                 ...estilillo,
                 fillColor:   funco(properties[varnombre])
