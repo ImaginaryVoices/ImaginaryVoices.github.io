@@ -17,13 +17,13 @@ map.fitBounds([[14.5388286402, -117.12776], [32.72083, -86.811982388]]);
 map.setMaxBounds([[09.5388286402, -122.12776], [37.72083, -81.811982388]]);
 var sidebar = L.control.sidebar('sidebar').addTo(map);
 
-
 //<!------ Ventana con mensaje de inicio ------>
 var contenu = {
-    content:'En la barra de la izquierda encontrarás más información sobre este mapa interactivo. Selecciona:<br> &emsp;<i class="fa fa-line-chart"></i> para consultar un breve análisis de los datos.<br> &emsp;&nbsp;&nbsp;<i class="fa fa-info"></i> &nbsp;para consultar la descripción de las variables desplegadas. <br><p style="text-align:right;"><small>~Pronóstico emitido el 13.08.2021~</small></p>'
+    content:'En la barra de la izquierda encontrarás más información sobre este mapa interactivo. Selecciona:<br> &emsp;<i class="fa fa-line-chart"></i> para consultar un breve análisis de los datos.<br> &emsp;&nbsp;&nbsp;<i class="fa fa-info"></i> &nbsp;para consultar la descripción de las variables desplegadas. <br><br><p style="text-align:right;"><small>~Pronóstico emitido el 15.09.2021~</small></p>'
 };
 if (window.screen.width <= 768) { // Que no aparezca en celulares
-    contenu.content += '<small><i>ADVERTENCIA: Este mapa aún no es 100 % compatible con la resolución de un teléfono. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small><br><br>'
+    contenu.content = '<small><i>ADVERTENCIA: Este mapa aún no es 100 % compatible con la resolución de un teléfono. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small><br><br>'
+                      + contenu.content
 }
 var winOpts = L.control.window(map, {
     title:'¡BIENVENIDO!',
@@ -35,8 +35,8 @@ var winOpts = L.control.window(map, {
 
 //<!------ Mapbox Vector Tiles ------>
 //***** Fondo
-// var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2ppc25rdm0xb3F5MzBwOGR2Z2YyMGZ3In0._2aZcvbiTMAnz3XNAfRJAw';
-var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2k1Z3BnY2wzd3QwMnJybTY1bjJvY2s3In0.s6hymqVgILyMRjbGnZKWQA';
+// var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2ppc25rdm0xb3F5MzBwOGR2Z2YyMGZ3In0._2aZcvbiTMAnz3XNAfRJAw'; // true
+var mapboxAccessToken = 'pk.eyJ1IjoiY2xpbWF0aGljcyIsImEiOiJja2k1Z3BnY2wzd3QwMnJybTY1bjJvY2s3In0.s6hymqVgILyMRjbGnZKWQA'; // test
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
     id: 'climathics/ckhbdu5h6063419o5rmbb27ae',
     tileSize: 512,
@@ -60,7 +60,7 @@ var positronLabels = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z
 
 //<!------ Funciones ------>
 //***** Mapas de colores y rangos
-var getColorA = function(rrr) {
+var getColorA = function(rrr) { // Precipitaciones
     return  rrr <= -0.60 ? 'rgb(166,097,026)':
             rrr <= -0.55 ? 'rgb(182,124,054)':
             rrr <= -0.50 ? 'rgb(198,152,082)':
@@ -73,17 +73,7 @@ var getColorA = function(rrr) {
             rrr <   0.60 ? 'rgb(085,181,166)':
                            'rgb(001,133,133)';
 };
-var getColorB = function(rrr) {
-    // return  rrr <  -0.30 ? 'rgb(166,073,029)':
-    //         rrr <  -0.20 ? 'rgb(180,110,022)':
-    //         rrr <  -0.10 ? 'rgb(205,149,009)':
-    //         rrr <   0.00 ? 'rgb(238,203,053)':
-    //         rrr ==  0.00 ? 'rgba(001,133,133,0)':
-    //         rrr <=  0.10 ? 'rgb(171,219,064)':
-    //         rrr <=  0.20 ? 'rgb(079,179,024)':
-    //         rrr <=  0.30 ? 'rgb(058,136,027)':
-    //         rrr <=  0.40 ? 'rgb(041,093,029)':
-    //                        'rgba(001,133,133,0)';
+var getColorB = function(rrr) { // Cultivos
     return  rrr <  -0.30 ? 'rgb(166,094,061)':
             rrr <  -0.20 ? 'rgb(180,125,058)':
             rrr <  -0.10 ? 'rgb(205,158,048)':
@@ -96,31 +86,26 @@ var getColorB = function(rrr) {
             rrr <=  0.30 ? 'rgb(077,136,054)':
             rrr <=  0.40 ? 'rgb(056,093,047)':
                            'rgba(239,240,240,1)';
-    // return  rrr <  -0.30 ? 'rgb( 139, 0, 23)':
-    //         rrr <  -0.20 ? 'rgb( 213, 55, 64 )':
-    //         rrr <  -0.10 ? 'rgb( 234, 124, 106 )':
-    //         rrr <   0.00 ? 'rgb( 246, 203, 183 )':
-    //         rrr ==  0.00 ? 'rgba(001,133,133,0)':
-    //         rrr <=  0.10 ? 'rgb( 190, 218, 232 )':
-    //         rrr <=  0.20 ? 'rgb( 112, 177, 211 )':
-    //         rrr <=  0.30 ? 'rgb( 56, 142, 190 )':
-    //         rrr <=  0.40 ? 'rgb( 3, 82, 127 )':
-    //                        'rgba(001,133,133,0)';
-    // return  rrr <  -0.30 ? 'rgb(112,045,162)':
-    //         rrr <  -0.20 ? 'rgb(147,060,213)':
-    //         rrr <  -0.10 ? 'rgb(178,116,225)':
-    //         rrr <   0.00 ? 'rgb(209,172,237)':
-    //         rrr ==  0.00 ? 'rgba(001,133,133,0)':
-    //         rrr <=  0.10 ? 'rgb(191,240,183)':
-    //         rrr <=  0.20 ? 'rgb(148,230,134)':
-    //         rrr <=  0.30 ? 'rgb(105,220,086)':
-    //         rrr <=  0.40 ? 'rgb(082,169,066)':
-    //                        'rgba(001,133,133,0)';
+};
+var getColorC = function(rrr) { // Temperaturas
+    return  rrr <= -0.80 ? 'rgb( 5, 113, 176)':
+            rrr <= -0.70 ? 'rgb( 61, 147, 195)':
+            rrr <= -0.60 ? 'rgb(118, 180, 213)':
+            rrr <= -0.50 ? 'rgb(166, 207, 227)':
+            rrr <= -0.40 ? 'rgb(207, 227, 237)':
+            rrr <   0.40 ? 'rgb(255,255,255)':
+            rrr <   0.50 ? 'rgb(246, 215, 200)':
+            rrr <   0.60 ? 'rgb(245, 182, 154)':
+            rrr <   0.70 ? 'rgb(236, 132, 110)':
+            rrr <   0.80 ? 'rgb(219, 66, 71)':
+            rrr <=  1.00 ? 'rgb(202, 0, 32)':
+                           'rgb(001,133,133)';
 };
 
 //***** Cuadro de informacion personalizada
 var infoA  = L.control({position: 'bottomleft'}),
     infoB  = L.control({position: 'bottomleft'}),
+    infoB2 = L.control({position: 'bottomleft'});
     infoC  = L.control({position: 'bottomleft'});
 infoA.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -154,12 +139,12 @@ infoB.update = function (props, varnombre) {
             : 'Selecciona un municipio'
         );                
 };
-infoC.onAdd = function (map) {
+infoB2.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info');
     this.update();
     return this._div;
 };
-infoC.update = function (props, varnombre) {
+infoB2.update = function (props, varnombre) {
     this._div.innerHTML = '<h4>Cambio en rendimiento</h4>' +
         (
             props ? '<b>' + props['NOM_ENT'] + '</b><br/>' +
@@ -170,6 +155,23 @@ infoC.update = function (props, varnombre) {
             : 'Selecciona un estado'
         );                
 };
+infoC.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+};
+infoC.update = function (props, varnombre) {
+    this._div.innerHTML = '<h4>Probabilidad de categoría de temperatura</h4>' +
+        (
+            props ? '<b>' + props['NOM_MUN'] + '</b><br/>' +
+            (
+                props[varnombre] === 0 ? 'Neutral': Math.abs(props[varnombre]*100.0).toFixed(2) + ' %' +
+                (props[varnombre] < 0 ? ' de ser más cálido': ' de ser más frío')
+            )
+            : 'Selecciona un municipio'
+        );                
+};
+
 //***** Mouse hover function
 var highlight;
 var clearHighlight = function(capalayer) {
@@ -201,6 +203,7 @@ function hoveruber(capalayer, funco, varnombre){
         currentInfo.update();
     })
 };
+
 //***** Pop-up
 function popop(capalayer, varnombre, tipo){
     capalayer.on('click', function(e) {
@@ -258,9 +261,11 @@ function popop(capalayer, varnombre, tipo){
             .openOn(map);
     })    
 };
+
 //***** Leyenda
 var legendA = L.control({position: 'bottomright'}),
     legendB = L.control({position: 'bottomright'});
+    legendC = L.control({position: 'bottomright'});
 legendA.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [-0.60, -0.55, -0.50, -0.45, -0.40, 0, 0.40, 0.45, 0.50, 0.55, 0.60],
@@ -285,6 +290,18 @@ legendB.onAdd = function (map) {
     div.innerHTML += '<i style=" background:'+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Decremento</em><br>';
     return div;
 };
+legendC.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [-0.80, -0.70, -0.60, -0.50, -0.40, 0, 0.40, 0.50, 0.60, 0.70, 0.80],
+        labels = ['> 80 %', '70 — 80 %', '60 — 70 %', '50 — 60 %', '40 — 50 %', 'Neutral', '40 — 50 %', '50 — 60 %', '60 — 70 %', '70 — 80 %', '> 80 %'];
+    div.innerHTML += '<b>Probabilidad</b><br>';
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más cálido</em><br>';
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML += '<i style= "background:' + getColorA(grades[i]) + '" ></i>' + labels[i] + '<br>';
+    }
+    div.innerHTML += '<i style= "background: '+'rgba(255,255,255,0.0)'+' "></i>' + '<em>Más frío</em><br>';
+    return div;
+};
 
 //<!------ Protobuf Tiles (Estilos) ------>
 //***** Estilos
@@ -296,17 +313,6 @@ const estilillo = {
     opacity: 0.7,
     weight: 0.3
 };
-var estail_states = {
-    divpolest: function(zoom) {
-        return {
-            fill:    false,
-            stroke:  true,
-            color:  'gray',
-            opacity: 0.7,
-            weight:  1.4
-        }
-    }
-}
 function vectorTileStylingF(funco, varnombre){
     var estail = {
         pce_2021_08a: function(properties, zoom) {
@@ -324,6 +330,17 @@ function vectorTileStylingF(funco, varnombre){
     }
     return estail;
 };
+var estail_states = {
+    divpolest: function(zoom) {
+        return {
+            fill:    false,
+            stroke:  true,
+            color:  'gray',
+            opacity: 0.7,
+            weight:  1.4
+        }
+    }
+}
 
 //<!------ Protobuf Tiles (Capas) ------>
 //*****  Teselas con fronteras estatales
@@ -336,54 +353,116 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
     pane: 'states'
 })
 .addTo(map);
+
+//*****  Función ahorradora de espacio
+function ahorrar(ivo, getColor, tipo) {
+    var capa = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf',{
+        vectorTileLayerStyles: vectorTileStylingF(getColor,nombredearch+ivo),
+        interactive: true,
+        getFeatureId: function(f) {
+            return f.properties.CVEGEO;
+        }
+    });
+    hoveruber(capa, getColor, nombredearch+ivo);
+    popop(capa, nombredearch+ivo, tipo);
+    return capa
+};
+
+// //*****_____ Variable A: Precipitación _____*****
+// var nombredearch = 'pce_2021_09a';
+// //***** Capa 1_A
+// pbfUnA = ahorrar('_ppt_sep-ene', getColorA, 'A')
+// //***** Capa 2_A
+// pbfDeuxA = ahorrar('_ppt_sep', getColorA, 'A')
+// //***** Capa 3_A
+// pbfTroisA = ahorrar('_ppt_oct-nov', getColorA, 'A')
+// //***** Capa 4_A
+// pbfQuatreA = ahorrar('_ppt_dic-ene', getColorA, 'A')
+
+// //*****_____ Variable B: Maiz palomero _____*****
+// //***** Capa 1_B
+// pbfUnB = ahorrar('_mai_r_riego', getColorB, 'B')
+// //***** Capa 2_B
+// pbfDeuxB = ahorrar('_mai_r_temporal', getColorB, 'B')
+
+// //*****_____ Variable B2: Palomitas de maiz _____*****
+// var nombredearch = 'pce_2021_09b';
+// //***** Capa 3_B
+// pbfTroisB = ahorrar('_mai_riego', getColorB, 'B2')
+// //***** Capa 4_B
+// pbfQuatreB = ahorrar('_mai_temporal', getColorB, 'B2')
+// //***** Capa 5_B
+// pbfCinqB = ahorrar('_mai_total', getColorB, 'B2')
+
+// //*****_____ Variable C: Temperatura mínima _____*****
+// var nombredearch = 'pce_2021_09';
+// //***** Capa 1_C
+// pbfUnC = ahorrar('_tmn_sep-ene', getColorC, 'A')
+// //***** Capa 2_C
+// pbfDeuxC = ahorrar('_tmn_sep', getColorC, 'A')
+// //***** Capa 3_C
+// pbfTroisC = ahorrar('_tmn_oct-nov', getColorC, 'A')
+// //***** Capa 4_C
+// pbfQuatreC = ahorrar('_tmn_dic-ene', getColorC, 'A')
+
+// //*****_____ Variable C2: Temperatura máxima _____*****
+// //***** Capa 5_C
+// pbfCinqC = ahorrar('_tmx_sep-ene', getColorC, 'A')
+// //***** Capa 6_C
+// pbfSixC = ahorrar('_tmx_sep', getColorC, 'A')
+// //***** Capa 7_C
+// pbfSeptC = ahorrar('_tmx_oct-nov', getColorC, 'A')
+// //***** Capa 8_C
+// pbfHuitC = ahorrar('_tmx_dic-ene', getColorC, 'A')
+
 //*****_____ Variable A: Precipitación _____*****
-var nombredearch = 'pce_2021_08a';
-//***** Capa 1
-var ivo = '_ppt_ago-dic';
-var pbfUn = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+var nombredearch = 'pce_2021_09a';
+//***** Capa 1_A
+var ivo = '_ppt_sep-ene';
+var pbfUnA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfUn, getColorA, nombredearch+ivo);
-popop(pbfUn, nombredearch+ivo, 'A');
-//***** Capa 2
-var ivo = '_ppt_ago';
-var pbfDeux = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+hoveruber(pbfUnA, getColorA, nombredearch+ivo);
+popop(pbfUnA, nombredearch+ivo, 'A');
+//***** Capa 2_A
+var ivo = '_ppt_sep';
+var pbfDeuxA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfDeux, getColorA, nombredearch+ivo);
-popop(pbfDeux, nombredearch+ivo, 'A');
-//***** Capa 3
-var ivo = '_ppt_sep-oct';
-var pbfTrois = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+hoveruber(pbfDeuxA, getColorA, nombredearch+ivo);
+popop(pbfDeuxA, nombredearch+ivo, 'A');
+//***** Capa 3_A
+var ivo = '_ppt_oct-nov';
+var pbfTroisA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfTrois, getColorA, nombredearch+ivo);
-popop(pbfTrois, nombredearch+ivo, 'A');
-//***** Capa 4
-var ivo = '_ppt_nov-dic';
-var pbfQuatre = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+hoveruber(pbfTroisA, getColorA, nombredearch+ivo);
+popop(pbfTroisA, nombredearch+ivo, 'A');
+//***** Capa 4_A
+var ivo = '_ppt_dic-ene';
+var pbfQuatreA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
     interactive: true,
     getFeatureId: function(f) {
         return f.properties.CVEGEO;
     }
 });
-hoveruber(pbfQuatre, getColorA, nombredearch+ivo);
-popop(pbfQuatre, nombredearch+ivo, 'A');
+hoveruber(pbfQuatreA, getColorA, nombredearch+ivo);
+popop(pbfQuatreA, nombredearch+ivo, 'A');
+
 //*****_____ Variable B: Maiz palomero _____*****
-// var nombredearch = 'pce_2021_08a';
 //***** Capa 1_B
 var ivo = '_mai_r_riego';
 var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -406,8 +485,9 @@ var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
 });
     hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
     popop(pbfDeuxB, nombredearch+ivo, 'B');
+
 //*****_____ Variable B2: Palomitas de maiz _____*****
-var nombredearch = 'pce_2021_08b';
+var nombredearch = 'pce_2021_09b';
 //***** Capa 3_B
 var ivo = '_mai_riego';
 var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -442,6 +522,99 @@ var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
     hoveruber(pbfCinqB, getColorB, nombredearch+ivo);
     popop(pbfCinqB, nombredearch+ivo, 'B2');
 
+//*****_____ Variable C: Temperatura mínima _____*****
+var nombredearch = 'pce_2021_09';
+//***** Capa 1_C
+var ivo = '_tmn_sep-ene';
+var pbfUnC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+    vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfUnC, getColorC, nombredearch+ivo);
+popop(pbfUnC, nombredearch+ivo, 'A');
+//***** Capa 2_C
+var ivo = '_tmn_sep';
+var pbfDeuxC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfDeuxC, getColorC, nombredearch+ivo);
+popop(pbfDeuxC, nombredearch+ivo, 'A');
+//***** Capa 3_C
+var ivo = '_tmn_oct-nov';
+var pbfTroisC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfTroisC, getColorC, nombredearch+ivo);
+popop(pbfTroisC, nombredearch+ivo, 'A');
+//***** Capa 4_C
+var ivo = '_tmn_dic-ene';
+var pbfQuatreC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfQuatreC, getColorC, nombredearch+ivo);
+popop(pbfQuatreC, nombredearch+ivo, 'A');
+
+//*****_____ Variable C2: Temperatura máxima _____*****
+//***** Capa 5_C
+var ivo = '_tmx_sep-ene';
+var pbfCinqC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+    vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfCinqC, getColorC, nombredearch+ivo);
+popop(pbfCinqC, nombredearch+ivo, 'A');
+//***** Capa 6_C
+var ivo = '_tmx_sep';
+var pbfSixC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfSixC, getColorC, nombredearch+ivo);
+popop(pbfSixC, nombredearch+ivo, 'A');
+//***** Capa 7_C
+var ivo = '_tmx_oct-nov';
+var pbfSeptC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfSeptC, getColorC, nombredearch+ivo);
+popop(pbfSeptC, nombredearch+ivo, 'A');
+//***** Capa 8_C
+var ivo = '_tmx_dic-ene';
+var pbfHuitC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+    interactive: true,
+    getFeatureId: function(f) {
+        return f.properties.CVEGEO;
+    }
+});
+hoveruber(pbfHuitC, getColorC, nombredearch+ivo);
+popop(pbfHuitC, nombredearch+ivo, 'A');
+
 //<!------ Menu de capas ------>
 // var baseMaps = {
 //     'Precipitación: 2021 Jul-Nov': pbfUn,
@@ -463,12 +636,30 @@ var baseMaps = [
         }
     },{ 
         groupName : "Precipitación",
-        expanded  : true,
+        expanded  : false,
         layers    : {
-            "Agosto a diciembre"    : pbfUn,
-            "Agosto"                : pbfDeux,
-            "Septiembre y octubre"  : pbfTrois,
-            "Noviembre y diciembre" : pbfQuatre
+            "Septiembre a enero"    : pbfUnA,
+            "Septiembre"            : pbfDeuxA,
+            "Octubre y noviembre"   : pbfTroisA,
+            "Diciembre y enero"     : pbfQuatreA
+        }
+    },{
+        groupName : "Temperatura mín.",
+        expanded  : false,
+        layers    : {
+            "Septiembre a enero"    : pbfUnC,
+            "Septiembre"            : pbfDeuxC,
+            "Octubre y noviembre"   : pbfTroisC,
+            "Diciembre y enero"     : pbfQuatreC
+        }
+    },{ 
+        groupName : "Temperatura máx.",
+        expanded  : false,
+        layers    : {
+            "Septiembre a enero"    : pbfCinqC,
+            "Septiembre"            : pbfSixC,
+            "Octubre y noviembre"   : pbfSeptC,
+            "Diciembre y enero"     : pbfHuitC
         }
     }
 ];
@@ -484,31 +675,28 @@ map.addControl(control);
 
 //<!------ Cambio de leyenda ------>
 currentLegend = legendB;
-// map.on('baselayerchange', function (eventLayer) {
-//     if (eventLayer.name === 'Agosto a diciembre') {
-//         map.removeControl(currentLegend);
-//         currentLegend = legendA;
-//         legendA.addTo(map);
-//     }
-//     else if  (eventLayer.name === 'Agosto a diciembre ') {
-//         map.removeControl(currentLegend);
-//         currentLegend = legendB;
-//         legendB.addTo(map);
-//     }
-// })
 map.on('layeradd', function (eventLayer) {
-    if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
-        eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
+    if (eventLayer.layer === pbfUnA || eventLayer.layer === pbfDeuxA ||
+            eventLayer.layer === pbfTroisA || eventLayer.layer === pbfQuatreA) {
         map.removeControl(currentLegend);
         currentLegend = legendA;
         legendA.addTo(map);
     }
-    else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
-              eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
+    else if (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB ||
+            eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB ||
+            eventLayer.layer === pbfCinqB) {
         map.removeControl(currentLegend);
         currentLegend = legendB;
         legendB.addTo(map);
     }
+    else if (eventLayer.layer === pbfUnC || eventLayer.layer === pbfDeuxC ||
+            eventLayer.layer === pbfTroisC || eventLayer.layer === pbfQuatreC ||
+            eventLayer.layer === pbfCinqC || eventLayer.layer === pbfSixC ||
+            eventLayer.layer === pbfSeptC || eventLayer.layer === pbfHuitC) {
+        map.removeControl(currentLegend);
+        currentLegend = legendC;
+        legendC.addTo(map);
+}
 })
 
 //<!------ Cambio de cuadro de información ------>
@@ -516,22 +704,26 @@ currentInfo = infoB;
 if (window.screen.width > 768) { // Que no aparezca info en celulares
     infoB.addTo(map);
     map.on('layeradd', function (eventLayer) {
-        if (eventLayer.layer === pbfUn || eventLayer.layer === pbfDeux ||
-            eventLayer.layer === pbfTrois || eventLayer.layer === pbfQuatre) {
+        if (eventLayer.layer === pbfUnA || eventLayer.layer === pbfDeuxA ||
+            eventLayer.layer === pbfTroisA || eventLayer.layer === pbfQuatreA
+            || eventLayer.layer === pbfUnC || eventLayer.layer === pbfDeuxC ||
+            eventLayer.layer === pbfTroisC || eventLayer.layer === pbfQuatreC ||
+            eventLayer.layer === pbfCinqC || eventLayer.layer === pbfSixC ||
+            eventLayer.layer === pbfSeptC || eventLayer.layer === pbfHuitC) {
             map.removeControl(currentInfo);
             currentInfo = infoA;
             infoA.addTo(map);
         }
-        else if  (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB) {
+        else if (eventLayer.layer === pbfUnB || eventLayer.layer === pbfDeuxB) {
             map.removeControl(currentInfo);
             currentInfo = infoB;
             infoB.addTo(map);
         }
-        else if  (eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
+        else if (eventLayer.layer === pbfTroisB || eventLayer.layer === pbfQuatreB || eventLayer.layer === pbfCinqB) {
             map.removeControl(currentInfo);
-            currentInfo = infoC;
-            infoC.addTo(map);
-  }
+            currentInfo = infoB2;
+            infoB2.addTo(map);
+        }
     })
 }
 
