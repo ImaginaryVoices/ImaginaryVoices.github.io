@@ -355,18 +355,18 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 .addTo(map);
 
 //*****  Función ahorradora de espacio
-function ahorrar(ivo, getColor, tipo) {
-    var capa = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf',{
-        vectorTileLayerStyles: vectorTileStylingF(getColor,nombredearch+ivo),
-        interactive: true,
-        getFeatureId: function(f) {
-            return f.properties.CVEGEO;
-        }
-    });
-    hoveruber(capa, getColor, nombredearch+ivo);
-    popop(capa, nombredearch+ivo, tipo);
-    return capa
-};
+// function ahorrar(ivo, getColor, tipo) {
+//     var capa = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf',{
+//         vectorTileLayerStyles: vectorTileStylingF(getColor,nombredearch+ivo),
+//         interactive: true,
+//         getFeatureId: function(f) {
+//             return f.properties.CVEGEO;
+//         }
+//     });
+//     hoveruber(capa, getColor, nombredearch+ivo);
+//     popop(capa, nombredearch+ivo, tipo);
+//     return capa
+// };
 
 // //*****_____ Variable A: Precipitación _____*****
 // var nombredearch = 'pce_2021_09a';
