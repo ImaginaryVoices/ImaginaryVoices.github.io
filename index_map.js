@@ -466,8 +466,8 @@ var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
         return f.properties.CVEGEO;
     }
 });
-    hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
-    popop(pbfDeuxB, nombredearch+ivo, 'B');
+hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
+popop(pbfDeuxB, nombredearch+ivo, 'B');
 
 //*****_____ Variable B2: Palomitas de maiz _____*****
 var nombredearch = 'pce_2021_09b';
@@ -480,8 +480,8 @@ var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
         return f.properties.CVEGEO;
     }
 });
-    hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
-    popop(pbfTroisB, nombredearch+ivo, 'B2');
+hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
+popop(pbfTroisB, nombredearch+ivo, 'B2');
 //***** Capa 4_B
 var ivo = '_mai_temporal';
 var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -491,8 +491,8 @@ var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', 
         return f.properties.CVEGEO;
     }
 });
-    hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
-    popop(pbfQuatreB, nombredearch+ivo, 'B2');
+hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
+popop(pbfQuatreB, nombredearch+ivo, 'B2');
 //***** Capa 5_B
 var ivo = '_mai_total';
 var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
@@ -502,11 +502,11 @@ var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
         return f.properties.CVEGEO;
     }
 });
-    hoveruber(pbfCinqB, getColorB, nombredearch+ivo);
-    popop(pbfCinqB, nombredearch+ivo, 'B2');
+hoveruber(pbfCinqB, getColorB, nombredearch+ivo);
+popop(pbfCinqB, nombredearch+ivo, 'B2');
 
 //*****_____ Variable C: Temperatura mínima _____*****
-var nombredearch = 'pce_2021_09';
+var nombredearch = 'pce_2021_09a';
 //***** Capa 1_C
 var ivo = '_tmn_sep-ene';
 var pbfUnC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
