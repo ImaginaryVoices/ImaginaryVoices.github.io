@@ -377,7 +377,7 @@ pbfQuatreA = ahorrar('_ppt_dic-ene', getColorA, 'A')
 
 //*****_____ Variable B: Maiz palomero _____*****
 pbfUnB = ahorrar('_mai_r_riego', getColorB, 'B')
-pbfDeuxB = ahorrar('_mai_r_temporal', getColorB, 'B')
+pbfDeuxB = ahorrar('_mai_t_temporal', getColorB, 'B')
 
 //*****_____ Variable B2: Palomitas de maiz _____*****
 var nombredearch = 'pce_2021_09b';
