@@ -355,248 +355,248 @@ var pbfStates = L.vectorGrid.protobuf('data/divpolest/{z}/{x}/{y}.pbf', {
 .addTo(map);
 
 //*****  Función ahorradora de espacio
-// function ahorrar(ivo, getColor, tipo) {
-//     var capa = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf',{
-//         vectorTileLayerStyles: vectorTileStylingF(getColor,nombredearch+ivo),
-//         interactive: true,
-//         getFeatureId: function(f) {
-//             return f.properties.CVEGEO;
-//         }
-//     });
-//     hoveruber(capa, getColor, nombredearch+ivo);
-//     popop(capa, nombredearch+ivo, tipo);
-//     return capa
-// };
-
-// //*****_____ Variable A: Precipitación _____*****
-// var nombredearch = 'pce_2021_09a';
-// pbfUnA = ahorrar('_ppt_sep-ene', getColorA, 'A')
-// pbfDeuxA = ahorrar('_ppt_sep', getColorA, 'A')
-// pbfTroisA = ahorrar('_ppt_oct-nov', getColorA, 'A')
-// pbfQuatreA = ahorrar('_ppt_dic-ene', getColorA, 'A')
-
-// //*****_____ Variable B: Maiz palomero _____*****
-// pbfUnB = ahorrar('_mai_r_riego', getColorB, 'B')
-// pbfDeuxB = ahorrar('_mai_r_temporal', getColorB, 'B')
-
-// //*****_____ Variable B2: Palomitas de maiz _____*****
-// var nombredearch = 'pce_2021_09b';
-// pbfTroisB = ahorrar('_mai_e_riego', getColorB, 'B2')
-// pbfQuatreB = ahorrar('_mai_e_temporal', getColorB, 'B2')
-// pbfCinqB = ahorrar('_mai_e_total', getColorB, 'B2')
-
-// //*****_____ Variable C: Temperatura mínima _____*****
-// var nombredearch = 'pce_2021_09a';
-// pbfUnC = ahorrar('_tmn_sep-ene', getColorC, 'A')
-// pbfDeuxC = ahorrar('_tmn_sep', getColorC, 'A')
-// pbfTroisC = ahorrar('_tmn_oct-nov', getColorC, 'A')
-// pbfQuatreC = ahorrar('_tmn_dic-ene', getColorC, 'A')
-
-// //*****_____ Variable C2: Temperatura máxima _____*****
-// pbfCinqC = ahorrar('_tmx_sep-ene', getColorC, 'A')
-// pbfSixC = ahorrar('_tmx_sep', getColorC, 'A')
-// pbfSeptC = ahorrar('_tmx_oct-nov', getColorC, 'A')
-// pbfHuitC = ahorrar('_tmx_dic-ene', getColorC, 'A')
+function ahorrar(ivo, getColor, tipo) {
+    var capa = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf',{
+        vectorTileLayerStyles: vectorTileStylingF(getColor,nombredearch+ivo),
+        interactive: true,
+        getFeatureId: function(f) {
+            return f.properties.CVEGEO;
+        }
+    });
+    hoveruber(capa, getColor, nombredearch+ivo);
+    popop(capa, nombredearch+ivo, tipo);
+    return capa
+};
 
 //*****_____ Variable A: Precipitación _____*****
 var nombredearch = 'pce_2021_09a';
-//***** Capa 1_A
-var ivo = '_ppt_sep-ene';
-var pbfUnA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-    vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfUnA, getColorA, nombredearch+ivo);
-popop(pbfUnA, nombredearch+ivo, 'A');
-//***** Capa 2_A
-var ivo = '_ppt_sep';
-var pbfDeuxA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfDeuxA, getColorA, nombredearch+ivo);
-popop(pbfDeuxA, nombredearch+ivo, 'A');
-//***** Capa 3_A
-var ivo = '_ppt_oct-nov';
-var pbfTroisA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfTroisA, getColorA, nombredearch+ivo);
-popop(pbfTroisA, nombredearch+ivo, 'A');
-//***** Capa 4_A
-var ivo = '_ppt_dic-ene';
-var pbfQuatreA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfQuatreA, getColorA, nombredearch+ivo);
-popop(pbfQuatreA, nombredearch+ivo, 'A');
+pbfUnA = ahorrar('_ppt_sep-ene', getColorA, 'A')
+pbfDeuxA = ahorrar('_ppt_sep', getColorA, 'A')
+pbfTroisA = ahorrar('_ppt_oct-nov', getColorA, 'A')
+pbfQuatreA = ahorrar('_ppt_dic-ene', getColorA, 'A')
 
 //*****_____ Variable B: Maiz palomero _____*****
-//***** Capa 1_B
-var ivo = '_mai_r_riego';
-var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-    vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfUnB, getColorB, nombredearch+ivo);
-popop(pbfUnB, nombredearch+ivo, 'B');
-//***** Capa 2_B
-var ivo = '_mai_t_temporal';
-var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
-popop(pbfDeuxB, nombredearch+ivo, 'B');
+pbfUnB = ahorrar('_mai_r_riego', getColorB, 'B')
+pbfDeuxB = ahorrar('_mai_r_temporal', getColorB, 'B')
 
 //*****_____ Variable B2: Palomitas de maiz _____*****
 var nombredearch = 'pce_2021_09b';
-//***** Capa 3_B
-var ivo = '_mai_riego';
-var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-    vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
-popop(pbfTroisB, nombredearch+ivo, 'B2');
-//***** Capa 4_B
-var ivo = '_mai_temporal';
-var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
-popop(pbfQuatreB, nombredearch+ivo, 'B2');
-//***** Capa 5_B
-var ivo = '_mai_total';
-var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfCinqB, getColorB, nombredearch+ivo);
-popop(pbfCinqB, nombredearch+ivo, 'B2');
+pbfTroisB = ahorrar('_mai_e_riego', getColorB, 'B2')
+pbfQuatreB = ahorrar('_mai_e_temporal', getColorB, 'B2')
+pbfCinqB = ahorrar('_mai_e_total', getColorB, 'B2')
 
 //*****_____ Variable C: Temperatura mínima _____*****
 var nombredearch = 'pce_2021_09a';
-//***** Capa 1_C
-var ivo = '_tmn_sep-ene';
-var pbfUnC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-    vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfUnC, getColorC, nombredearch+ivo);
-popop(pbfUnC, nombredearch+ivo, 'A');
-//***** Capa 2_C
-var ivo = '_tmn_sep';
-var pbfDeuxC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfDeuxC, getColorC, nombredearch+ivo);
-popop(pbfDeuxC, nombredearch+ivo, 'A');
-//***** Capa 3_C
-var ivo = '_tmn_oct-nov';
-var pbfTroisC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfTroisC, getColorC, nombredearch+ivo);
-popop(pbfTroisC, nombredearch+ivo, 'A');
-//***** Capa 4_C
-var ivo = '_tmn_dic-ene';
-var pbfQuatreC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfQuatreC, getColorC, nombredearch+ivo);
-popop(pbfQuatreC, nombredearch+ivo, 'A');
+pbfUnC = ahorrar('_tmn_sep-ene', getColorC, 'A')
+pbfDeuxC = ahorrar('_tmn_sep', getColorC, 'A')
+pbfTroisC = ahorrar('_tmn_oct-nov', getColorC, 'A')
+pbfQuatreC = ahorrar('_tmn_dic-ene', getColorC, 'A')
 
 //*****_____ Variable C2: Temperatura máxima _____*****
-//***** Capa 5_C
-var ivo = '_tmx_sep-ene';
-var pbfCinqC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-    vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfCinqC, getColorC, nombredearch+ivo);
-popop(pbfCinqC, nombredearch+ivo, 'A');
-//***** Capa 6_C
-var ivo = '_tmx_sep';
-var pbfSixC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfSixC, getColorC, nombredearch+ivo);
-popop(pbfSixC, nombredearch+ivo, 'A');
-//***** Capa 7_C
-var ivo = '_tmx_oct-nov';
-var pbfSeptC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfSeptC, getColorC, nombredearch+ivo);
-popop(pbfSeptC, nombredearch+ivo, 'A');
-//***** Capa 8_C
-var ivo = '_tmx_dic-ene';
-var pbfHuitC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
-	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
-    interactive: true,
-    getFeatureId: function(f) {
-        return f.properties.CVEGEO;
-    }
-});
-hoveruber(pbfHuitC, getColorC, nombredearch+ivo);
-popop(pbfHuitC, nombredearch+ivo, 'A');
+pbfCinqC = ahorrar('_tmx_sep-ene', getColorC, 'A')
+pbfSixC = ahorrar('_tmx_sep', getColorC, 'A')
+pbfSeptC = ahorrar('_tmx_oct-nov', getColorC, 'A')
+pbfHuitC = ahorrar('_tmx_dic-ene', getColorC, 'A')
+
+//*****_____ Variable A: Precipitación _____*****
+// var nombredearch = 'pce_2021_09a';
+// //***** Capa 1_A
+// var ivo = '_ppt_sep-ene';
+// var pbfUnA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+//     vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfUnA, getColorA, nombredearch+ivo);
+// popop(pbfUnA, nombredearch+ivo, 'A');
+// //***** Capa 2_A
+// var ivo = '_ppt_sep';
+// var pbfDeuxA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfDeuxA, getColorA, nombredearch+ivo);
+// popop(pbfDeuxA, nombredearch+ivo, 'A');
+// //***** Capa 3_A
+// var ivo = '_ppt_oct-nov';
+// var pbfTroisA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfTroisA, getColorA, nombredearch+ivo);
+// popop(pbfTroisA, nombredearch+ivo, 'A');
+// //***** Capa 4_A
+// var ivo = '_ppt_dic-ene';
+// var pbfQuatreA = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorA,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfQuatreA, getColorA, nombredearch+ivo);
+// popop(pbfQuatreA, nombredearch+ivo, 'A');
+
+// //*****_____ Variable B: Maiz palomero _____*****
+// //***** Capa 1_B
+// var ivo = '_mai_r_riego';
+// var pbfUnB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+//     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfUnB, getColorB, nombredearch+ivo);
+// popop(pbfUnB, nombredearch+ivo, 'B');
+// //***** Capa 2_B
+// var ivo = '_mai_t_temporal';
+// var pbfDeuxB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfDeuxB, getColorB, nombredearch+ivo);
+// popop(pbfDeuxB, nombredearch+ivo, 'B');
+
+// //*****_____ Variable B2: Palomitas de maiz _____*****
+// var nombredearch = 'pce_2021_09b';
+// //***** Capa 3_B
+// var ivo = '_mai_riego';
+// var pbfTroisB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+//     vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfTroisB, getColorB, nombredearch+ivo);
+// popop(pbfTroisB, nombredearch+ivo, 'B2');
+// //***** Capa 4_B
+// var ivo = '_mai_temporal';
+// var pbfQuatreB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfQuatreB, getColorB, nombredearch+ivo);
+// popop(pbfQuatreB, nombredearch+ivo, 'B2');
+// //***** Capa 5_B
+// var ivo = '_mai_total';
+// var pbfCinqB = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorB,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfCinqB, getColorB, nombredearch+ivo);
+// popop(pbfCinqB, nombredearch+ivo, 'B2');
+
+// //*****_____ Variable C: Temperatura mínima _____*****
+// var nombredearch = 'pce_2021_09a';
+// //***** Capa 1_C
+// var ivo = '_tmn_sep-ene';
+// var pbfUnC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+//     vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfUnC, getColorC, nombredearch+ivo);
+// popop(pbfUnC, nombredearch+ivo, 'A');
+// //***** Capa 2_C
+// var ivo = '_tmn_sep';
+// var pbfDeuxC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfDeuxC, getColorC, nombredearch+ivo);
+// popop(pbfDeuxC, nombredearch+ivo, 'A');
+// //***** Capa 3_C
+// var ivo = '_tmn_oct-nov';
+// var pbfTroisC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfTroisC, getColorC, nombredearch+ivo);
+// popop(pbfTroisC, nombredearch+ivo, 'A');
+// //***** Capa 4_C
+// var ivo = '_tmn_dic-ene';
+// var pbfQuatreC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfQuatreC, getColorC, nombredearch+ivo);
+// popop(pbfQuatreC, nombredearch+ivo, 'A');
+
+// //*****_____ Variable C2: Temperatura máxima _____*****
+// //***** Capa 5_C
+// var ivo = '_tmx_sep-ene';
+// var pbfCinqC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+//     vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfCinqC, getColorC, nombredearch+ivo);
+// popop(pbfCinqC, nombredearch+ivo, 'A');
+// //***** Capa 6_C
+// var ivo = '_tmx_sep';
+// var pbfSixC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfSixC, getColorC, nombredearch+ivo);
+// popop(pbfSixC, nombredearch+ivo, 'A');
+// //***** Capa 7_C
+// var ivo = '_tmx_oct-nov';
+// var pbfSeptC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfSeptC, getColorC, nombredearch+ivo);
+// popop(pbfSeptC, nombredearch+ivo, 'A');
+// //***** Capa 8_C
+// var ivo = '_tmx_dic-ene';
+// var pbfHuitC = L.vectorGrid.protobuf('data/'+nombredearch+'/{z}/{x}/{y}.pbf', {
+// 	vectorTileLayerStyles: vectorTileStylingF(getColorC,nombredearch+ivo),
+//     interactive: true,
+//     getFeatureId: function(f) {
+//         return f.properties.CVEGEO;
+//     }
+// });
+// hoveruber(pbfHuitC, getColorC, nombredearch+ivo);
+// popop(pbfHuitC, nombredearch+ivo, 'A');
 
 //<!------ Menu de capas ------>
 // var baseMaps = {
