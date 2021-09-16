@@ -19,7 +19,7 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 
 //<!------ Ventana con mensaje de inicio ------>
 var contenu = {
-    content:'<b>[09.2021] Actualización: Procurando siempre mejorar nuestros pronósticos, la metodología para el maíz ahora se calcula de manera diferente.</b> <br><br>En la barra de la izquierda encontrarás más información sobre este mapa interactivo. Selecciona:<br> &emsp;<i class="fa fa-line-chart"></i> para consultar un breve análisis de los datos.<br> &emsp;&nbsp;&nbsp;<i class="fa fa-info"></i> &nbsp;para consultar la descripción de las variables desplegadas. <br><br><p style="text-align:right;"><small>~Pronóstico emitido el 15.09.2021~</small></p>'
+    content:'<b>[09.2021] Actualización: La metodología para el pronóstico de maíz ahora se calcula de manera diferente.</b> <br><br>En la barra de la izquierda encontrarás más información sobre este mapa interactivo. Selecciona:<br> &emsp;<i class="fa fa-line-chart"></i> para consultar un breve análisis de los datos.<br> &emsp;&nbsp;&nbsp;<i class="fa fa-info"></i> &nbsp;para consultar la descripción de las variables desplegadas. <br><br><p style="text-align:right;"><small>~Pronóstico emitido el 15.09.2021~</small></p>'
 };
 if (window.screen.width <= 768) { // Que no aparezca en celulares
     contenu.content = '<small><i>ADVERTENCIA: Este mapa aún no es 100 % compatible con la resolución de un teléfono. Si tienes problemas para visualizarlo, intenta abrirlo desde un ordenador o una tableta.</i></small><br><br>'
